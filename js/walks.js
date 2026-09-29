@@ -26,8 +26,8 @@
     return item;
   }
 
-  function cell(index, value, shade) {
-    return { i: String(index), v: String(value), shade: shade || "" };
+  function cell(index, value, shade, to) {
+    return { i: String(index), v: String(value), shade: shade || "", to: to || "" };
   }
 
   function lane(name, captionKo, captionEn, rows) {
@@ -82,7 +82,7 @@
         step("첫 대입", "First assignment", "오른쪽 9를 이름 n에 넣는다. = 은 비교가 아니다.", "The 9 on the right is bound to n. = is not a comparison.", { line: 0, name: ["nine"] }),
         step("다시 대입", "Assign again", "오른쪽의 n은 아직 9다. 9 - 2를 계산한 7을 n에 다시 넣는다.", "The n on the right is still 9. 9 - 2 is 7, and that 7 is stored back in n.", { line: 1, name: ["nR", "two"], out: ["nL"] }),
         step("연쇄 대입", "Chained assignment", "2를 한 번 계산하고, 그 같은 값을 a와 b에 연결한다.", "2 is evaluated once, and that same value is bound to both a and b.", { line: 2, name: ["both"] }),
-        step("언패킹", "Unpacking", "오른쪽 칸이 두 개다. 첫 칸 \"Ada\"는 name, 둘째 칸 \"20\"은 age다. 개수가 다르면 ValueError다.", "The right side has two elements. \"Ada\" goes to name and \"20\" goes to age. A different count raises ValueError.", { line: 3, name: ["pair"], lane: lane("오른쪽", "0번 \"Ada\", 1번 \"20\". 왼쪽 이름도 두 개여야 한다.", "Index 0 is \"Ada\" and index 1 is \"20\". The left side needs two names as well.", [[cell(0, "Ada", "hot"), cell(1, "20", "in")]]) }),
+        step("언패킹", "Unpacking", "왼쪽 이름은 name, age로 두 개다. 오른쪽 [\"Ada\", \"20\"]도 칸이 두 개라 개수가 맞는다. 칸 번호는 0부터이므로 0번(첫 칸) Ada가 name이 되고, 1번(둘째 칸) \"20\"이 age가 된다. \"20\"은 따옴표가 있어 숫자가 아니라 글자다. 칸 수와 이름 수가 다르면 ValueError다.", "The left side has two names, name and age. The list on the right also has two cells, so the counts match. Indexes start at 0: cell 0, Ada, becomes name, and cell 1, \"20\", becomes age. The quotes make \"20\" text, not a number. A different count raises ValueError.", { line: 3, name: ["pair"], lane: lane("[\"Ada\", \"20\"]", "", "", [[cell(0, "Ada", "hot", "→ name"), cell(1, "\"20\"", "in", "→ age")]]) }),
         step("type", "type", "지금 n은 7이다. type(n)은 그 자료형(type)인 int를 반환하고, print가 그것을 출력한다.", "n is now 7. type(n) returns its type, int, and print writes that.", { line: 4, name: ["nT"], out: ["ty", "pr"] })
       ]
     },
@@ -101,7 +101,7 @@
         step("int(문자열)", "int of a string", "글자 \"9\"를 정수 9로 읽는다. \"9.0\"처럼 점이 있으면 int는 직접 받지 않는다.", "The characters \"9\" are read as the integer 9. int does not accept \"9.0\" directly.", { line: 1, name: ["s9"], out: ["i2"] }),
         step("float", "float", "정수 2를 실수 2.0으로 바꾼 새 값을 반환한다.", "Returns a new float, 2.0, made from the integer 2.", { line: 2, name: ["n2"], out: ["fl"] }),
         step("str", "str", "수 1은 문자열이 아니다. str(1)이 \"1\"을 만든 뒤에야 \"a = \"와 + 로 붙일 수 있다. 결과는 \"a = 1\"이다.", "The number 1 is not a string. str(1) makes \"1\", and only then can + join it to \"a = \". The result is \"a = 1\".", { line: 3, name: ["one"], out: ["st", "sa"] }),
-        step("list", "list", "문자열 \"ab\"의 문자가 한 칸씩 된다. chars는 ['a', 'b']다. 원본 문자열은 그대로다.", "Each character of \"ab\" becomes one element. chars is ['a', 'b']. The original string stays as it was.", { line: 4, name: ["ab"], out: ["ls"], lane: lane('"ab"', "0번 a, 1번 b. 이 칸들로 새 리스트를 만든다.", "Index 0 is a and index 1 is b. Those elements form a new list.", [[cell(0, "a", "in"), cell(1, "b", "in")]]) }),
+        step("list", "list", "list(\"ab\")는 글자를 앞에서부터 한 칸씩 새 리스트로 옮긴다. 번호는 0부터라 첫 글자 a가 0번, 다음 글자 b가 1번이다. chars는 ['a', 'b']가 되고, 원래 문자열 \"ab\"는 그대로다.", "list(\"ab\") moves each character, from the front, into a new list. Indexes start at 0, so a is cell 0 and b is cell 1. chars becomes ['a', 'b']. The original string \"ab\" stays as it was.", { line: 4, name: ["ab"], out: ["ls"], lane: lane("\"ab\"", "", "", [[cell(0, "a", "hot", "chars[0]"), cell(1, "b", "in", "chars[1]")]]) }),
         step("tuple", "tuple", "[1, 2]의 칸을 새 튜플 (1, 2)로 고정한다. 만들어진 튜플의 칸은 대입으로 바꾸지 못한다.", "The elements of [1, 2] are frozen into the new tuple (1, 2). Those elements cannot be replaced by assignment.", { line: 5, name: ["lst"], out: ["tu"] }),
         step("dict", "dict", "{\"Burger\": 5500}은 키 Burger와 값 5500을 가진 딕셔너리다. {}만 적어도 빈 딕셔너리다.", "{\"Burger\": 5500} is a dictionary with key Burger and value 5500. {} alone is an empty dictionary.", { line: 6, name: ["dic"] })
       ]
@@ -131,7 +131,7 @@
         step("*=", "*=", "n은 4다. n *= 2는 n = n * 2와 같아서 n은 8이 된다.", "n is 4. n *= 2 is the same computation as n = n * 2, so n becomes 8.", { line: 6, name: ["nL", "nmul"] }),
         step("연쇄 비교", "Chained comparison", "1 < 2와 2 < 3이 모두 참일 때만 True다. 결과는 True다.", "The result is True only when both 1 < 2 and 2 < 3 are true. The result is True.", { line: 7, idx: ["cmp"] }),
         step("문자열 in", "in for a string", "\"Python\" 안에 연속된 \"Py\"가 있다. True다.", "\"Python\" contains the contiguous text \"Py\". The result is True.", { line: 8, name: ["py2"], idx: ["py"] }),
-        step("딕셔너리 in", "in for a dictionary", "오른쪽은 키만 본다. \"Math\"는 값이고 키가 아니므로 False다.", "The right side looks only at keys. \"Math\" is a value, not a key, so the result is False.", { line: 9, name: ["maj"], idx: ["math"], lane: lane("딕셔너리", "키는 major 하나다. Math는 그 키의 값이다.", "The only key is major. Math is that key's value.", [[cell("major", "Math", "in"), cell("찾는 글", "Math", "out")]]) }),
+        step("딕셔너리 in", "in for a dictionary", "오른쪽 {\"major\": \"Math\"}에서 위는 키, 아래는 그 키의 값이다. in은 키만 본다. 찾는 글 \"Math\"는 키 major의 값이지 키가 아니므로 False다.", "In {\"major\": \"Math\"} the top is the key and the bottom is that key's value. in looks only at keys. The text \"Math\" is the value of major, not a key, so the result is False.", { line: 9, name: ["maj"], idx: ["math"], lane: lane("{\"major\": \"Math\"}", "", "", [[cell("major", "Math", "in"), cell("찾는 글", "Math", "out")]]) }),
         step("*", "*", "9.0 * 2는 18.0이다. 피연산자가 실수이므로 결과도 실수다.", "9.0 * 2 is 18.0. An operand is a float, so the result is a float.", { line: 10, name: ["xm2", "mul2"] }),
         step("==", "==", "2 == 3은 값이 같은지 묻는 비교다. 결과는 False다. = 와는 다른 기호다.", "2 == 3 asks whether the values are equal. The result is False. The sign is different from =.", { line: 11, idx: ["eq"] }),
         step("not in", "not in", "\"Python\" 안에 \"LOL\"이 없다. not in은 그 없음을 물어 True다.", "\"Python\" does not contain \"LOL\". not in asks about that absence, so the result is True.", { line: 12, name: ["py3"], idx: ["lol"] })
@@ -152,9 +152,9 @@
         [w("        print", null, "fn"), w("("), w("a, b", "ab"), w(")")]
       ],
       steps: [
-        step("for의 묶음", "The for sequence", "s는 \"Hi\"다. for는 이 문자를 앞에서부터 ch에 하나씩 넣는다.", "s is \"Hi\". for binds each character to ch, from the front.", { line: 1, name: ["sfor"], lane: lane("s", "0번 H를 먼저 넣고, 그 다음 1번 i를 넣는다.", "Index 0, H, is bound first, then index 1, i.", [[cell(0, "H", "hot"), cell(1, "i", "in")]]) }),
+        step("for의 묶음", "The for sequence", "s는 \"Hi\"다. 칸 번호는 0부터라 0번 H를 먼저 ch에 넣고 본문을 한 번 실행한다. 그 다음 1번 i를 ch에 넣고 본문을 다시 실행한다.", "s is \"Hi\". Indexes start at 0, so H at cell 0 is bound to ch first and the body runs once. Then i at cell 1 is bound to ch and the body runs again.", { line: 1, name: ["sfor"], lane: lane("\"Hi\"", "", "", [[cell(0, "H", "hot", "→ ch"), cell(1, "i", "in", "→ ch")]]) }),
         step("본문", "The body", "ch가 H일 때 print가 H를 찍고, 다시 올라와 ch가 i일 때 i를 찍는다.", "print writes H while ch is H, then returns to the for and writes i while ch is i.", { line: 2, name: ["ch1"], out: ["pch"] }),
-        step("range의 끝", "The stop of range", "range(1, 4)는 1에서 시작해 4 직전까지다. 만들어지는 수는 1, 2, 3이고 4는 빠진다.", "range(1, 4) starts at 1 and stops before 4. The numbers are 1, 2, and 3. 4 is excluded.", { line: 3, name: ["r1"], idx: ["r4"], out: ["rg"], lane: lane("range(1, 4)", "1, 2, 3만 i가 된다. 4는 끝 번호라 포함되지 않는다.", "i becomes 1, then 2, then 3. 4 is the stop, so it is not included.", [[cell(1, "1", "in"), cell(2, "2", "in"), cell(3, "3", "hot"), cell("끝", "4", "out")]]) }),
+        step("range의 끝", "The stop of range", "range(1, 4)는 1에서 시작해 끝 값 4 바로 앞에서 멈춘다. 그래서 i가 되는 수는 1, 2, 3이고, 그림에서 흐린 4는 포함되지 않는다.", "range(1, 4) starts at 1 and stops just before the stop value 4. So i becomes 1, then 2, then 3. The dim 4 in the picture is not included.", { line: 3, name: ["r1"], idx: ["r4"], out: ["rg"], lane: lane("range(1, 4)", "", "", [[cell(1, "1", "in", "→ i"), cell(2, "2", "in", "→ i"), cell(3, "3", "hot", "→ i"), cell("빠짐", "4", "out", "i 안 됨")]]) }),
         step("while 조건", "while condition", "k는 0이다. 0 < 2가 참이므로 본문으로 들어간다.", "k is 0. 0 < 2 is true, so the body runs.", { line: 6, name: ["kw1"], idx: ["k2"] }),
         step("while 본문", "while body", "k + 1을 k에 다시 넣는다. k가 1이 된 뒤 조건을 다시 보고, k가 2가 되면 2 < 2가 거짓이라 멈춘다.", "k + 1 is stored back in k. After k becomes 1 the condition is tested again. When k is 2, 2 < 2 is false and the loop stops.", { line: 7, name: ["kR", "one"], out: ["kL"] }),
         step("중첩 for", "Nested for", "바깥 a가 2인 동안 안쪽 b가 1, 그다음 2를 모두 돈다. a가 3이 되면 b를 다시 1부터 돈다. 출력은 2 1, 2 2, 3 1, 3 2다.", "While a is 2, b runs through 1 and then 2. When a becomes 3, b starts again at 1. The output is 2 1, 2 2, 3 1, 3 2.", { line: 10, name: ["ab"] })
@@ -176,7 +176,7 @@
         step("0은 첫 칸", "0 is the first cell", "번호는 0부터다. 0은 첫 칸이고 문자는 P다.", "Indexes start at 0. 0 is the first cell, and the character is P.", { line: 1, name: ["wA"], idx: ["i0"], lane: wordLane(0, "0, 그리고 그 칸의 P. 첫 번째다.", "0, and the P in that cell. It is the first character.") }),
         step("-1은 마지막", "-1 is the last cell", "음수는 뒤에서 센다. -1은 마지막 칸 n이다. 앞에서 세면 5번이기도 하다.", "A negative index counts from the back. -1 is the last cell, n. From the front that same cell is index 5.", { line: 2, name: ["wB"], idx: ["i1"], lane: wordLane(-1, "위는 0부터, 아래는 뒤에서 -1. 둘 다 n이다.", "The top row counts from 0. The bottom row counts -1 from the back. Both are n.") }),
         step("리스트 이름", "The list name", "nums를 찾는다. 칸은 10, 20, 30, 40 네 개다.", "nums is found. Its elements are 10, 20, 30, and 40.", { line: 4, name: ["nA"] }),
-        step("3은 네 번째", "3 is the fourth cell", "0, 1, 2를 지나 3에 닿는다. 그래서 네 번째 칸이고 값은 40이다. 칸이 4개여도 마지막 번호는 3이다.", "Count 0, then 1, then 2, and 3 is the cell reached. It is the fourth cell, and the value is 40. Four elements still end at index 3.", { line: 4, name: ["nA"], idx: ["i3"], lane: lane("nums", "0, 1, 2를 지나 3. 노란 칸이 네 번째고 값은 40이다.", "Pass 0, 1, and 2 to reach 3. The yellow cell is the fourth, and the value is 40.", [[cell(0, 10, "in"), cell(1, 20, "in"), cell(2, 30, "in"), cell(3, 40, "hot")]]) }),
+        step("3은 네 번째", "3 is the fourth cell", "nums를 찾으면 칸이 10, 20, 30, 40이다. 위 숫자는 칸 번호이고 0부터 센다. 0, 1, 2 다음이 3이므로 3은 네 번째 칸이고 값은 40이다. 칸이 4개여도 마지막 번호는 3이다.", "nums holds 10, 20, 30, and 40. The top number is the index, counted from 0. 3 comes after 0, 1, and 2, so it is the fourth cell and the value is 40. Four elements still end at index 3.", { line: 4, name: ["nA"], idx: ["i3"], lane: lane("[10, 20, 30, 40]", "", "", [[cell(0, 10, "in", "1번째"), cell(1, 20, "in", "2번째"), cell(2, 30, "in", "3번째"), cell(3, 40, "hot", "4번째")]]) }),
         step("슬라이스", "Slice", "시작 1은 포함하고, 끝 -1은 빠진다. -1은 n이므로 n 앞에서 멈춘다. 결과는 ytho다.", "Start 1 is included and stop -1 is excluded. -1 is n, so the slice stops before n. The result is ytho.", { line: 5, name: ["wC"], idx: ["s1", "s2"], lane: lane("word[1:-1]", "P는 시작 전이라 빠지고, n은 끝이라 빠진다. ytho만 남는다.", "P is before the start, so it is left out. n is the stop, so it is left out. ytho remains.", [[cell(0, "P", "out"), cell(1, "y", "hot"), cell(2, "t", "in"), cell(3, "h", "in"), cell(4, "o", "in"), cell(-1, "n", "out")]]) }),
         step("뒤집기", "Reverse", "[::-1]은 뒤에서 한 칸씩 온다. Python이 nohtyP가 된다. 원본 word는 그대로다.", "[::-1] walks one cell at a time from the back. Python becomes nohtyP. The original word is unchanged.", { line: 6, name: ["wD"], idx: ["rev"] }),
         step("len", "len", "len(word)는 칸의 개수 6이다. 마지막 번호는 6이 아니라 5다.", "len(word) is the count of cells, 6. The last index is 5, not 6.", { line: 7, name: ["wE"], out: ["ln"], lane: lane("len", "칸은 6개. 번호는 0부터 5까지다.", "There are 6 cells. The indexes run from 0 through 5.", [[cell(0, "P", "in"), cell(1, "y"), cell(2, "t"), cell(3, "h"), cell(4, "o"), cell(5, "n", "hot")]]) })
@@ -229,7 +229,7 @@
         [w("rows"), w(" = "), w("[[x, y] for x, y in "), w("zip", "zp", "fn"), w("("), w('["A", "B"]', "stu", "str"), w(", "), w("[90, 80, 70]", "grd", "str"), w(")]")]
       ],
       steps: [
-        step("칸을 교체", "Replace a cell", "lst[1]의 1은 두 번째 칸이다. 20이 있던 자리를 15로 바꾼다. 리스트는 [10, 15, 30]이 된다.", "1 in lst[1] is the second cell. The 20 there becomes 15. The list is [10, 15, 30].", { line: 1, name: ["lstA"], idx: ["i1"], out: ["v15"], lane: lane("lst", "0은 10, 1은 20, 2는 30. 1번만 15로 바뀐다.", "0 is 10, 1 is 20, 2 is 30. Only index 1 becomes 15.", [[cell(0, 10), cell(1, 20, "hot"), cell(2, 30)]]) }),
+        step("칸을 교체", "Replace a cell", "lst는 [10, 20, 30]이다. 위 숫자는 칸 번호이고 0이 첫 칸이다. 그래서 1은 두 번째 칸 20을 가리킨다. 그 칸만 15로 바뀌어 리스트는 [10, 15, 30]이 된다.", "lst is [10, 20, 30]. The top number is the index, and 0 is the first cell, so 1 is the second cell, 20. Only that cell becomes 15, and the list is [10, 15, 30].", { line: 1, name: ["lstA"], idx: ["i1"], out: ["v15"], lane: lane("[10, 20, 30]", "", "", [[cell(0, 10, "", "그대로"), cell(1, 20, "hot", "→ 15"), cell(2, 30, "", "그대로")]]) }),
         step("append", "append", "append는 [3] 전체를 마지막 칸 하나로 붙인다. 반환값은 None이다. 리스트 끝에 [3]이 한 칸으로 들어간다.", "append adds the whole [3] as one last element. The return value is None.", { line: 2, name: ["lstB"], idx: ["ap"] }),
         step("extend", "extend", "extend는 [3, 4]의 안을 풀어 3과 4를 따로 붙인다. a는 [1, 2, 3, 4]가 된다. 반환값은 None이다.", "extend unpacks [3, 4] and adds 3 and 4 separately. a becomes [1, 2, 3, 4]. The return value is None.", { line: 4, name: ["a1"], idx: ["ex"] }),
         step("+", "+", "[1, 2] + [3]은 새 리스트 [1, 2, 3]을 만든다. 양쪽 원본은 그대로다.", "[1, 2] + [3] builds a new list, [1, 2, 3]. Both originals stay as they were.", { line: 5, name: ["left", "right"] }),
@@ -246,7 +246,7 @@
         step("*", "*", "[1, 2] * 2는 같은 칸을 두 번 둔 새 리스트 [1, 2, 1, 2]다. 원본은 그대로다.", "[1, 2] * 2 is a new list, [1, 2, 1, 2], with the same elements written twice. The original stays.", { line: 20, name: ["rep"], idx: ["twice"] }),
         step("컴프리헨션", "Comprehension", "words의 칸마다 lower를 적용해 새 리스트를 모은다. 결과는 ['python', 'lab']다.", "lower is applied to each element of words and the results are collected into a new list: ['python', 'lab'].", { line: 21, name: ["words"] }),
         step("조건", "A condition", "\"artificial\"의 문자를 앞에서부터 본다. a, e, i, o, u에 있으면 빼고, 없으면 남긴다. 결과는 rtfcl이다.", "Each character of \"artificial\" is tested from the front. A character in a, e, i, o, u is left out. The rest stay. The result is rtfcl.", { line: 22, name: ["art"], idx: ["vow"], lane: lane("artificial", "모음은 빠지고 r, t, f, c, l만 남는다.", "The vowels are left out. r, t, f, c, and l stay.", [[cell(0, "a", "out"), cell(1, "r", "in"), cell(2, "t", "in"), cell(3, "i", "out"), cell(4, "f", "hot"), cell(5, "i", "out"), cell(6, "c", "in"), cell(7, "i", "out"), cell(8, "a", "out"), cell(9, "l", "in")]]) }),
-        step("zip", "zip", "학생은 2명이고 점수는 3개다. zip은 짧은 쪽이 끝나는 2쌍에서 멈춘다. 70은 짝이 없어 빠진다.", "There are 2 students and 3 grades. zip stops at the shorter side, after 2 pairs. 70 has no partner and is left out.", { line: 23, name: ["stu", "grd"], out: ["zp"], lane: lane("zip", "A-90, B-80까지만 쌍이 된다. 70은 남는다.", "The pairs stop at A-90 and B-80. 70 is left over.", [[cell(0, "A", "hot"), cell(1, "B", "in")], [cell(0, 90, "hot"), cell(1, 80, "in"), cell(2, 70, "out")]]) })
+        step("zip", "zip", "윗줄은 학생, 아랫줄은 점수다. 같은 번호끼리 짝이 된다. 0번 A와 0번 90, 1번 B와 1번 80. 학생은 2명인데 점수는 3개라, 짝이 없는 2번 70은 빠진다.", "The top row is the students and the bottom row is the grades. Cells with the same index are paired: 0 is A with 90, 1 is B with 80. There are 2 students and 3 grades, so grade 2, 70, has no partner and is left out.", { line: 23, name: ["stu", "grd"], out: ["zp"], lane: lane("zip", "", "", [[cell(0, "A", "hot", "학생"), cell(1, "B", "in", "학생")], [cell(0, 90, "hot", "점수"), cell(1, 80, "in", "점수"), cell(2, 70, "out", "짝 없음")]]) })
       ]
     },
     tuples: {
@@ -358,6 +358,28 @@
       name.className = "lane-name";
       name.textContent = item.lane.name;
       box.appendChild(name);
+      var key = document.createElement("p");
+      key.className = "lane-key";
+      var numeric = item.lane.rows.some(function (row) {
+        return row.some(function (piece) {
+          return /^-?\d+$/.test(piece.i);
+        });
+      });
+      var hasTo = item.lane.rows.some(function (row) {
+        return row.some(function (piece) {
+          return piece.to;
+        });
+      });
+      if (lang() === "en") {
+        key.textContent = numeric
+          ? (hasTo ? "Top number: index, starting at 0. Middle: the value in that cell. Bottom: where that value goes." : "Top number: index, starting at 0. Bottom: the value in that cell.")
+          : "Top: the key. Bottom: that key's value.";
+      } else {
+        key.textContent = numeric
+          ? (hasTo ? "위 숫자: 칸 번호. 0이 첫 칸이다. 가운데: 그 칸의 값. 아래: 그 값이 들어가는 곳." : "위 숫자: 칸 번호. 0이 첫 칸이다. 아래: 그 칸의 값.")
+          : "위: 키. 아래: 그 키의 값.";
+      }
+      box.appendChild(key);
       item.lane.rows.forEach(function (row) {
         var rowEl = document.createElement("div");
         rowEl.className = "lane-row";
@@ -372,6 +394,12 @@
           valueEl.textContent = piece.v;
           cellEl.appendChild(indexEl);
           cellEl.appendChild(valueEl);
+          if (piece.to) {
+            var toEl = document.createElement("span");
+            toEl.className = "cell-to";
+            toEl.textContent = piece.to;
+            cellEl.appendChild(toEl);
+          }
           rowEl.appendChild(cellEl);
         });
         box.appendChild(rowEl);
@@ -449,11 +477,14 @@
     nav.appendChild(prev);
     nav.appendChild(count);
     nav.appendChild(next);
-    body.appendChild(pre);
+    var stage = document.createElement("div");
+    stage.className = "walk-stage";
+    stage.appendChild(pre);
+    stage.appendChild(nav);
+    body.appendChild(stage);
     body.appendChild(laneBox);
     body.appendChild(stepTitle);
     body.appendChild(stepNote);
-    body.appendChild(nav);
     toggle.addEventListener("click", function () {
       var open = body.hidden;
       body.hidden = !open;
@@ -467,8 +498,10 @@
     function relabel() {
       var ko = lang() !== "en";
       toggle.textContent = ko ? titles[key][0] : titles[key][1];
-      prev.textContent = ko ? "이전" : "Previous";
-      next.textContent = ko ? "다음" : "Next";
+      prev.textContent = "▲";
+      next.textContent = "▼";
+      prev.setAttribute("aria-label", ko ? "이전" : "Previous");
+      next.setAttribute("aria-label", ko ? "다음" : "Next");
       paint(root, walk, current);
     }
     relabel();
