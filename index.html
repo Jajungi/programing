@@ -7,1746 +7,638 @@
   <meta name="description" content="프로그래밍 실습 day 1–4의 Python 문법 설명과 암기용 코드.">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-  <link rel="stylesheet" href="css/site.css?v=2">
+  <link rel="stylesheet" href="css/site.css?v=4">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231d1d1f'/%3E%3C/svg%3E">
 </head>
 <body>
-  <a class="skip" href="#main">본문으로</a>
+  <a class="skip" href="#main"><span class="ko">본문으로</span><span class="en">Skip to content</span></a>
   <header class="site-header">
     <div class="inner">
       <a class="brand" href="#overview">
         <strong>프로그래밍</strong>
         <span>Python · day 1–4</span>
       </a>
+      <button type="button" id="lang-toggle" class="lang-toggle" aria-pressed="false">EN</button>
       <form class="search" id="search-form" role="search">
-        <label class="sr-only" for="q">검색</label>
+        <label class="sr-only" for="q"><span class="ko">검색</span><span class="en">Search</span></label>
         <input id="q" type="search" placeholder="함수, 메서드, 연산자" autocomplete="off" enterkeyhint="search">
       </form>
     </div>
   </header>
   <div class="layout">
     <nav class="sidenav" id="sidenav" aria-label="장">
-      <a href="#overview"><span>00</span>개요</a>
-      <a href="#io"><span>01</span>입출력</a>
-      <a href="#values"><span>02</span>자료형</a>
-      <a href="#convert"><span>03</span>변환</a>
-      <a href="#ops"><span>04</span>연산</a>
-      <a href="#loops"><span>05</span>반복</a>
-      <a href="#indexing"><span>06</span>인덱스</a>
-      <a href="#strings"><span>07</span>문자열</a>
-      <a href="#lists"><span>08</span>리스트</a>
-      <a href="#tuples"><span>09</span>튜플</a>
-      <a href="#dicts"><span>10</span>딕셔너리</a>
-      <a href="#compare"><span>11</span>대조</a>
-      <a href="#memo"><span>12</span>암기</a>
+      <a href="#overview"><span class="idx">00</span><span class="ko">개요</span><span class="en">Overview</span></a>
+<a href="#io"><span class="idx">01</span><span class="ko">입출력</span><span class="en">Input / output</span></a>
+<a href="#values"><span class="idx">02</span><span class="ko">자료형</span><span class="en">Types</span></a>
+<a href="#convert"><span class="idx">03</span><span class="ko">변환</span><span class="en">Conversion</span></a>
+<a href="#ops"><span class="idx">04</span><span class="ko">연산</span><span class="en">Operators</span></a>
+<a href="#loops"><span class="idx">05</span><span class="ko">반복</span><span class="en">Loops</span></a>
+<a href="#indexing"><span class="idx">06</span><span class="ko">인덱스</span><span class="en">Index</span></a>
+<a href="#strings"><span class="idx">07</span><span class="ko">문자열</span><span class="en">Strings</span></a>
+<a href="#lists"><span class="idx">08</span><span class="ko">리스트</span><span class="en">Lists</span></a>
+<a href="#tuples"><span class="idx">09</span><span class="ko">튜플</span><span class="en">Tuples</span></a>
+<a href="#dicts"><span class="idx">10</span><span class="ko">딕셔너리</span><span class="en">Dictionaries</span></a>
+<a href="#compare"><span class="idx">11</span><span class="ko">대조</span><span class="en">Distinctions</span></a>
+<a href="#memo"><span class="idx">12</span><span class="ko">암기</span><span class="en">Recall</span></a>
     </nav>
     <main class="main" id="main">
       <p id="count" class="count" aria-live="polite"></p>
-      <p id="empty" class="empty" hidden>해당하는 항목이 없다.</p>
-      <section class="chapter" id="overview">
-        <p class="eyebrow">실습 day 1 – day 4</p>
-        <h1>문법 참고</h1>
-        <p class="lede">각 문법이 무엇을 하고, 원래 값을 고치는지를 짧게 적었다. 예제 출력은 Python 3에서 확인한 값이다.</p>
-        <p class="lede">코드만 모아 외울 곳은 <a href="#memo">12 암기</a>다. 코드를 가리고 칸을 누르면 그 코드만 다시 보인다.</p>
-        <div class="table-wrap">
-          <table class="spec">
-            <caption>먼저 이것만</caption>
-            <thead><tr><th>규칙</th><th>뜻</th></tr></thead>
-            <tbody>
-              <tr><td>끝 번호는 빠진다</td><td><code>range(1, 4)</code>는 1, 2, 3. <code>s[0:3]</code>도 0, 1, 2칸이다.</td></tr>
-              <tr><td>일을 하고 None</td><td>print, append, extend, insert, remove, sort, reverse는 처리 뒤 None을 준다. 그 결과를 변수에 다시 넣으면 내용이 사라진다.</td></tr>
-              <tr><td>칸을 못 바꾼다</td><td>글자와 튜플은 <code>s[0] = "a"</code>가 안 된다. 새 값을 만들어 이름에 다시 넣는다.</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="catalog">
-          <section>
-            <h3>입출력</h3>
-            <p><a href="#print">print</a><a href="#input">input</a><a href="#fstring">f-string</a><a href="#comment">#</a></p>
-          </section>
-          <section>
-            <h3>자료형 · 변환</h3>
-            <p><a href="#assign">=</a><a href="#unpack">언패킹</a><a href="#int">int</a><a href="#float">float</a><a href="#str">str</a><a href="#list-fn">list</a><a href="#tuple-fn">tuple</a><a href="#dict-fn">dict</a></p>
-          </section>
-          <section>
-            <h3>연산 · 반복</h3>
-            <p><a href="#arith">산술</a><a href="#compare-ops">비교</a><a href="#membership">in</a><a href="#while">while</a><a href="#for">for</a><a href="#range">range</a></p>
-          </section>
-          <section>
-            <h3>문자열 · 리스트</h3>
-            <p><a href="#slice">슬라이스</a><a href="#split">split</a><a href="#join">join</a><a href="#append">append</a><a href="#extend">extend</a><a href="#pop">pop</a><a href="#sorted">sorted</a><a href="#comp">컴프리헨션</a></p>
-          </section>
-          <section>
-            <h3>튜플 · 딕셔너리</h3>
-            <p><a href="#tuple-one">(10,)</a><a href="#dict-access">d[키]</a><a href="#get">get</a><a href="#dict-pop">pop</a><a href="#views">keys</a></p>
-          </section>
-          <section>
-            <h3>암기</h3>
-            <p><a href="#memo">코드 단어장</a></p>
-          </section>
-        </div>
-      </section>
-
-      <section class="chapter" id="io">
-        <header class="chapter-head">
-          <p class="num">01</p>
-          <div>
-            <h2>출력과 입력</h2>
-            <p class="lead">계산이 끝나도 화면에 저절로 나오지 않는다. 보여줄 때만 print를 쓴다.</p>
-          </div>
-        </header>
-        <article class="entry" id="print" data-keys="print 프린트 출력">
-          <header class="entry-head">
-            <h3><code>print</code></h3>
-            <p class="kind">함수</p>
-          </header>
-          <p class="summary">괄호 안을 화면에 찍는다. 찍고 나면 남는 값은 없다.</p>
-          <p class="sig"><code>print(값들, sep=" ", end="\n")</code></p>
-          <ul>
-            <li>값 사이에는 빈칸 하나가 들어간다. 숫자는 그냥 넣어도 된다.</li>
-            <li><code>"안녕" + 1</code>은 오류다. <code>print("안녕", 1)</code>은 된다.</li>
-            <li><code>x = print(1)</code>이면 1이 찍히고, <code>x</code>는 <code>None</code>이다.</li>
-          </ul>
-          <pre><code>b = 2
+      <p id="empty" class="empty" hidden><span class="ko">해당하는 항목이 없다.</span><span class="en">No matching entry.</span></p>
+      <section class="chapter" id="overview"><header class="chapter-head"><p class="num">00</p><div><h2><span class="ko">개요</span><span class="en">Overview</span></h2><p class="lead"><span class="ko">실습 day 1–day 4에서 다룬 문법만 수록한다. 각 항목은 같은 순서로 읽는다.</span><span class="en">Only the syntax from labs day 1–day 4. Every entry follows the same order.</span></p></div></header>
+<p class="lede"><span class="ko">특징은 그 요소가 하는 일과 결과의 성질이다. 사용은 형태와 성립 조건이다. 보충은 원본 변경, 비슷한 이름과의 차이, 실패 조건처럼 항목마다 필요한 것만 둔다. 예시는 실습에서 확인한 코드다.</span><span class="en">Behavior states what the construct does and what kind of result it yields. Usage gives the form and the conditions under which it is valid. Notes cover only what that construct needs: mutation, a near synonym, or a failure. The example is code checked against the labs.</span></p>
+<p class="lede"><span class="ko">코드만 모아 둔 곳은 <a href="#memo">12 암기</a>다. 문자열(string), 리스트(list), 튜플(tuple), 딕셔너리(dictionary)는 메서드(method)를 설명한 뒤 장 끝에 표로 다시 모은다.</span><span class="en">Collected code for recall is in <a href="#memo">12 Recall</a>. After the methods of string, list, tuple, and dictionary, each chapter ends with a summary table.</span></p>
+<div class="table-wrap"><table class="spec"><caption><span class="ko">항목을 읽는 순서</span><span class="en">How to read an entry</span></caption>
+<thead><tr><th><span class="ko">순서</span><span class="en">Order</span></th><th><span class="ko">담는 내용</span><span class="en">What it answers</span></th></tr></thead>
+<tbody>
+<tr><td><span class="ko">특징</span><span class="en">Behavior</span></td><td><span class="ko">하는 일, 반환값(return value)의 유무, 원본을 바꾸는지</span><span class="en">What it does, whether it returns a value, and whether it changes the original</span></td></tr>
+<tr><td><span class="ko">사용</span><span class="en">Usage</span></td><td><span class="ko">표기, 인자(argument), 그 형태가 성립하는 조건</span><span class="en">Notation, arguments, and when that form is valid</span></td></tr>
+<tr><td><span class="ko">보충</span><span class="en">Notes</span></td><td><span class="ko">그 항목에서만 필요한 구분. 없으면 생략한다</span><span class="en">A distinction that belongs to this construct. Omitted when there is nothing further</span></td></tr>
+<tr><td><span class="ko">예시</span><span class="en">Example</span></td><td><span class="ko">실행 결과까지 적힌 코드</span><span class="en">Code together with the result it produces</span></td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table class="spec"><caption><span class="ko">먼저 고정할 규칙</span><span class="en">Rules to fix first</span></caption>
+<thead><tr><th><span class="ko">규칙</span><span class="en">Rule</span></th><th><span class="ko">뜻</span><span class="en">Meaning</span></th></tr></thead>
+<tbody>
+<tr><td><span class="ko">끝 번호는 빠진다</span><span class="en">The stop is excluded</span></td><td><span class="ko"><code>range(1, 4)</code>는 1, 2, 3이다. <code>s[0:3]</code>도 0, 1, 2번 칸이다.</span><span class="en"><code>range(1, 4)</code> is 1, 2, 3. <code>s[0:3]</code> is positions 0, 1, and 2.</span></td></tr>
+<tr><td><span class="ko">일을 하고 None</span><span class="en">Work, then None</span></td><td><span class="ko">print, append, extend, insert, remove, sort, reverse, update는 처리 뒤 None을 반환한다. 그 반환값을 같은 이름에 다시 대입하면 내용이 사라진다.</span><span class="en">print, append, extend, insert, remove, sort, reverse, and update return None after they finish. Assigning that return value back to the same name discards the object.</span></td></tr>
+<tr><td><span class="ko">칸을 못 바꾼다</span><span class="en">Elements cannot be replaced</span></td><td><span class="ko">문자열과 튜플은 불변(immutable)이다. <code>s[0] = "a"</code>는 성립하지 않는다. 새 값을 만들어 이름에 다시 대입한다.</span><span class="en">Strings and tuples are immutable. <code>s[0] = "a"</code> is invalid. Build a new value and assign it to the name.</span></td></tr>
+</tbody></table></div>
+<div class="catalog">
+<section><h3><span class="ko">입출력</span><span class="en">Input and output</span></h3><p><a href="#print">print</a><a href="#input">input</a><a href="#fstring">f-string</a><a href="#comment">#</a></p></section>
+<section><h3><span class="ko">자료형 · 변환</span><span class="en">Types and conversion</span></h3><p><a href="#assign">=</a><a href="#unpack">unpacking</a><a href="#int">int</a><a href="#float">float</a><a href="#str">str</a><a href="#list-fn">list</a><a href="#tuple-fn">tuple</a><a href="#dict-fn">dict</a></p></section>
+<section><h3><span class="ko">연산 · 반복</span><span class="en">Operators and loops</span></h3><p><a href="#arith">+</a><a href="#compare-ops">==</a><a href="#membership">in</a><a href="#while">while</a><a href="#for">for</a><a href="#range">range</a></p></section>
+<section><h3><span class="ko">문자열 · 리스트</span><span class="en">Strings and lists</span></h3><p><a href="#slice">slice</a><a href="#split">split</a><a href="#join">join</a><a href="#append">append</a><a href="#extend">extend</a><a href="#pop">pop</a><a href="#sorted">sorted</a></p></section>
+<section><h3><span class="ko">튜플 · 딕셔너리</span><span class="en">Tuples and dictionaries</span></h3><p><a href="#tuple-one">(10,)</a><a href="#dict-access">d[key]</a><a href="#get">get</a><a href="#dict-pop">pop</a><a href="#views">keys</a></p></section>
+<section><h3><span class="ko">암기</span><span class="en">Recall</span></h3><p><a href="#memo"><span class="ko">코드 단어장</span><span class="en">Code cards</span></a></p></section>
+</div>
+</section>
+<section class="chapter" id="io"><header class="chapter-head"><p class="num">01</p><div><h2><span class="ko">출력과 입력</span><span class="en">Output and input</span></h2><p class="lead"><span class="ko">계산이 끝나도 결과는 표준 출력에 스스로 나타나지 않는다. 보여줄 때만 print를 호출한다.</span><span class="en">A finished calculation does not appear by itself. Call print only when the result should be shown.</span></p></div></header><article class="entry" id="print" data-keys="print 프린트 출력 function">
+<header class="entry-head"><h3><code>print</code></h3><p class="kind"><span class="ko">함수</span><span class="en">function</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">print는 인자(argument)를 표준 출력(standard output)에 기록하는 함수(function)다. 호출 자체는 항상 None을 반환한다. 화면에 나타난 내용과 반환값(return value)은 별개다.</p><p class="en">print is a function that writes its arguments to standard output. The call itself always returns None. What appears on the screen is separate from the return value.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>print(값들, sep=" ", end="\n")</code></p><p class="ko">인자는 쉼표로 나눈다. 구분자(separator)의 기본값은 공백 하나이고, 끝을 닫는 문자의 기본값은 줄바꿈이다. 수와 문자열(string)을 한 호출에 함께 둘 수 있다. <code>+</code>로 문자열과 수를 연결하면 TypeError다.</p><p class="en">Separate arguments with commas. The default separator is one space, and the default ending is a newline. A number and a string may share one call. Joining a string and a number with <code>+</code> raises TypeError.</p></section>
+<section class="block"><h4><span class="ko">보충</span><span class="en">Notes</span></h4><p class="ko">반환값을 변수에 대입하면 출력은 이루어지지만 변수에는 None이 남는다. <code>reverse</code>는 print의 매개변수(parameter)가 아니므로 <code>print(lst, reverse=True)</code>도 TypeError다. 역순 출력은 sorted나 슬라이스(slice)의 일이다.</p><p class="en">Assigning the return value stores None, even though the output still appears. <code>reverse</code> is not a parameter of print, so <code>print(lst, reverse=True)</code> also raises TypeError. Reversing belongs to sorted or to a slice.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>b = 2
 print("b =", float(b))
-# b = 2.0</code></pre>
-        </article>
+# b = 2.0
 
-        <article class="entry" id="input" data-keys="input 입력">
-          <header class="entry-head">
-            <h3><code>input</code></h3>
-            <p class="kind">함수</p>
-          </header>
-          <p class="summary">키보드로 한 줄을 읽는다. 숫자처럼 보여도 글자다.</p>
-          <p class="sig"><code>input("안내 문구")</code></p>
-          <ul>
-            <li>Enter 앞의 글자만 돌려준다. 엔터 자체는 빠진다.</li>
-            <li>계산에 쓰려면 <code>int(input())</code>처럼 숫자로 바꾼다. <code>abc</code>를 넣으면 <code>int</code>에서 오류가 난다.</li>
-          </ul>
-          <pre><code>n = int(input("Enter a number: "))
-# 4를 치면 n은 정수 4</code></pre>
-        </article>
-
-        <article class="entry" id="fstring" data-keys="f-string f문자열 중괄호">
-          <header class="entry-head">
-            <h3><code>f-string</code></h3>
-            <p class="kind">문법</p>
-          </header>
-          <p class="summary">문자열 앞에 f를 붙이면 중괄호 안을 계산해서 그 자리에 넣는다.</p>
-          <p class="sig"><code>f"글자 {식} 글자"</code></p>
-          <ul>
-            <li>중괄호 안에는 변수뿐 아니라 비교나 계산도 된다.</li>
-            <li>f-string은 글자를 만들 뿐이다. 화면에 내려면 print가 따로 필요하다.</li>
-          </ul>
-          <pre><code>one, two, three = 1, 2, 3
+x = print(1)
+# 1이 출력되고 x는 None</code></pre></section>
+</article>
+<article class="entry" id="input" data-keys="input 입력 function">
+<header class="entry-head"><h3><code>input</code></h3><p class="kind"><span class="ko">함수</span><span class="en">function</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">input은 표준 입력에서 한 줄을 읽어 문자열로 반환하는 함수다. 숫자가 보여도 자료형(type)은 str이다.</p><p class="en">input is a function that reads one line from standard input and returns it as a string. Even a numeric-looking line has type str.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>input("안내 문구")</code></p><p class="ko">안내 문구는 선택이다. Enter 앞의 문자만 반환되고, 줄바꿈 자체는 포함되지 않는다. 정수 연산에 쓰려면 <code>int(input())</code>처럼 형 변환(type conversion)을 먼저 한다.</p><p class="en">The prompt is optional. Only the characters before Enter are returned; the newline itself is not included. For integer arithmetic, convert first, as in <code>int(input())</code>.</p></section>
+<section class="block"><h4><span class="ko">보충</span><span class="en">Notes</span></h4><p class="ko"><code>int</code>는 정수 형태의 문자열만 받는다. <code>abc</code>나 <code>9.0</code>이라는 글을 <code>int</code>에 직접 넣으면 ValueError다.</p><p class="en"><code>int</code> accepts only a string that is already an integer form. Passing the text <code>abc</code> or <code>9.0</code> straight to <code>int</code> raises ValueError.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>n = int(input("Enter a number: "))
+# 4를 입력하면 n은 정수 4</code></pre></section>
+</article>
+<article class="entry" id="fstring" data-keys="f-string f문자열 formatted">
+<header class="entry-head"><h3><code>f-string</code></h3><p class="kind"><span class="ko">표기</span><span class="en">notation</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">f-string은 문자열을 만드는 표기다. 중괄호 안의 식(expression)을 계산해 그 자리에 넣는다. 이 표기만으로는 출력되지 않는다.</p><p class="en">An f-string is notation that builds a string. It evaluates the expression inside braces and inserts the result. The notation alone does not print anything.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>f"글자 {식} 글자"</code></p><p class="ko">따옴표 앞에 <code>f</code>를 붙인다. 중괄호 안에는 이름뿐 아니라 연산과 비교도 둘 수 있다. 화면에 내려면 print에 넘긴다.</p><p class="en">Prefix the quotes with <code>f</code>. The braces may hold a name, an operation, or a comparison. Pass the result to print when it should be shown.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>one, two, three = 1, 2, 3
 print(f"one&lt;two&lt;three : {one &lt; two &lt; three}")
-# one&lt;two&lt;three : True</code></pre>
-        </article>
-
-        <article class="entry" id="comment" data-keys="주석 # 샵 따옴표">
-          <header class="entry-head">
-            <h3><code>#</code></h3>
-            <p class="kind">문법</p>
-          </header>
-          <p class="summary">실행에서 빼는 기호는 #다. 따옴표 세 개는 주석이 아니라 글자다.</p>
-          <p class="sig"><code># 여기부터 줄 끝은 무시</code></p>
-          <ul>
-            <li><code>#</code>부터 그 줄 끝까지 읽지 않는다.</li>
-            <li><code>"""..."""</code>는 여러 줄 글자다. 변수에 안 담으면 그냥 버려진다. 실습 파일은 이걸로 코드를 꺼 두었다.</li>
-          </ul>
-          <pre><code>print(1)
-# print(2) 이 줄은 실행되지 않는다</code></pre>
-        </article>
-
-      </section>
-
-      <section class="chapter" id="values">
-        <header class="chapter-head">
-          <p class="num">02</p>
-          <div>
-            <h2>변수와 자료형</h2>
-            <p class="lead">이름은 값을 가리킨다. = 은 같다는 뜻이 아니라 오른쪽을 이름에 넣는 기호다.</p>
-          </div>
-        </header>
-        <article class="entry" id="assign" data-keys="대입 = 변수">
-          <header class="entry-head">
-            <h3><code>=</code></h3>
-            <p class="kind">문법</p>
-          </header>
-          <p class="summary">오른쪽을 먼저 계산하고, 그 결과를 왼쪽 이름에 넣는다.</p>
-          <p class="sig"><code>name = 식</code></p>
-          <ul>
-            <li>같냐고 물을 때는 <code>==</code>를 쓴다.</li>
-            <li><code>number = number - 2</code>는 예전 값을 먼저 읽고, 그 다음에 이름을 바꾼다. 없는 이름으로는 시작할 수 없다.</li>
-          </ul>
-          <pre><code>name = "World"
-name = "Ada"
-number = 9.0
-number = number - 2</code></pre>
-        </article>
-
-        <article class="entry" id="chain" data-keys="연쇄 대입 a = b =">
-          <header class="entry-head">
-            <h3><code>a = b = 값</code></h3>
-            <p class="kind">문법</p>
-          </header>
-          <p class="summary">오른쪽 값 하나를 두 이름이 같이 가리키게 한다.</p>
-          <p class="sig"><code>a = b = 2</code></p>
-          <ul>
-            <li>그 다음 <code>a = 3</code>을 해도 <code>b</code>는 2로 남는다. 정수는 그 자리에서 안 바뀌기 때문이다.</li>
-          </ul>
-          <pre><code>a = b = 2
-a = 3
-print(a, b)
-# 3 2</code></pre>
-        </article>
-
-        <article class="entry" id="unpack" data-keys="언패킹 나눠 담기">
-          <header class="entry-head">
-            <h3><code>언패킹</code></h3>
-            <p class="kind">문법</p>
-          </header>
-          <p class="summary">오른쪽의 칸을 왼쪽 이름들에 앞에서부터 하나씩 넣는다.</p>
-          <p class="sig"><code>a, b, c = 리스트</code></p>
-          <ul>
-            <li>이름 개수와 칸 개수가 다르면 오류다.</li>
-            <li><code>split</code>으로 자른 나이는 숫자가 아니라 글자 <code>"24"</code>다.</li>
-          </ul>
-          <pre><code>words = ["Alice", "24", "Engineer"]
-name, age, job = words
-print(name, age)
-# Alice 24</code></pre>
-        </article>
-
-        <article class="entry" id="types" data-keys="자료형 int float str bool">
-          <header class="entry-head">
-            <h3><code>int float str bool</code></h3>
-            <p class="kind">자료형</p>
-          </header>
-          <p class="summary">정수, 소수, 글자, 참/거짓. 리스트와 딕셔너리는 뒤 장에 있다.</p>
-          <p class="sig"><code>type(값)</code></p>
-          <ul>
-            <li><code>9</code>는 정수, <code>9.0</code>은 소수다. 나눗셈 <code>/</code>의 결과는 소수다.</li>
-            <li>비교와 <code>in</code>의 결과는 <code>True</code> 또는 <code>False</code>다.</li>
-          </ul>
-          <pre><code>print(type(9))
-print(type(2 == 3))
-# &lt;class 'int'&gt;
-# &lt;class 'bool'&gt;</code></pre>
-        </article>
-
-      </section>
-
-      <section class="chapter" id="convert">
-        <header class="chapter-head">
-          <p class="num">03</p>
-          <div>
-            <h2>형 변환</h2>
-            <p class="lead">변환 함수는 새 값을 만든다. 원래 변수는 그 결과를 다시 넣기 전까지 그대로다.</p>
-          </div>
-        </header>
-        <article class="entry" id="int" data-keys="int 정수 변환">
-          <header class="entry-head">
-            <h3><code>int()</code></h3>
-            <p class="kind">함수</p>
-          </header>
-          <p class="summary">정수로 만든다. 소수는 소수점을 버린다.</p>
-          <p class="sig"><code>int(값)</code></p>
-          <ul>
-            <li><code>int(9.9)</code>는 9다. 반올림이 아니다.</li>
-            <li><code>int("9")</code>는 된다. <code>int("9.0")</code>은 안 된다. 그때는 <code>int(float("9.0"))</code>.</li>
-          </ul>
-          <pre><code>print(int(9.0))
-print(int("9"))
-# 9
-# 9</code></pre>
-        </article>
-
-        <article class="entry" id="float" data-keys="float 실수">
-          <header class="entry-head">
-            <h3><code>float()</code></h3>
-            <p class="kind">함수</p>
-          </header>
-          <p class="summary">소수로 만든다. 정수 2는 2.0이 된다.</p>
-          <p class="sig"><code>float(값)</code></p>
-          <ul>
-            <li><code>float("9")</code>와 <code>float("9.5")</code>는 둘 다 된다.</li>
-          </ul>
-          <pre><code>b = 2
+# one&lt;two&lt;three : True</code></pre></section>
+</article>
+<article class="entry" id="comment" data-keys="주석 comment # 따옴표">
+<header class="entry-head"><h3><code>#</code></h3><p class="kind"><span class="ko">표기</span><span class="en">notation</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">주석(comment)으로 실행에서 빼는 기호는 <code>#</code>다. 그 위치부터 그 줄의 끝까지 인터프리터가 읽지 않는다.</p><p class="en">The comment marker is <code>#</code>. From that point to the end of the line, the interpreter does not read the text.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code># 여기부터 줄 끝은 무시</code></p><p class="ko">코드와 같은 줄의 뒤에도 둘 수 있다. 설명을 남기거나, 한 줄을 잠시 실행에서 제외할 때 쓴다.</p><p class="en">It may also follow code on the same line. Use it to leave a remark, or to keep one line out of execution for the moment.</p></section>
+<section class="block"><h4><span class="ko">보충</span><span class="en">Notes</span></h4><p class="ko"><code>"""..."""</code>는 주석이 아니라 여러 줄 문자열이다. 이름에 대입하지 않으면 그 값은 버려진다. 실습 파일은 이 문자열로 코드 블록을 꺼 두었다.</p><p class="en"><code>"""..."""</code> is a multiline string, not a comment. If it is not assigned to a name, the value is discarded. The lab files use that string to hold a block of code out of the way.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>print(1)
+# print(2)  이 줄은 실행되지 않는다</code></pre></section>
+</article></section>
+<section class="chapter" id="values"><header class="chapter-head"><p class="num">02</p><div><h2><span class="ko">변수와 자료형</span><span class="en">Names and types</span></h2><p class="lead"><span class="ko">이름은 값을 가리킨다. = 은 같다는 비교가 아니라 대입(assignment)이다.</span><span class="en">A name refers to a value. = is assignment, not a comparison of equality.</span></p></div></header><article class="entry" id="assign" data-keys="대입 assignment = 변수">
+<header class="entry-head"><h3><code>=</code></h3><p class="kind"><span class="ko">연산자</span><span class="en">operator</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">대입 연산자(assignment operator)는 오른쪽 식(expression)을 계산한 뒤, 그 결과를 왼쪽 이름에 연결한다. 비교에는 <code>==</code>를 쓴다.</p><p class="en">The assignment operator evaluates the expression on the right, then binds that result to the name on the left. Equality uses <code>==</code>.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>이름 = 식</code></p><p class="ko">왼쪽은 이름이어야 한다. 이미 있는 이름에 다시 대입하면 예전의 연결은 끊기고 새 값을 가리킨다. <code>n = n - 2</code>는 현재 값으로 오른쪽을 계산한 다음 그 결과를 다시 n에 넣는다.</p><p class="en">The left side must be a name. Assigning again to an existing name drops the old binding and refers to the new value. <code>n = n - 2</code> evaluates the right side from the current value, then stores the result back in n.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>n = 9
+n = n - 2
+# n은 7</code></pre></section>
+</article>
+<article class="entry" id="chain" data-keys="연쇄 대입 a = b =">
+<header class="entry-head"><h3><code>a = b = 값</code></h3><p class="kind"><span class="ko">표기</span><span class="en">notation</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">연쇄 대입은 오른쪽 식을 한 번 계산하고, 그 같은 결과를 왼쪽의 이름들에 차례로 연결한다.</p><p class="en">Chained assignment evaluates the right-hand expression once and binds that same result to each name on the left.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>a = b = 식</code></p><p class="ko">이름들은 같은 값을 가리킨다. 정수를 이렇게 나눠 담는 것은 실습의 <code>a = b = 2</code>와 같다.</p><p class="en">The names refer to the same value. Sharing an integer this way is the lab form <code>a = b = 2</code>.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>a = b = 2
+# a와 b 모두 2</code></pre></section>
+</article>
+<article class="entry" id="unpack" data-keys="언패킹 unpacking">
+<header class="entry-head"><h3><code>언패킹</code></h3><p class="kind"><span class="ko">표기</span><span class="en">notation</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">언패킹(unpacking)은 묶음의 칸을 왼쪽 이름들에 순서대로 나눠 담는다. 리스트(list), 튜플(tuple), 문자열처럼 순서가 있는 값에 쓴다.</p><p class="en">Unpacking places each element of a sequence into the names on the left, in order. It applies to an ordered value such as a list, a tuple, or a string.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>a, b = 묶음</code></p><p class="ko">왼쪽 이름의 개수와 오른쪽 칸의 개수가 같아야 한다. 다르면 ValueError다. 쉼표로 나뉜 오른쪽은 튜플로 묶인 뒤 풀린다.</p><p class="en">The number of names on the left must equal the number of elements on the right. A mismatch raises ValueError. A comma-separated right side is packed into a tuple and then unpacked.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>name, age = ["Ada", "20"]
+# name은 "Ada", age는 "20"</code></pre></section>
+</article>
+<article class="entry" id="types" data-keys="자료형 type int float str bool">
+<header class="entry-head"><h3><code>int float str bool</code></h3><p class="kind"><span class="ko">자료형</span><span class="en">type</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">자료형(type)은 값이 어떤 연산에 들어갈 수 있는지를 정한다. 이 실습의 기본 형은 정수 int, 실수 float, 문자열 str, 논리값 bool이다. bool의 값은 True와 False뿐이다.</p><p class="en">A type decides which operations a value may enter. The basic types in these labs are the integer int, the float, the string str, and the Boolean bool. The only Boolean values are True and False.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>type(값)</code></p><p class="ko"><code>type(값)</code>은 그 값의 자료형을 반환한다. 출력에 찍으면 <code>&lt;class 'int'&gt;</code>처럼 보인다. 형 이름 자체로 변환할 때는 다음 장의 int, float, str을 호출한다.</p><p class="en"><code>type(value)</code> returns the type of that value. Printed, it looks like <code>&lt;class 'int'&gt;</code>. To convert, call int, float, or str, covered in the next chapter.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>number = 9
+print(type(number))
+# &lt;class 'int'&gt;</code></pre></section>
+</article></section>
+<section class="chapter" id="convert"><header class="chapter-head"><p class="num">03</p><div><h2><span class="ko">형 변환</span><span class="en">Type conversion</span></h2><p class="lead"><span class="ko">변환 함수는 새 자료형의 값을 만들어 반환한다. 원래 이름은 다시 대입하기 전까지 그대로다.</span><span class="en">A conversion function builds and returns a value of the new type. The original name is unchanged until you assign again.</span></p></div></header><article class="entry" id="int" data-keys="int 정수 변환">
+<header class="entry-head"><h3><code>int()</code></h3><p class="kind"><span class="ko">함수</span><span class="en">function</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">int는 정수로 변환한 새 값을 반환하는 함수다. 실수는 소수점 아래를 버리고, 정수 형태의 문자열은 그 정수로 읽는다.</p><p class="en">int is a function that returns a new integer. A float loses its fractional part. A string in integer form is read as that integer.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>int(값)</code></p><p class="ko"><code>int(9.9)</code>는 9다. <code>int("9")</code>도 9다. 소수점이 적힌 글 <code>"9.0"</code>은 int가 직접 받지 않는다. 그때는 <code>int(float("9.0"))</code>처럼 float를 거친다.</p><p class="en"><code>int(9.9)</code> is 9. <code>int("9")</code> is also 9. The text <code>"9.0"</code>, which contains a decimal point, is not accepted directly. Go through float: <code>int(float("9.0"))</code>.</p></section>
+<section class="block"><h4><span class="ko">보충</span><span class="en">Notes</span></h4><p class="ko">input의 결과는 항상 문자열이므로, 합계나 횟수에 쓰려면 변환이 먼저다. 변환 결과를 이름에 담지 않으면 원래 변수는 바뀌지 않는다.</p><p class="en">The result of input is always a string, so convert it before using it as a total or a count. The original variable does not change unless the converted result is assigned to a name.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>int(9.9)          # 9
+int("9")          # 9
+int(float("9.0"))  # 9</code></pre></section>
+</article>
+<article class="entry" id="float" data-keys="float 실수">
+<header class="entry-head"><h3><code>float()</code></h3><p class="kind"><span class="ko">함수</span><span class="en">function</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">float는 실수로 변환한 새 값을 반환한다. 정수 2는 2.0이 되고, 실수 형태의 문자열도 읽는다.</p><p class="en">float returns a new floating-point value. The integer 2 becomes 2.0, and a string in float form is read as well.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>float(값)</code></p><p class="ko">나눗셈 <code>/</code>의 결과는 피연산자가 정수여도 float다. 화면의 정수가 사실 실수인지 보려면 float로 만들거나 type으로 확인한다.</p><p class="en">The result of <code>/</code> is a float even when both operands are integers. To see that a displayed whole number is actually a float, convert with float or inspect it with type.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>b = 2
 print(float(b))
-# 2.0</code></pre>
-        </article>
-
-        <article class="entry" id="str" data-keys="str 문자열 변환">
-          <header class="entry-head">
-            <h3><code>str()</code></h3>
-            <p class="kind">함수</p>
-          </header>
-          <p class="summary">값을 글자로 만든다. 글자끼리 이어 붙일 때 필요하다.</p>
-          <p class="sig"><code>str(값)</code></p>
-          <ul>
-            <li><code>"a = " + 1</code>은 오류다. <code>"a = " + str(1)</code>은 된다.</li>
-            <li>print는 알아서 글자로 바꾸므로, 출력만 할 때는 str이 없어도 된다.</li>
-          </ul>
-          <pre><code>a = 1
+# 2.0</code></pre></section>
+</article>
+<article class="entry" id="str" data-keys="str 문자열 변환">
+<header class="entry-head"><h3><code>str()</code></h3><p class="kind"><span class="ko">함수</span><span class="en">function</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">str은 값을 문자열로 나타낸 새 값을 반환한다. 수 자체는 문자열이 아니므로, <code>+</code>로 글자와 이어 붙이려면 이 변환이 필요하다.</p><p class="en">str returns a new string that represents the value. A number is not a string, so this conversion is required before joining it to text with <code>+</code>.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>str(값)</code></p><p class="ko">print에 쉼표로 넘길 때는 str이 없어도 된다. print가 각 인자를 따로 출력하기 때문이다. <code>+</code>를 쓰는 문장에서만 형이 맞아야 한다.</p><p class="en">str is unnecessary when the value is passed to print with a comma, because print writes each argument on its own. The types must agree only in an expression that uses <code>+</code>.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>a = 1
 print("a = " + str(a))
-# a = 1</code></pre>
-        </article>
-
-        <article class="entry" id="list-fn" data-keys="list 변환 빈 리스트">
-          <header class="entry-head">
-            <h3><code>list()</code></h3>
-            <p class="kind">함수</p>
-          </header>
-          <p class="summary">반복되는 값을 리스트로 만든다. 괄호만 있으면 빈 리스트다.</p>
-          <p class="sig"><code>list(값)</code></p>
-          <ul>
-            <li><code>[]</code>와 <code>list()</code>는 둘 다 빈 리스트다.</li>
-            <li>튜플을 넣으면 같은 순서의 리스트가 새로 생긴다. 원래 튜플은 안 바뀐다.</li>
-          </ul>
-          <pre><code>t = (1, 2, 3)
-lst = list(t)
-lst.append(4)
-print(lst, t)
-# [1, 2, 3, 4] (1, 2, 3)</code></pre>
-        </article>
-
-        <article class="entry" id="tuple-fn" data-keys="tuple 변환">
-          <header class="entry-head">
-            <h3><code>tuple()</code></h3>
-            <p class="kind">함수</p>
-          </header>
-          <p class="summary">리스트 등을 튜플로 만든다.</p>
-          <p class="sig"><code>tuple(값)</code></p>
-          <ul>
-            <li><code>()</code>와 <code>tuple()</code>는 빈 튜플이다.</li>
-            <li>딕셔너리의 <code>items()</code>를 넣으면 (키, 값) 쌍의 튜플이 된다.</li>
-          </ul>
-          <pre><code>print(tuple([10, 20, 30]))
-# (10, 20, 30)</code></pre>
-        </article>
-
-        <article class="entry" id="dict-fn" data-keys="dict 딕셔너리 만들기">
-          <header class="entry-head">
-            <h3><code>dict()</code></h3>
-            <p class="kind">함수</p>
-          </header>
-          <p class="summary">딕셔너리를 만든다. 빈 중괄호 {}도 딕셔너리다.</p>
-          <p class="sig"><code>dict(city="Daegu")</code></p>
-          <ul>
-            <li><code>{}</code>와 <code>dict()</code>는 빈 딕셔너리다.</li>
-            <li>쌍의 리스트를 넣으면 앞이 키, 뒤가 값이다.</li>
-          </ul>
-          <pre><code>print(dict(city="Daegu", country="Korea"))
-rows = (("Kisub", "Pizza"), ("Sungmin", "Chicken"))
-print(dict(rows)["Sungmin"])
-# Chicken</code></pre>
-        </article>
-
-      </section>
-
-      <section class="chapter" id="ops">
-        <header class="chapter-head">
-          <p class="num">04</p>
-          <div>
-            <h2>연산자</h2>
-            <p class="lead">괄호를 먼저 하고, 그다음 **, 그다음 * / // %, 그다음 + - 다. 비교는 계산이 끝난 뒤에 한다.</p>
-          </div>
-        </header>
-        <article class="entry" id="arith" data-keys="산술 + - * / // % ** 몫 나머지">
-          <header class="entry-head">
-            <h3><code>산술</code></h3>
-            <p class="kind">연산자</p>
-          </header>
-          <p class="summary">숫자의 계산. +와 *는 글자, 리스트, 튜플에서는 이어 붙이기다.</p>
-          <p class="sig"><code>+  -  *  /  //  %  **</code></p>
-          <ul>
-            <li><code>/</code>는 나누어떨어져도 소수다. <code>5 / 2</code>는 2.5, <code>5 // 2</code>는 2.</li>
-            <li><code>%</code>는 나머지, <code>//</code>는 몫, <code>**</code>는 거듭제곱이다. <code>x ** 0.5</code>는 제곱근.</li>
-            <li>글자를 <code>+</code>로 이을 때는 양쪽이 모두 글자여야 한다.</li>
-          </ul>
-          <pre><code>n = 9.0
-print(n / 2)    # 4.5
-print(n % 2)    # 1.0
-print(n // 2)   # 4.0
-print(n ** 3)   # 729.0</code></pre>
-        </article>
-
-        <article class="entry" id="aug" data-keys="+= -= *= 복합 대입">
-          <header class="entry-head">
-            <h3><code>+= -= *=</code></h3>
-            <p class="kind">연산자</p>
-          </header>
-          <p class="summary">지금 값에 계산해서 같은 이름에 다시 넣는다.</p>
-          <p class="sig"><code>n += 5</code></p>
-          <ul>
-            <li><code>n += 5</code>는 <code>n = n + 5</code>와 같다. <code>-=</code>는 빼고, <code>*=</code>는 곱한다.</li>
-            <li>왼쪽은 이미 있는 이름이어야 한다.</li>
-          </ul>
-          <pre><code>number = 9.0
-number -= 2
-number += 5
-print(number)
-# 12.0</code></pre>
-        </article>
-
-        <article class="entry" id="compare-ops" data-keys="비교 == != < > 연쇄">
-          <header class="entry-head">
-            <h3><code>비교</code></h3>
-            <p class="kind">연산자</p>
-          </header>
-          <p class="summary">두 값을 견주어 True 또는 False가 된다.</p>
-          <p class="sig"><code>==  !=  &lt;  &gt;  &lt;=  &gt;=</code></p>
-          <ul>
-            <li><code>=</code>는 넣는 것이고 <code>==</code>는 같은지 묻는 것이다.</li>
-            <li><code>1 &lt; 2 &lt; 3</code>은 1&lt;2 와 2&lt;3 이 둘 다 참일 때만 참이다.</li>
-          </ul>
-          <pre><code>print(2 == 3)
-print(1 &lt; 2 &lt; 3)
-# False
-# True</code></pre>
-        </article>
-
-        <article class="entry" id="membership" data-keys="in not in 포함">
-          <header class="entry-head">
-            <h3><code>in</code></h3>
-            <p class="kind">연산자</p>
-          </header>
-          <p class="summary">왼쪽에 있는 것이 오른쪽에 있으면 True. 오른쪽 종류마다 기준이 다르다.</p>
-          <p class="sig"><code>값 in 묶음</code></p>
-          <ul>
-            <li>글자에서는 연속된 부분인지 본다. <code>"Py" in "Python"</code>은 참.</li>
-            <li>리스트와 튜플에서는 칸 하나가 같은지 본다.</li>
-            <li>딕셔너리에서는 키만 본다. 값은 찾지 않는다.</li>
-          </ul>
-          <pre><code>d = {"major": "Math"}
-print("major" in d)
-print("Math" in d)
-# True
-# False</code></pre>
-        </article>
-
-      </section>
-
-      <section class="chapter" id="loops">
-        <header class="chapter-head">
-          <p class="num">05</p>
-          <div>
-            <h2>반복</h2>
-            <p class="lead">while은 조건이 참인 동안, for는 줄을 끝까지 돌 때까지.</p>
-          </div>
-        </header>
-        <article class="entry" id="while" data-keys="while 조건 반복">
-          <header class="entry-head">
-            <h3><code>while</code></h3>
-            <p class="kind">문법</p>
-          </header>
-          <p class="summary">조건을 보고, 참이면 본문을 한 번 한 뒤 다시 조건을 본다.</p>
-          <p class="sig"><code>while 조건:</code></p>
-          <ul>
-            <li>처음부터 거짓이면 본문은 한 번도 안 돈다.</li>
-            <li>본문에서 조건을 바꾸지 않으면 끝나지 않는다. 들여쓴 칸이 본문이다.</li>
-          </ul>
-          <pre><code>string = "A"
-while len(string) &lt; 2:
-    string = "Python"
-# 길이가 6이 되면 반복을 나온다</code></pre>
-        </article>
-
-        <article class="entry" id="for" data-keys="for in 반복">
-          <header class="entry-head">
-            <h3><code>for</code></h3>
-            <p class="kind">문법</p>
-          </header>
-          <p class="summary">오른쪽에서 하나씩 꺼내 왼쪽 이름에 넣고 본문을 실행한다.</p>
-          <p class="sig"><code>for 이름 in 묶음:</code></p>
-          <ul>
-            <li>리스트, 글자, range, zip에 쓸 수 있다.</li>
-            <li>반복이 끝나면 이름은 마지막 값을 가리킨 채로 남는다.</li>
-          </ul>
-          <pre><code>for i in range(1, 4):
+# a = 1</code></pre></section>
+</article>
+<article class="entry" id="list-fn" data-keys="list 변환 빈 리스트">
+<header class="entry-head"><h3><code>list()</code></h3><p class="kind"><span class="ko">함수</span><span class="en">function</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">list는 인자로 받은 묶음을 새 리스트(list)로 복사해 반환한다. 인자가 없으면 빈 리스트다. <code>[]</code>와 같다.</p><p class="en">list returns a new list copied from the sequence it is given. With no argument it returns an empty list, the same object kind as <code>[]</code>.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>list(묶음)</code></p><p class="ko">문자열을 넣으면 문자 하나씩이 칸이 된다. 튜플을 넣으면 그 칸을 담은 가변(mutable) 리스트가 된다. 원본 튜플은 바뀌지 않는다.</p><p class="en">A string becomes one element per character. A tuple becomes a mutable list of those elements. The original tuple is unchanged.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>list()          # []
+list("ab")      # ['a', 'b']
+list((1, 2))    # [1, 2]</code></pre></section>
+</article>
+<article class="entry" id="tuple-fn" data-keys="tuple 변환">
+<header class="entry-head"><h3><code>tuple()</code></h3><p class="kind"><span class="ko">함수</span><span class="en">function</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">tuple은 인자로 받은 묶음을 새 튜플로 만들어 반환한다. 인자가 없으면 빈 튜플이고, <code>()</code>와 같다.</p><p class="en">tuple returns a new tuple built from the sequence it is given. With no argument the result is the empty tuple, the same as <code>()</code>.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>tuple(묶음)</code></p><p class="ko">리스트를 더 이상 수정하지 않을 묶음으로 고정할 때 쓴다. 만들어진 튜플의 칸은 대입으로 바꿀 수 없다.</p><p class="en">Use it to freeze a list into a sequence that will not be modified. Elements of the resulting tuple cannot be replaced by assignment.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>tuple([1, 2, 3])
+# (1, 2, 3)</code></pre></section>
+</article>
+<article class="entry" id="dict-fn" data-keys="dict 딕셔너리 만들기">
+<header class="entry-head"><h3><code>dict()</code></h3><p class="kind"><span class="ko">함수</span><span class="en">function</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">dict는 빈 딕셔너리(dictionary)를 반환한다. <code>{}</code>도 빈 딕셔너리이며, 빈 집합이 아니다.</p><p class="en">dict returns an empty dictionary. <code>{}</code> is also an empty dictionary, not an empty set.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>dict()</code></p><p class="ko">칸을 미리 정해 만들 때는 중괄호 안에 <code>키: 값</code>을 적는다. dict()로 시작한 뒤 키를 하나씩 대입해도 된다.</p><p class="en">To create it with entries already in place, write <code>key: value</code> pairs inside braces. Starting from dict() and then assigning keys one by one is also valid.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>empty = dict()
+menu = {"Burger": 5500}
+# {} 는 딕셔너리다</code></pre></section>
+</article></section>
+<section class="chapter" id="ops"><header class="chapter-head"><p class="num">04</p><div><h2><span class="ko">연산자</span><span class="en">Operators</span></h2><p class="lead"><span class="ko">연산자(operator)는 피연산자를 받아 새 값을 만든다. 복합 대입만 왼쪽 이름을 다시 연결한다.</span><span class="en">An operator takes operands and produces a new value. Only an augmented assignment rebinds the name on the left.</span></p></div></header><article class="entry" id="arith" data-keys="산술 + - * / // % **">
+<header class="entry-head"><h3><code>산술</code></h3><p class="kind"><span class="ko">연산자</span><span class="en">operator</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">산술 연산자는 계산 결과를 새로 반환한다. 피연산자가 실수이면 결과도 실수다. <code>/</code>는 양쪽이 정수여도 항상 float를 반환한다. <code>//</code>는 몫, <code>%</code>는 나머지, <code>**</code>는 거듭제곱이다.</p><p class="en">An arithmetic operator returns a new result. If an operand is a float, the result is a float. <code>/</code> always returns a float, even for two integers. <code>//</code> is the floor quotient, <code>%</code> is the remainder, and <code>**</code> is exponentiation.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>a + b    a / b    a // b    a % b    a ** b</code></p><p class="ko">실습의 9.0으로 보면 <code>9.0 / 2</code>는 4.5, <code>9.0 % 2</code>는 1.0, <code>9.0 * 2</code>는 18.0, <code>9.0 // 2</code>는 4.0, <code>9.0 ** 3</code>은 729.0이다. <code>**</code>의 지수가 0.5이면 제곱근이다.</p><p class="en">With the lab value 9.0: <code>9.0 / 2</code> is 4.5, <code>9.0 % 2</code> is 1.0, <code>9.0 * 2</code> is 18.0, <code>9.0 // 2</code> is 4.0, and <code>9.0 ** 3</code> is 729.0. An exponent of 0.5 is a square root.</p></section>
+<section class="block"><h4><span class="ko">보충</span><span class="en">Notes</span></h4><p class="ko">문자열과 리스트와 튜플에서 <code>+</code>는 이어 붙인 새 값을, <code>*</code>는 정수 횟수만큼 반복한 새 값을 만든다. 이 경우에도 원본은 유지된다.</p><p class="en">For a string, a list, or a tuple, <code>+</code> builds a new joined value and <code>*</code> builds a new value repeated an integer number of times. The originals stay as they were.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>init_number = 9.0
+init_number / 2     # 4.5
+init_number // 2    # 4.0
+init_number % 2     # 1.0
+init_number ** 3    # 729.0</code></pre></section>
+</article>
+<article class="entry" id="aug" data-keys="+= -= *= 복합 대입">
+<header class="entry-head"><h3><code>+= -= *=</code></h3><p class="kind"><span class="ko">연산자</span><span class="en">operator</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">복합 대입(augmented assignment)은 이름에 들어 있는 값과 오른쪽을 계산한 뒤, 그 결과를 같은 이름에 다시 대입한다.</p><p class="en">Augmented assignment computes with the value currently bound to the name and the right-hand side, then assigns the result back to that name.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>이름 += 값</code></p><p class="ko"><code>n *= 2</code>는 <code>n = n * 2</code>와 같다. 더하기와 빼기도 같은 꼴이다. 왼쪽은 이미 값이 있는 이름이어야 한다.</p><p class="en"><code>n *= 2</code> is the same computation as <code>n = n * 2</code>. Addition and subtraction follow the same pattern. The left side must already be a name that holds a value.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>n = 4
+n *= 2
+# n은 8</code></pre></section>
+</article>
+<article class="entry" id="compare-ops" data-keys="비교 == != &lt; &gt; 연쇄">
+<header class="entry-head"><h3><code>비교</code></h3><p class="kind"><span class="ko">연산자</span><span class="en">operator</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">비교 연산자는 bool을 반환한다. <code>==</code>는 값이 같은지, <code>!=</code>는 다른지 묻는다. <code>=</code>와 혼동하지 않는다.</p><p class="en">A comparison operator returns a bool. <code>==</code> asks whether the values are equal, and <code>!=</code> asks whether they differ. Do not confuse either with <code>=</code>.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>a == b    a &lt; b &lt; c</code></p><p class="ko">연쇄 비교 <code>1 &lt; 2 &lt; 3</code>은 이웃한 비교가 모두 참일 때 True다. 한쪽이라도 거짓이면 False다.</p><p class="en">The chained comparison <code>1 &lt; 2 &lt; 3</code> is True only when every neighboring comparison is true. One false neighbor makes the whole expression False.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>print(2 == 3)      # False
+print(1 &lt; 2 &lt; 3)    # True</code></pre></section>
+</article>
+<article class="entry" id="membership" data-keys="in not in 포함 membership">
+<header class="entry-head"><h3><code>in</code></h3><p class="kind"><span class="ko">연산자</span><span class="en">operator</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko"><code>in</code>은 포함 여부를 bool로 반환하는 연산자다. 어디를 보는지는 오른쪽 자료형에 따라 달라진다.</p><p class="en"><code>in</code> is an operator that returns a bool for membership. What it inspects depends on the type on the right.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>값 in 묶음</code></p><p class="ko">문자열에서는 연속된 부분 문자열을 본다. 리스트와 튜플에서는 칸의 값이 같은지를 본다. 딕셔너리에서는 키(key)만 본다. 값이 들어 있어도 키가 아니면 False다.</p><p class="en">In a string it looks for a contiguous substring. In a list or a tuple it looks for an equal element. In a dictionary it looks only at keys. A matching value that is not a key is False.</p></section>
+<section class="block"><h4><span class="ko">보충</span><span class="en">Notes</span></h4><p class="ko"><code>not in</code>은 그 결과의 부정이다. 실습의 <code>"LOL" not in t</code>처럼 없음을 물을 때 쓴다.</p><p class="en"><code>not in</code> is the negation of that result. The labs use it to ask about absence, as in <code>"LOL" not in t</code>.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>"Py" in "Python"                 # True
+"Math" in {"major": "Math"}      # False, 값은 보지 않는다</code></pre></section>
+</article></section>
+<section class="chapter" id="loops"><header class="chapter-head"><p class="num">05</p><div><h2><span class="ko">반복</span><span class="en">Loops</span></h2><p class="lead"><span class="ko">반복문(loop)은 조건이나 묶음의 칸이 남아 있는 동안 본문을 다시 실행한다.</span><span class="en">A loop runs its body again while a condition holds, or while elements of a sequence remain.</span></p></div></header><article class="entry" id="while" data-keys="while 조건 반복">
+<header class="entry-head"><h3><code>while</code></h3><p class="kind"><span class="ko">문</span><span class="en">statement</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">while은 조건식(condition)이 참인 동안 들여쓴 본문을 반복하는 문이다. 조건을 거짓으로 만드는 일이 본문 안에 있어야 반복이 끝난다.</p><p class="en">while is a statement that repeats its indented body while the condition is true. Something inside the body must eventually make that condition false.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>while 조건:</code></p><p class="ko">조건 뒤에는 콜론을 두고, 본문은 들여쓴다. 길이가 2 미만인 문자열을 다시 받는 실습처럼, 아직 성립하지 않은 입력을 거를 때 쓴다.</p><p class="en">Place a colon after the condition and indent the body. Use it to reject input that is not yet valid, as in the lab that reads again while a string is shorter than 2.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>while len(s) &lt; 2:
+    s = input()</code></pre></section>
+</article>
+<article class="entry" id="for" data-keys="for in 반복">
+<header class="entry-head"><h3><code>for</code></h3><p class="kind"><span class="ko">문</span><span class="en">statement</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">for는 묶음의 칸을 앞에서부터 이름에 하나씩 연결하며 본문을 실행한다. 묶음 자체를 보통 변경하지 않고, 각 칸을 읽어 새 결과를 만든다.</p><p class="en">for binds each element of a sequence to the name, from front to back, and runs the body. It usually does not modify the sequence; it reads each element and builds a new result.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>for 이름 in 묶음:</code></p><p class="ko">문자열이면 문자가, 리스트면 칸의 값이 이름에 들어간다. 횟수가 정해진 반복은 range와 함께 쓴다.</p><p class="en">Over a string, the name receives each character. Over a list, it receives each element. A counted repetition is written together with range.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>for ch in "Hi":
+    print(ch)
+# H
+# i</code></pre></section>
+</article>
+<article class="entry" id="range" data-keys="range 범위 끝 빠짐">
+<header class="entry-head"><h3><code>range</code></h3><p class="kind"><span class="ko">함수</span><span class="en">function</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">range는 정수 수열을 만들어 for에 넘기는 함수다. 끝 값은 수열에 포함되지 않는다.</p><p class="en">range is a function that produces an integer sequence for for. The stop value is not included.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>range(시작, 끝, 간격)</code></p><p class="ko"><code>range(1, 4)</code>는 1, 2, 3이다. 시작을 생략하면 0부터다. 1부터 n까지 포함하려면 끝을 <code>n + 1</code>로 둔다. 간격이 음수면 감소한다.</p><p class="en"><code>range(1, 4)</code> is 1, 2, 3. Omitting the start begins at 0. To include every integer from 1 through n, set the stop to <code>n + 1</code>. A negative step counts downward.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>for i in range(1, 4):
     print(i)
 # 1
 # 2
-# 3</code></pre>
-        </article>
-
-        <article class="entry" id="range" data-keys="range 범위 끝 빠짐">
-          <header class="entry-head">
-            <h3><code>range</code></h3>
-            <p class="kind">함수</p>
-          </header>
-          <p class="summary">정수 줄을 만든다. 끝 숫자는 포함하지 않는다.</p>
-          <p class="sig"><code>range(시작, 끝)</code></p>
-          <ul>
-            <li><code>range(3)</code>은 0, 1, 2다. <code>range(1, 4)</code>는 1, 2, 3이다.</li>
-            <li>1부터 n까지 돌리려면 <code>range(1, n + 1)</code>이다.</li>
-            <li>range 자체는 리스트가 아니다. 리스트로 보려면 <code>list(range(3))</code>.</li>
-          </ul>
-          <pre><code>n = 3
-print(list(range(1, n + 1)))
-# [1, 2, 3]</code></pre>
-        </article>
-
-        <article class="entry" id="nested" data-keys="중첩 for 구구단">
-          <header class="entry-head">
-            <h3><code>중첩 for</code></h3>
-            <p class="kind">문법</p>
-          </header>
-          <p class="summary">바깥이 한 번 움직일 때마다 안쪽이 처음부터 끝까지 돈다.</p>
-          <p class="sig"><code>for i in ...:
-    for j in ...:</code></p>
-          <ul>
-            <li><code>print("\n", i, "단")</code>은 먼저 줄을 바꾸고, 빈칸, 숫자, 빈칸, 단을 찍는다. 빈칸은 print가 넣는다.</li>
-          </ul>
-          <pre><code>n = 2
-for i in range(1, n + 1):
-    for j in range(1, n + 1):
-        print(i, "*", j, "=", i * j)</code></pre>
-        </article>
-
-      </section>
-
-      <section class="chapter" id="indexing">
-        <header class="chapter-head">
-          <p class="num">06</p>
-          <div>
-            <h2>인덱스와 슬라이스</h2>
-            <p class="lead">글자, 리스트, 튜플이 위치를 세는 방식이 같다. 0이 첫 칸이고, 끝 번호는 빠진다.</p>
-          </div>
-        </header>
-        <article class="entry" id="index-rule" data-keys="인덱스 0 -1 위치">
-          <header class="entry-head">
-            <h3><code>인덱스</code></h3>
-            <p class="kind">문법</p>
-          </header>
-          <p class="summary">0부터 센다. -1은 마지막 칸이다.</p>
-          <p class="sig"><code>묶음[번호]</code></p>
-          <ul>
-            <li>범위를 벗어나면 오류다.</li>
-            <li>리스트만 이 칸에 새 값을 넣을 수 있다. 글자와 튜플은 조회만 된다.</li>
-          </ul>
-          <pre><code>s = "Python"
-print(s[0], s[-1])
-# P n</code></pre>
-        </article>
-
-        <article class="entry" id="slice" data-keys="슬라이스 자르기 :: 뒤집기">
-          <header class="entry-head">
-            <h3><code>슬라이스</code></h3>
-            <p class="kind">문법</p>
-          </header>
-          <p class="summary">시작부터 끝 직전까지 잘라 새 값을 만든다. 끝 번호는 포함되지 않는다.</p>
-          <p class="sig"><code>묶음[시작:끝:간격]</code></p>
-          <ul>
-            <li><code>[:3]</code>은 0, 1, 2다. <code>[-2:]</code>는 끝에서 두 개다. <code>[::-1]</code>은 순서를 뒤집은 새 값이다.</li>
-            <li><code>"Python"[1:-1]</code>은 <code>ytho</code>다. 첫 글자와 마지막 글자가 빠진다.</li>
-            <li>원래 값은 안 바뀐다.</li>
-          </ul>
-          <pre><code>lst = [10, 20, 30, 40, 50]
-print(lst[:3])
-print(lst[-2:])
-print(lst[::2])
-# [10, 20, 30]
-# [40, 50]
-# [10, 30, 50]</code></pre>
-        </article>
-
-        <article class="entry" id="len" data-keys="len 길이 개수">
-          <header class="entry-head">
-            <h3><code>len</code></h3>
-            <p class="kind">함수</p>
-          </header>
-          <p class="summary">칸이 몇 개인지 알려 준다.</p>
-          <p class="sig"><code>len(값)</code></p>
-          <ul>
-            <li>글자는 글자 수, 리스트와 튜플은 칸 수, 딕셔너리는 키의 개수다.</li>
-            <li>마지막 번호는 <code>len(값) - 1</code>이다. len 자체는 칸 번호가 아니다.</li>
-          </ul>
-          <pre><code>print(len("Python"))
-print(len({"a": 1, "b": 2}))
-# 6
-# 2</code></pre>
-        </article>
-
-      </section>
-
-      <section class="chapter" id="strings">
-        <header class="chapter-head">
-          <p class="num">07</p>
-          <div>
-            <h2>문자열</h2>
-            <p class="lead">글자 함수는 원본을 고치지 않는다. 바뀐 글자를 쓰려면 이름에 다시 넣어야 한다.</p>
-          </div>
-        </header>
-        <article class="entry" id="immutable" data-keys="문자열 불변 이어붙이기">
-          <header class="entry-head">
-            <h3><code>글자는 못 고친다</code></h3>
-            <p class="kind">자료형</p>
-          </header>
-          <p class="summary">한 글자를 바꿔 넣을 수 없다. 조각을 이어 새 글자를 만든다.</p>
-          <p class="sig"><code>뒤 + 가운데 + 앞</code></p>
-          <ul>
-            <li><code>s[0] = "a"</code>는 오류다.</li>
-            <li>첫 글자와 끝 글자 교환은 대입이 아니라 다시 조립이다.</li>
-          </ul>
-          <pre><code>s = "Python"
-result = s[-1] + s[1:-1] + s[0]
-print(result)
-print(s)
-# nythoP
-# Python</code></pre>
-        </article>
-
-        <article class="entry" id="split" data-keys="split 자르기 분리">
-          <header class="entry-head">
-            <h3><code>split</code></h3>
-            <p class="kind">메서드</p>
-          </header>
-          <p class="summary">기준 글자로 잘라 리스트를 만든다.</p>
-          <p class="sig"><code>s.split()</code></p>
-          <ul>
-            <li>괄호를 비우면 빈칸으로 자른다. 연속된 빈칸은 하나로 본다.</li>
-            <li>쉼표로 자르려면 <code>split(",")</code>. 마침표는 따로 안 떨어진다. <code>"watched."</code>는 그대로 한 칸이다.</li>
-          </ul>
-          <pre><code>print("Python is fun".split())
-print("Alice,24,Engineer".split(","))
-# ['Python', 'is', 'fun']
-# ['Alice', '24', 'Engineer']</code></pre>
-        </article>
-
-        <article class="entry" id="join" data-keys="join 합치기 구분자">
-          <header class="entry-head">
-            <h3><code>join</code></h3>
-            <p class="kind">메서드</p>
-          </header>
-          <p class="summary">구분자 쪽에 글자들을 받아, 사이에 구분자를 끼워 하나로 만든다.</p>
-          <p class="sig"><code>" ".join(리스트)</code></p>
-          <ul>
-            <li>메서드 앞이 구분자다. 합칠 대상이 아니다.</li>
-            <li>글자를 넘기면 한 글자씩 자른다. <code>"-".join("HELLO")</code>는 <code>H-E-L-L-O</code>.</li>
-            <li>숫자 칸이 섞이면 오류다. 먼저 str로 바꿔야 한다.</li>
-          </ul>
-          <pre><code>words = ["Python", "is", "fun"]
-print(" ".join(words))
-print("-".join("HELLO"))
-# Python is fun
-# H-E-L-L-O</code></pre>
-        </article>
-
-        <article class="entry" id="replace" data-keys="replace 바꾸기 지우기">
-          <header class="entry-head">
-            <h3><code>replace</code></h3>
-            <p class="kind">메서드</p>
-          </header>
-          <p class="summary">찾은 부분을 다른 글자로 바꾼 새 글자를 만든다.</p>
-          <p class="sig"><code>s.replace(".", "")</code></p>
-          <ul>
-            <li>빈 글자로 바꾸면 그 부분이 지워진다.</li>
-            <li>마침표와 쉼표를 둘 다 지우려면 replace를 두 번 하고, 매번 결과를 다시 담는다.</li>
-          </ul>
-          <pre><code>words = ["Movie.", "Two,"]
-words = [w.replace(".", "") for w in words]
-words = [w.replace(",", "") for w in words]
-print(words)
-# ['Movie', 'Two']</code></pre>
-        </article>
-
-        <article class="entry" id="lower" data-keys="lower 소문자">
-          <header class="entry-head">
-            <h3><code>lower</code></h3>
-            <p class="kind">메서드</p>
-          </header>
-          <p class="summary">영어 대문자를 소문자로 바꾼 새 글자를 만든다.</p>
-          <p class="sig"><code>s.lower()</code></p>
-          <ul>
-            <li>원본은 그대로다. 리스트의 모든 단어에 쓰려면 새 리스트로 다시 담는다.</li>
-          </ul>
-          <pre><code>print("Python".lower())
-# python</code></pre>
-        </article>
-
-      </section>
-
-      <section class="chapter" id="lists">
-        <header class="chapter-head">
-          <p class="num">08</p>
-          <div>
-            <h2>리스트</h2>
-            <p class="lead">순서가 있고 칸을 고칠 수 있다. append 같은 함수는 리스트를 고치고 None을 돌려준다.</p>
-          </div>
-        </header>
-        <article class="entry" id="list-make" data-keys="리스트 만들기 []">
-          <header class="entry-head">
-            <h3><code>리스트 만들기</code></h3>
-            <p class="kind">문법</p>
-          </header>
-          <p class="summary">대괄호 안에 값을 쉼표로 적는다. 빈 리스트는 [] 또는 list()다.</p>
-          <p class="sig"><code>[10, "Python", 3.14]</code></p>
-          <ul>
-            <li>한 리스트 안에 정수와 글자가 같이 있어도 된다.</li>
-            <li>첫 칸 번호는 0이다.</li>
-          </ul>
-          <pre><code>lst = [10, "Python", 3.14]
-print(lst)</code></pre>
-        </article>
-
-        <article class="entry" id="item-set" data-keys="리스트 칸 수정">
-          <header class="entry-head">
-            <h3><code>칸에 넣기</code></h3>
-            <p class="kind">문법</p>
-          </header>
-          <p class="summary">있는 번호에 새 값을 넣으면 그 칸만 바뀐다.</p>
-          <p class="sig"><code>lst[번호] = 값</code></p>
-          <ul>
-            <li>없는 번호에 넣으면 오류다. 뒤를 늘리려면 append를 쓴다.</li>
-            <li><code>lst[-1] = "Python"</code>은 마지막 칸이다.</li>
-          </ul>
-          <pre><code>lst = [1, 2, 3, 4, 5]
-lst[1] = 200
-lst[-1] = "Python"
-print(lst)
-# [1, 200, 3, 4, 'Python']</code></pre>
-        </article>
-
-        <article class="entry" id="append" data-keys="append 추가 None">
-          <header class="entry-head">
-            <h3><code>append</code></h3>
-            <p class="kind">메서드</p>
-          </header>
-          <p class="summary">값 하나를 맨 뒤에 한 칸으로 붙인다.</p>
-          <p class="sig"><code>lst.append(값)</code></p>
-          <ul>
-            <li>리스트를 넘겨도 풀지 않는다. <code>[1, 2].append([3, 4])</code>는 <code>[1, 2, [3, 4]]</code>가 된다.</li>
-            <li>결과값은 None이다. <code>lst = lst.append(1)</code>이라고 쓰면 lst가 None이 된다.</li>
-          </ul>
-          <pre><code>lst = ["Banana", "Cherry"]
-lst.append("Apple")
-print(lst)
-print(lst.append("Mango"))
-# ['Banana', 'Cherry', 'Apple']
-# None</code></pre>
-        </article>
-
-        <article class="entry" id="extend" data-keys="extend 풀어서 추가">
-          <header class="entry-head">
-            <h3><code>extend</code></h3>
-            <p class="kind">메서드</p>
-          </header>
-          <p class="summary">리스트 안을 풀어서 칸을 하나씩 뒤에 붙인다.</p>
-          <p class="sig"><code>lst.extend(리스트)</code></p>
-          <ul>
-            <li><code>[1, 2].extend([3, 4])</code>는 <code>[1, 2, 3, 4]</code>다.</li>
-            <li>이것도 None을 돌려준다.</li>
-          </ul>
-          <pre><code>lst = [1, 2]
-lst.extend([3, 4, 5])
-print(lst)
-# [1, 2, 3, 4, 5]</code></pre>
-        </article>
-
-        <article class="entry" id="concat" data-keys="+ * 연결 반복">
-          <header class="entry-head">
-            <h3><code>+ 와 *</code></h3>
-            <p class="kind">연산자</p>
-          </header>
-          <p class="summary">+는 이어 붙인 새 리스트, *는 반복한 새 리스트다. 원래 리스트는 안 바뀐다.</p>
-          <p class="sig"><code>a + b</code></p>
-          <ul>
-            <li>리스트끼리는 되고, 리스트와 튜플은 안 된다.</li>
-            <li><code>(1, 2) * 3</code>은 <code>(1, 2, 1, 2, 1, 2)</code>다.</li>
-          </ul>
-          <pre><code>a = [1, 2, 3]
-b = [4, 5]
-print(a + b)
-print(a)
-# [1, 2, 3, 4, 5]
-# [1, 2, 3]</code></pre>
-        </article>
-
-        <article class="entry" id="insert" data-keys="insert 끼워넣기">
-          <header class="entry-head">
-            <h3><code>insert</code></h3>
-            <p class="kind">메서드</p>
-          </header>
-          <p class="summary">지정한 번호에 값을 끼워 넣고, 뒤 칸을 한 칸씩 민다.</p>
-          <p class="sig"><code>lst.insert(번호, 값)</code></p>
-          <ul>
-            <li>결과값은 None이다.</li>
-          </ul>
-          <pre><code>lst = [10, 20, 30]
-lst.insert(1, 15)
-print(lst)
-# [10, 15, 20, 30]</code></pre>
-        </article>
-
-        <article class="entry" id="remove" data-keys="remove 값으로 삭제">
-          <header class="entry-head">
-            <h3><code>remove</code></h3>
-            <p class="kind">메서드</p>
-          </header>
-          <p class="summary">그 값과 같은 첫 칸을 지운다. 번호가 아니라 값이다.</p>
-          <p class="sig"><code>lst.remove(값)</code></p>
-          <ul>
-            <li>같은 값이 더 있어도 처음 것만 지운다. 없으면 오류다.</li>
-            <li>지운 값을 돌려주지 않는다. None이다.</li>
-          </ul>
-          <pre><code>lst = [10, 15, 20, 30]
-lst.remove(30)
-print(lst)
-# [10, 15, 20]</code></pre>
-        </article>
-
-        <article class="entry" id="pop" data-keys="pop 꺼내서 삭제">
-          <header class="entry-head">
-            <h3><code>pop</code></h3>
-            <p class="kind">메서드</p>
-          </header>
-          <p class="summary">그 번호의 칸을 빼서 그 값을 돌려준다. 번호를 안 주면 마지막 칸이다.</p>
-          <p class="sig"><code>lst.pop(번호)</code></p>
-          <ul>
-            <li><code>pop(0)</code>은 첫 칸이다. <code>remove</code>와 달리 뺀 값이 나온다.</li>
-            <li>0은 번호다. remove(30)의 30은 값이다.</li>
-          </ul>
-          <pre><code>lst = [10, 15, 20]
-print(lst.pop(0))
-print(lst)
-# 10
-# [15, 20]</code></pre>
-        </article>
-
-        <article class="entry" id="del" data-keys="del 삭제 문">
-          <header class="entry-head">
-            <h3><code>del</code></h3>
-            <p class="kind">문법</p>
-          </header>
-          <p class="summary">칸이나 키를 지우는 문장이다. 함수가 아니라서 값을 받을 수 없다.</p>
-          <p class="sig"><code>del lst[번호]</code></p>
-          <ul>
-            <li><code>x = del lst[0]</code>은 문법 오류다.</li>
-            <li>딕셔너리에서는 <code>del d[키]</code>다. 없으면 오류.</li>
-          </ul>
-          <pre><code>lst = [10, 20, 30]
-del lst[0]
-print(lst)
-# [20, 30]</code></pre>
-        </article>
-
-        <article class="entry" id="count" data-keys="count 개수">
-          <header class="entry-head">
-            <h3><code>count</code></h3>
-            <p class="kind">메서드</p>
-          </header>
-          <p class="summary">그 값이 몇 개인지 센다. 없으면 0이고 오류는 아니다.</p>
-          <p class="sig"><code>lst.count(값)</code></p>
-          <ul>
-
-          </ul>
-          <pre><code>lst = [5, 10, 15, 20, 25, 20]
-print(lst.count(20))
-# 2</code></pre>
-        </article>
-
-        <article class="entry" id="index-method" data-keys="index 위치 찾기">
-          <header class="entry-head">
-            <h3><code>index</code></h3>
-            <p class="kind">메서드</p>
-          </header>
-          <p class="summary">그 값이 처음 나오는 번호를 알려 준다.</p>
-          <p class="sig"><code>lst.index(값)</code></p>
-          <ul>
-            <li>뒤에 같은 값이 더 있어도 처음 번호만 나온다.</li>
-            <li>없으면 오류다. count처럼 0을 주지 않는다.</li>
-          </ul>
-          <pre><code>lst = [5, 10, 15, 20, 25, 20]
-print(lst.index(20))
-# 3</code></pre>
-        </article>
-
-        <article class="entry" id="sorted" data-keys="sorted 정렬 새 리스트">
-          <header class="entry-head">
-            <h3><code>sorted</code></h3>
-            <p class="kind">함수</p>
-          </header>
-          <p class="summary">정렬된 새 리스트를 만든다. 원래 순서는 그대로다.</p>
-          <p class="sig"><code>sorted(리스트)</code></p>
-          <ul>
-            <li><code>reverse=True</code>면 큰 수부터다. 이 옵션은 sorted의 것이다.</li>
-            <li><code>print(lst, reverse=True)</code>는 오류다. print에는 reverse가 없다.</li>
-          </ul>
-          <pre><code>lst = [3, 1, 4, 2]
-print(sorted(lst))
-print(lst)
-# [1, 2, 3, 4]
-# [3, 1, 4, 2]</code></pre>
-        </article>
-
-        <article class="entry" id="sort" data-keys="sort 제자리 정렬">
-          <header class="entry-head">
-            <h3><code>sort</code></h3>
-            <p class="kind">메서드</p>
-          </header>
-          <p class="summary">그 리스트의 순서를 직접 바꾼다. 새 리스트는 없다.</p>
-          <p class="sig"><code>lst.sort()</code></p>
-          <ul>
-            <li>print(lst.sort())는 None이 나온다. 정렬된 목록은 lst를 따로 찍어야 보인다.</li>
-          </ul>
-          <pre><code>lst = [3, 1, 4, 2]
-lst.sort()
-print(lst)
-# [1, 2, 3, 4]</code></pre>
-        </article>
-
-        <article class="entry" id="reverse" data-keys="reverse 뒤집기">
-          <header class="entry-head">
-            <h3><code>reverse</code></h3>
-            <p class="kind">메서드</p>
-          </header>
-          <p class="summary">지금 순서를 거꾸로 바꾼다. 크기순 정렬이 아니다.</p>
-          <p class="sig"><code>lst.reverse()</code></p>
-          <ul>
-            <li><code>[3, 1, 4]</code>를 reverse하면 <code>[4, 1, 3]</code>이다. <code>[1, 3, 4]</code>가 아니다.</li>
-            <li>결과값은 None이다. 새 리스트로 뒤집으려면 <code>lst[::-1]</code>.</li>
-          </ul>
-          <pre><code>lst = [3, 1, 4, 2]
-lst.reverse()
-print(lst)
-# [2, 4, 1, 3]</code></pre>
-        </article>
-
-        <article class="entry" id="nested-list" data-keys="중첩 리스트 이차원">
-          <header class="entry-head">
-            <h3><code>중첩 리스트</code></h3>
-            <p class="kind">자료형</p>
-          </header>
-          <p class="summary">리스트 안에 리스트가 있으면 번호를 두 번 쓴다.</p>
-          <p class="sig"><code>lst[줄][칸]</code></p>
-          <ul>
-            <li><code>records[1]</code>은 둘째 줄 전체다. 점수만 보려면 <code>records[1][1]</code>.</li>
-            <li><code>records[2][1] = 88</code>은 그 칸만 바꾼다. append는 줄을 하나 뒤에 붙인다.</li>
-          </ul>
-          <pre><code>records = [["Kisub", 85], ["Tomas", 92], ["Sungmin", 78]]
-print(records[1][1])
-records[2][1] = 88
-records.append(["Diana", 95])
-# 92</code></pre>
-        </article>
-
-        <article class="entry" id="comp" data-keys="컴프리헨션 리스트 내포">
-          <header class="entry-head">
-            <h3><code>컴프리헨션</code></h3>
-            <p class="kind">문법</p>
-          </header>
-          <p class="summary">줄을 돌면서 식을 계산해, 그 결과만 모은 새 리스트를 만든다.</p>
-          <p class="sig"><code>[식 for 이름 in 줄 if 조건]</code></p>
-          <ul>
-            <li>if는 빼도 된다. 조건이 참인 것만 남긴다.</li>
-            <li>원래 리스트를 고치는 문법이 아니다. 이름에 다시 넣어야 그 이름이 새 리스트를 가리킨다.</li>
-          </ul>
-          <pre><code>text = "artificial"
-print("".join(c for c in text if c not in "aeiou"))
-# rtfcl</code></pre>
-        </article>
-
-        <article class="entry" id="zip" data-keys="zip 짝 묶기">
-          <header class="entry-head">
-            <h3><code>zip</code></h3>
-            <p class="kind">함수</p>
-          </header>
-          <p class="summary">같은 위치끼리 묶어 쌍으로 만든다.</p>
-          <p class="sig"><code>zip(리스트1, 리스트2)</code></p>
-          <ul>
-            <li>길이가 다르면 짧은 쪽이 끝나는 데서 멈춘다.</li>
-            <li>print(zip(...))만으로는 쌍이 안 보인다. list로 감싸거나 for로 꺼낸다.</li>
-          </ul>
-          <pre><code>students = ["Kisub", "Tomas"]
-grades = [85, 92]
-print([[x, y] for x, y in zip(students, grades)])
-# [['Kisub', 85], ['Tomas', 92]]</code></pre>
-        </article>
-
-        <article class="entry" id="sum" data-keys="sum 합계">
-          <header class="entry-head">
-            <h3><code>sum</code></h3>
-            <p class="kind">함수</p>
-          </header>
-          <p class="summary">숫자 리스트의 합을 구한다.</p>
-          <p class="sig"><code>sum(리스트)</code></p>
-          <ul>
-            <li>글자를 더하는 함수가 아니다. 글자를 이을 때는 join을 쓴다.</li>
-          </ul>
-          <pre><code>prices = [12000, 5500, 3200]
-print(sum(prices))
-# 20700</code></pre>
-        </article>
-
-      </section>
-
-      <section class="chapter" id="tuples">
-        <header class="chapter-head">
-          <p class="num">09</p>
-          <div>
-            <h2>튜플</h2>
-            <p class="lead">리스트처럼 순서가 있다. 다른 점은 칸을 고칠 수 없다는 것이다.</p>
-          </div>
-        </header>
-        <article class="entry" id="tuple-make" data-keys="튜플 만들기 ()">
-          <header class="entry-head">
-            <h3><code>튜플 만들기</code></h3>
-            <p class="kind">문법</p>
-          </header>
-          <p class="summary">괄호 안에 값을 쉼표로 적는다. 조회, 자르기, in, +, *는 리스트와 같다.</p>
-          <p class="sig"><code>(10, 20, 30)</code></p>
-          <ul>
-            <li>만든 뒤 <code>t[0] = 1</code>은 오류다. append도 없다.</li>
-            <li>+와 슬라이스는 새 튜플을 만들고 원본은 둔다.</li>
-          </ul>
-          <pre><code>t = (10, 20, 30, 40, 50)
-print(t[0], t[-1], t[:3])
-# 10 50 (10, 20, 30)</code></pre>
-        </article>
-
-        <article class="entry" id="tuple-one" data-keys="튜플 쉼표 (10,)">
-          <header class="entry-head">
-            <h3><code>(10,)</code></h3>
-            <p class="kind">문법</p>
-          </header>
-          <p class="summary">값이 하나인 튜플에는 쉼표가 필요하다. 괄호만으로는 튜플이 아니다.</p>
-          <p class="sig"><code>(10,)</code></p>
-          <ul>
-            <li><code>(10)</code>은 그냥 정수 10이다.</li>
-            <li>빈 튜플만 쉼표 없이 <code>()</code>다.</li>
-          </ul>
-          <pre><code>print((10,))
-print((10))
-# (10,)
-# 10</code></pre>
-        </article>
-
-        <article class="entry" id="tuple-edit" data-keys="튜플을 리스트로">
-          <header class="entry-head">
-            <h3><code>고치려면 리스트로</code></h3>
-            <p class="kind">패턴</p>
-          </header>
-          <p class="summary">원소를 더하려면 리스트로 바꾼 뒤 append한다. 원래 튜플은 그대로다.</p>
-          <p class="sig"><code>list(t)</code></p>
-          <ul>
-            <li>다시 튜플이 필요하면 <code>tuple(리스트)</code>로 새 튜플을 만든다.</li>
-          </ul>
-          <pre><code>t = (1, 2, 3)
-lst = list(t)
-lst.append(4)
-print(lst)
-print(t)
-# [1, 2, 3, 4]
-# (1, 2, 3)</code></pre>
-        </article>
-
-        <article class="entry" id="tuple-nest" data-keys="중첩 튜플">
-          <header class="entry-head">
-            <h3><code>중첩 튜플</code></h3>
-            <p class="kind">자료형</p>
-          </header>
-          <p class="summary">튜플 안의 튜플도 번호를 두 번 쓴다.</p>
-          <p class="sig"><code>t[i][j]</code></p>
-          <ul>
-            <li><code>t[1]</code>은 쌍 전체다. 글자만 보려면 <code>t[1][0]</code>.</li>
-          </ul>
-          <pre><code>t = (("A", 1), ("B", 2), ("C", 3))
-print(t[1][0], t[2][1])
-# B 3</code></pre>
-        </article>
-
-      </section>
-
-      <section class="chapter" id="dicts">
-        <header class="chapter-head">
-          <p class="num">10</p>
-          <div>
-            <h2>딕셔너리</h2>
-            <p class="lead">번호가 아니라 키로 값을 찾는다. 넣은 순서는 유지된다. 리스트는 키가 될 수 없다.</p>
-          </div>
-        </header>
-        <article class="entry" id="dict-make" data-keys="딕셔너리 {}">
-          <header class="entry-head">
-            <h3><code>딕셔너리 만들기</code></h3>
-            <p class="kind">문법</p>
-          </header>
-          <p class="summary">중괄호 안에 키: 값을 적는다.</p>
-          <p class="sig"><code>{"name": "Sungmin", "age": 22}</code></p>
-          <ul>
-            <li>같은 키를 두 번 쓰면 나중 값이 남는다.</li>
-            <li><code>menu["Burger"]</code>처럼 키로 값을 읽는다.</li>
-          </ul>
-          <pre><code>menu = {"Pizza": 8000, "Burger": 5000}
-print(menu["Burger"])
-# 5000</code></pre>
-        </article>
-
-        <article class="entry" id="dict-access" data-keys="딕셔너리 조회 대입">
-          <header class="entry-head">
-            <h3><code>읽고 고치기</code></h3>
-            <p class="kind">문법</p>
-          </header>
-          <p class="summary">있는 키에 넣으면 값이 바뀌고, 없는 키에 넣으면 새로 생긴다.</p>
-          <p class="sig"><code>d[키] = 값</code></p>
-          <ul>
-            <li>없는 키를 <code>d[키]</code>로 읽으면 오류다. None이 아니다.</li>
-            <li>리스트는 없는 번호에 넣을 수 없지만, 딕셔너리는 없는 키를 만들어도 된다.</li>
-          </ul>
-          <pre><code>menu = {"Pizza": 8000, "Burger": 5000}
-menu["Pizza"] = 8500
-menu["Ice Cream"] = 2000
-print(menu)
-# Pizza는 8500, Ice Cream은 뒤에 추가</code></pre>
-        </article>
-
-        <article class="entry" id="dict-del" data-keys="딕셔너리 del">
-          <header class="entry-head">
-            <h3><code>키 지우기</code></h3>
-            <p class="kind">문법</p>
-          </header>
-          <p class="summary">del은 그 키와 값을 지운다. 지운 값은 안 돌려준다.</p>
-          <p class="sig"><code>del d[키]</code></p>
-          <ul>
-            <li>키가 없으면 오류다. 지운 값이 필요하면 pop을 쓴다.</li>
-          </ul>
-          <pre><code>menu = {"Pizza": 8500, "Tteokbokki": 4000}
-del menu["Tteokbokki"]
-print(menu)</code></pre>
-        </article>
-
-        <article class="entry" id="dict-in" data-keys="딕셔너리 in 키">
-          <header class="entry-head">
-            <h3><code>키 있는지</code></h3>
-            <p class="kind">연산자</p>
-          </header>
-          <p class="summary">in은 키만 본다. 값은 참이 되지 않는다.</p>
-          <p class="sig"><code>"major" in d</code></p>
-          <ul>
-            <li>전공이 Math여도 <code>"Math" in d</code>는 거짓이다. 키가 아니기 때문이다.</li>
-          </ul>
-          <pre><code>d = {"major": "Math"}
-print("major" in d)
-print("Math" in d)
-# True
-# False</code></pre>
-        </article>
-
-        <article class="entry" id="update" data-keys="update 여러 키">
-          <header class="entry-head">
-            <h3><code>update</code></h3>
-            <p class="kind">메서드</p>
-          </header>
-          <p class="summary">다른 딕셔너리의 키를 여기에 반영한다. 같은 키는 덮어쓴다.</p>
-          <p class="sig"><code>d.update(다른딕셔너리)</code></p>
-          <ul>
-            <li>결과값은 None이다.</li>
-          </ul>
-          <pre><code>d = {"name": "Sungmin"}
-d.update({"gpa": 3.9, "status": "active"})
-print(d)</code></pre>
-        </article>
-
-        <article class="entry" id="views" data-keys="keys values items">
-          <header class="entry-head">
-            <h3><code>keys values items</code></h3>
-            <p class="kind">메서드</p>
-          </header>
-          <p class="summary">키만, 값만, 또는 (키, 값) 쌍을 넣은 순서대로 볼 수 있다.</p>
-          <p class="sig"><code>d.keys()</code></p>
-          <ul>
-            <li>리스트가 아니다. 출력하면 <code>dict_keys([...])</code>처럼 보인다.</li>
-            <li>리스트로 쓰려면 <code>list(d.keys())</code>.</li>
-          </ul>
-          <pre><code>d = {"name": "Sungmin", "age": 23}
-print(d.keys())
-print(d.items())</code></pre>
-        </article>
-
-        <article class="entry" id="get" data-keys="get 없으면 None">
-          <header class="entry-head">
-            <h3><code>get</code></h3>
-            <p class="kind">메서드</p>
-          </header>
-          <p class="summary">키의 값을 준다. 키가 없어도 오류 대신 None을 준다.</p>
-          <p class="sig"><code>d.get(키)</code></p>
-          <ul>
-            <li><code>d["address"]</code>는 키가 없으면 오류다. <code>d.get("address")</code>는 None이다.</li>
-            <li>두 번째 인자를 주면, 키가 없을 때 그 값을 준다. 딕셔너리에 키를 추가하지는 않는다.</li>
-          </ul>
-          <pre><code>d = {"gpa": 3.9}
-print(d.get("gpa"))
-print(d.get("address"))
-# 3.9
-# None</code></pre>
-        </article>
-
-        <article class="entry" id="dict-pop" data-keys="딕셔너리 pop">
-          <header class="entry-head">
-            <h3><code>pop</code></h3>
-            <p class="kind">메서드</p>
-          </header>
-          <p class="summary">키를 지우고, 지워진 값을 돌려준다.</p>
-          <p class="sig"><code>d.pop(키)</code></p>
-          <ul>
-            <li>인자는 번호가 아니라 키다. 리스트 pop과 이름이 같고 의미가 다르다.</li>
-            <li>del은 값을 못 받고, pop은 받는다.</li>
-          </ul>
-          <pre><code>d = {"name": "Sungmin", "status": "active"}
-print(d.pop("status"))
-print(d)
-# active
-# {'name': 'Sungmin'}</code></pre>
-        </article>
-
-      </section>
-
-      <section class="chapter" id="compare">
-        <header class="chapter-head">
-          <p class="num">11</p>
-          <div>
-            <h2>같이 헷갈리는 것</h2>
-            <p class="lead">이름은 비슷한데, 원본을 고치는지와 돌려주는 값이 다르다.</p>
-          </div>
-        </header>
-        <div class="table-wrap">
-          <table class="spec">
-            <caption>고치는지, 무엇을 돌려주는지</caption>
-            <thead><tr><th>코드</th><th>원본</th><th>돌려주는 값</th></tr></thead>
-            <tbody>
-              <tr><td><code>lst.append(x)</code></td><td>뒤에 한 칸 추가</td><td>None</td></tr>
-              <tr><td><code>lst.extend(xs)</code></td><td>풀어서 뒤에 추가</td><td>None</td></tr>
-              <tr><td><code>lst.insert(i, x)</code></td><td>그 자리에 끼움</td><td>None</td></tr>
-              <tr><td><code>lst.remove(x)</code></td><td>그 값의 첫 칸 삭제</td><td>None</td></tr>
-              <tr><td><code>lst.pop(i)</code></td><td>그 번호 삭제</td><td>뺀 값</td></tr>
-              <tr><td><code>lst.sort()</code></td><td>그 자리에서 정렬</td><td>None</td></tr>
-              <tr><td><code>lst.reverse()</code></td><td>그 자리에서 역순</td><td>None</td></tr>
-              <tr><td><code>sorted(lst)</code></td><td>그대로</td><td>새 리스트</td></tr>
-              <tr><td><code>a + b</code></td><td>그대로</td><td>이어 붙인 새 값</td></tr>
-              <tr><td><code>s.replace(a, b)</code></td><td>그대로</td><td>새 글자</td></tr>
-              <tr><td><code>s.lower()</code></td><td>그대로</td><td>새 글자</td></tr>
-              <tr><td><code>d.update(other)</code></td><td>키를 반영</td><td>None</td></tr>
-              <tr><td><code>d.pop(key)</code></td><td>그 키 삭제</td><td>지운 값</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="table-wrap">
-          <table class="spec">
-            <caption>없을 때</caption>
-            <thead><tr><th>코드</th><th>없을 때</th></tr></thead>
-            <tbody>
-              <tr><td><code>lst[i]</code></td><td>IndexError</td></tr>
-              <tr><td><code>d[key]</code></td><td>KeyError</td></tr>
-              <tr><td><code>d.get(key)</code></td><td>None</td></tr>
-              <tr><td><code>lst.remove(x)</code> <code>lst.index(x)</code></td><td>ValueError</td></tr>
-              <tr><td><code>lst.count(x)</code></td><td>0. 오류 아님</td></tr>
-              <tr><td><code>key in d</code></td><td>키만 본다. 값은 거짓일 수 있다</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="table-wrap">
-          <table class="spec">
-            <caption>비어 있는 값</caption>
-            <thead><tr><th>표기</th><th>뜻</th></tr></thead>
-            <tbody>
-              <tr><td><code>[]</code></td><td>빈 리스트. <code>list()</code>와 같다</td></tr>
-              <tr><td><code>()</code></td><td>빈 튜플. <code>tuple()</code>와 같다</td></tr>
-              <tr><td><code>(10,)</code></td><td>값이 하나인 튜플</td></tr>
-              <tr><td><code>(10)</code></td><td>정수 10</td></tr>
-              <tr><td><code>{}</code></td><td>빈 딕셔너리. <code>dict()</code>와 같다</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <article class="entry" id="questions" data-keys="문제 확인 퀴즈">
-          <header class="entry-head">
-            <h3 class="plain">가리고 답하기</h3>
-            <p class="kind">확인</p>
-          </header>
-          <div class="q-list">
-            <details class="q"><summary><code>range(1, 4)</code>에 들어 있는 수는?</summary><p>1, 2, 3. 4는 빠진다.</p></details>
-            <details class="q"><summary><code>5 / 2</code>와 <code>5 // 2</code>는?</summary><p>2.5와 2. 슬래시 하나는 소수다.</p></details>
-            <details class="q"><summary><code>input()</code>으로 3을 읽으면 타입은?</summary><p>글자 "3". 정수로 쓰려면 int로 감싼다.</p></details>
-            <details class="q"><summary><code>"Python"[1:-1]</code>은?</summary><p>ytho. 끝 글자 n은 빠진다.</p></details>
-            <details class="q"><summary><code>"-".join("HELLO")</code>는?</summary><p>H-E-L-L-O. 구분자는 메서드 앞에 둔다.</p></details>
-            <details class="q"><summary><code>append</code>와 <code>extend</code>의 차이는?</summary><p>append는 인자 전체가 한 칸. extend는 안을 풀어 여러 칸. 둘 다 None.</p></details>
-            <details class="q"><summary><code>lst.sort()</code>를 print하면?</summary><p>None. 정렬은 lst 안에서 이미 끝났다.</p></details>
-            <details class="q"><summary><code>(10)</code>과 <code>(10,)</code>는?</summary><p>정수와 튜플.</p></details>
-            <details class="q"><summary><code>{}</code>는 무엇인가?</summary><p>빈 딕셔너리.</p></details>
-            <details class="q"><summary>값이 Math인 딕셔너리에 <code>"Math" in d</code>는?</summary><p>키가 아니면 거짓이다.</p></details>
-            <details class="q"><summary><code>d.get("address")</code>와 <code>d["address"]</code>는?</summary><p>get은 None, 대괄호는 오류.</p></details>
-            <details class="q"><summary><code>[1, 2].append([3])</code>의 리스트는?</summary><p>[1, 2, [3]]. 그리고 append의 결과값은 None.</p></details>
-          </div>
-        </article>
-      </section>
-
-      <section class="chapter" id="memo">
-        <header class="chapter-head">
-          <p class="num">12</p>
-          <div>
-            <h2>암기</h2>
-            <p class="lead">시험 전에 코드만 다시 보는 단어장이다. 가리기를 누른 뒤 칸을 누르면 그 코드만 열린다.</p>
-            <button type="button" id="memo-toggle" aria-pressed="false">코드 가리기</button>
-          </div>
-        </header>
-        <article class="entry memo" id="memo-print" data-keys="print 암기">
-          <div>
-            <h3><code>print</code></h3>
-            <p class="memo-mean">화면에 찍는다. 결과값은 None.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>print("b =", 2)
-# b = 2</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-input" data-keys="input 암기">
-          <div>
-            <h3><code>input</code></h3>
-            <p class="memo-mean">한 줄을 읽는다. 항상 글자다.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>n = int(input("Enter a number: "))</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-f" data-keys="f-string 암기">
-          <div>
-            <h3><code>f-string</code></h3>
-            <p class="memo-mean">중괄호 안을 계산해 글자에 넣는다.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>print(f"n={n}")</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-hash" data-keys="주석 암기">
-          <div>
-            <h3><code>#</code></h3>
-            <p class="memo-mean">이 기호부터 줄 끝은 실행하지 않는다.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>print(1)
-# print(2)</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-eq" data-keys="대입 암기">
-          <div>
-            <h3><code>=</code></h3>
-            <p class="memo-mean">오른쪽을 계산해 이름에 넣는다. 비교는 ==.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>n = 9
-n = n - 2</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-unpack" data-keys="언패킹 암기">
-          <div>
-            <h3><code>a, b =</code></h3>
-            <p class="memo-mean">칸 개수와 이름 개수가 같아야 한다.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>name, age = ["Ada", "20"]</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-int" data-keys="int 암기">
-          <div>
-            <h3><code>int()</code></h3>
-            <p class="memo-mean">소수점은 버린다. "9.0" 글자는 바로 안 된다.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>int(9.9)      # 9
-int("9")       # 9</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-float" data-keys="float 암기">
-          <div>
-            <h3><code>float()</code></h3>
-            <p class="memo-mean">소수로 만든다.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>float(2)      # 2.0</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-str" data-keys="str 암기">
-          <div>
-            <h3><code>str()</code></h3>
-            <p class="memo-mean">글자 연결 전에 숫자를 글자로 바꾼다.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>"a = " + str(1)</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-div" data-keys="나눗셈 암기">
-          <div>
-            <h3><code>/ // %</code></h3>
-            <p class="memo-mean">나누기, 몫, 나머지. / 는 항상 소수.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>5 / 2     # 2.5
-5 // 2    # 2
-5 % 2     # 1</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-pow" data-keys="거듭제곱 암기">
-          <div>
-            <h3><code>**</code></h3>
-            <p class="memo-mean">거듭제곱. 0.5제곱은 제곱근.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>9 ** 3      # 729
-9 ** 0.5    # 3.0</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-aug" data-keys="+= 암기">
-          <div>
-            <h3><code>+=</code></h3>
-            <p class="memo-mean">지금 값에 더해서 다시 넣는다.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>n = 4
-n *= 2     # 8</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-cmp" data-keys="비교 암기">
-          <div>
-            <h3><code>==</code></h3>
-            <p class="memo-mean">같은지 묻는다. 1 &lt; 2 &lt; 3 은 양쪽이 다 참일 때 참.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>print(2 == 3)       # False
-print(1 &lt; 2 &lt; 3)    # True</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-in" data-keys="in 암기">
-          <div>
-            <h3><code>in</code></h3>
-            <p class="memo-mean">글자는 부분, 리스트는 칸, 딕셔너리는 키.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>"Py" in "Python"
-"Math" in {"major": "Math"}   # False</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-while" data-keys="while 암기">
-          <div>
-            <h3><code>while</code></h3>
-            <p class="memo-mean">참인 동안 본문을 반복한다.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>while len(s) &lt; 2:
-    s = input()</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-for" data-keys="for range 암기">
-          <div>
-            <h3><code>for / range</code></h3>
-            <p class="memo-mean">끝 숫자는 빠진다. 1부터 n까지는 n+1.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>for i in range(1, n + 1):
-    print(i)</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-idx" data-keys="인덱스 암기">
-          <div>
-            <h3><code>[0] [-1]</code></h3>
-            <p class="memo-mean">0이 첫 칸, -1이 마지막 칸.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>s = "Python"
+# 3</code></pre></section>
+</article>
+<article class="entry" id="nested" data-keys="중첩 for 구구단 nested">
+<header class="entry-head"><h3><code>중첩 for</code></h3><p class="kind"><span class="ko">문</span><span class="en">statement</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">중첩 반복은 바깥 반복이 한 번 진행할 때마다 안쪽 반복이 자기 묶음을 처음부터 다시 돈다.</p><p class="en">In a nested loop, each step of the outer loop runs the inner loop over its whole sequence again.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>for a in 묶음:
+    for b in 묶음:</code></p><p class="ko">구구단처럼 두 개의 독립된 번호가 필요할 때 쓴다. 안쪽 for는 바깥 본문보다 한 단계 더 들여쓴다.</p><p class="en">Use it when two independent indexes are required, as in a multiplication table. The inner for is indented one level deeper than the outer body.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>for i in range(2, 4):
+    for j in range(1, 3):
+        print(i, j)
+# 2 1
+# 2 2
+# 3 1
+# 3 2</code></pre></section>
+</article></section>
+<section class="chapter" id="indexing"><header class="chapter-head"><p class="num">06</p><div><h2><span class="ko">인덱스와 슬라이스</span><span class="en">Index and slice</span></h2><p class="lead"><span class="ko">문자열, 리스트, 튜플은 0부터 번호를 센다. 슬라이스의 끝 번호는 빠진다.</span><span class="en">Strings, lists, and tuples count from 0. The stop of a slice is excluded.</span></p></div></header><article class="entry" id="index-rule" data-keys="인덱스 index 0 -1">
+<header class="entry-head"><h3><code>인덱스</code></h3><p class="kind"><span class="ko">표기</span><span class="en">notation</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">인덱스(index)는 칸의 번호다. 첫 칸은 0이고, 마지막 칸은 -1이다. 그 번호의 칸 하나를 꺼낸다.</p><p class="en">An index is the position of an element. The first position is 0, and the last is -1. The notation retrieves that one element.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>묶음[번호]</code></p><p class="ko">길이가 n이면 유효한 번호는 0부터 n-1까지, 또는 -1부터 -n까지다. 그 밖은 IndexError다. 가운데 칸은 <code>len(묶음) // 2</code>로 구한다.</p><p class="en">If the length is n, valid indexes run from 0 through n-1, or from -1 through -n. Anything outside that raises IndexError. The middle element is at <code>len(sequence) // 2</code>.</p></section>
+<section class="block"><h4><span class="ko">보충</span><span class="en">Notes</span></h4><p class="ko">문자열과 튜플은 이 자리에 대입할 수 없다. 리스트만 <code>lst[i] = 값</code>이 성립한다.</p><p class="en">A string or a tuple cannot be assigned at this position. Only a list accepts <code>lst[i] = value</code>.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>s = "Python"
 s[0]     # P
-s[-1]    # n</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
+s[-1]    # n</code></pre></section>
+</article>
+<article class="entry" id="slice" data-keys="슬라이스 slice ::">
+<header class="entry-head"><h3><code>슬라이스</code></h3><p class="kind"><span class="ko">표기</span><span class="en">notation</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">슬라이스(slice)는 구간의 칸으로 새 문자열, 새 리스트, 또는 새 튜플을 만든다. 끝 번호의 칸은 포함하지 않는다. 원본은 유지된다.</p><p class="en">A slice builds a new string, list, or tuple from a span of elements. The element at the stop index is not included. The original is left as it was.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>묶음[시작:끝:간격]</code></p><p class="ko">시작을 비우면 처음부터, 끝을 비우면 마지막까지다. 간격만 음수로 두면 순서가 뒤집힌다. <code>[::-1]</code>이 그 형태다.</p><p class="en">An empty start means the beginning, and an empty stop means through the end. A negative step reverses the order. <code>[::-1]</code> is that form.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>"Python"[1:-1]    # ytho
+"Python"[::-1]    # nohtyP</code></pre></section>
+</article>
+<article class="entry" id="len" data-keys="len 길이">
+<header class="entry-head"><h3><code>len</code></h3><p class="kind"><span class="ko">함수</span><span class="en">function</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">len은 칸의 개수를 정수로 반환하는 함수다. 마지막 인덱스는 그 값보다 1 작다.</p><p class="en">len is a function that returns the number of elements as an integer. The last index is one less than that number.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>len(묶음)</code></p><p class="ko">문자열은 문자의 수, 리스트와 튜플은 칸의 수, 딕셔너리는 키의 수다. 비어 있으면 0이다.</p><p class="en">For a string it is the number of characters, for a list or tuple the number of elements, and for a dictionary the number of keys. An empty value has length 0.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>len("Python")    # 6</code></pre></section>
+</article></section>
+<section class="chapter" id="strings"><header class="chapter-head"><p class="num">07</p><div><h2><span class="ko">문자열</span><span class="en">Strings</span></h2><p class="lead"><span class="ko">문자열(string)은 순서가 있는 불변 값이다. 메서드는 원본을 두지 않고 새 문자열이나 리스트를 반환한다.</span><span class="en">A string is an ordered immutable value. Its methods leave the original in place and return a new string or a new list.</span></p></div></header><article class="entry" id="immutable" data-keys="문자열 불변 immutable">
+<header class="entry-head"><h3><code>문자열</code></h3><p class="kind"><span class="ko">자료형</span><span class="en">type</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">문자열의 한 칸은 대입으로 바꿀 수 없다. 바꾸려면 슬라이스와 <code>+</code>로 새 문자열을 만들고, 그 결과를 이름에 다시 대입한다.</p><p class="en">One character of a string cannot be replaced by assignment. To change the text, build a new string with slices and <code>+</code>, then assign that result back to the name.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>s[0] = "a"    # 성립하지 않음</code></p><p class="ko">첫 문자와 마지막 문자를 바꾸는 실습은 <code>s[-1] + s[1:-1] + s[0]</code>이다. 가운데는 끝 문자를 뺀 구간이다.</p><p class="en">The lab that swaps the first and last characters is <code>s[-1] + s[1:-1] + s[0]</code>. The middle is the slice that excludes both ends.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>s = "Python"
+s = s[-1] + s[1:-1] + s[0]
+# nythoP</code></pre></section>
+</article>
+<article class="entry" id="split" data-keys="split 분리">
+<header class="entry-head"><h3><code>split</code></h3><p class="kind"><span class="ko">메서드</span><span class="en">method</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">split은 문자열을 잘라 리스트로 반환하는 메서드(method)다. 원래 문자열은 바뀌지 않는다.</p><p class="en">split is a method that divides a string and returns a list. The original string does not change.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>s.split(구분자)</code></p><p class="ko">인자를 비우면 연속된 공백을 구분자(separator)로 보고, 빈 칸은 결과에 넣지 않는다. 구분자를 주면 그 문자열을 경계로 자른다.</p><p class="en">With no argument, consecutive whitespace is the separator and empty pieces are omitted. With a separator, the string is divided on that text.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>"a b".split()       # ['a', 'b']
+"a,b".split(",")    # ['a', 'b']</code></pre></section>
+</article>
+<article class="entry" id="join" data-keys="join 합치기">
+<header class="entry-head"><h3><code>join</code></h3><p class="kind"><span class="ko">메서드</span><span class="en">method</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">join은 묶음의 각 조각을 구분자로 이어 새 문자열을 반환한다. 구분자가 메서드 앞에 오고, 이어 붙일 재료가 인자다.</p><p class="en">join returns a new string made by placing the separator between the pieces. The separator stands before the method, and the pieces are the argument.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>구분자.join(묶음)</code></p><p class="ko">인자의 칸은 모두 문자열이어야 한다. 수가 섞이면 TypeError다. 문자열을 넘기면 문자 하나씩이 조각이 된다.</p><p class="en">Every element of the argument must be a string. A number among them raises TypeError. Passing a string treats each character as a piece.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>" ".join(["I", "love"])
+"-".join("HELLO")    # H-E-L-L-O</code></pre></section>
+</article>
+<article class="entry" id="replace" data-keys="replace 바꾸기">
+<header class="entry-head"><h3><code>replace</code></h3><p class="kind"><span class="ko">메서드</span><span class="en">method</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">replace는 찾은 부분을 바꾼 새 문자열을 반환한다. 호출만으로는 변수에 들어 있는 문자열이 바뀌지 않는다.</p><p class="en">replace returns a new string in which the found text has been replaced. The call alone does not change the string stored in the variable.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>s.replace(찾을말, 바꿀말)</code></p><p class="ko">반영하려면 <code>s = s.replace(...)</code>처럼 다시 대입한다. 빈 문자열로 바꾸면 그 부분이 지워진다.</p><p class="en">To keep the result, assign it back, as in <code>s = s.replace(...)</code>. Replacing with an empty string deletes that part.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>s = "a.b.c"
+s = s.replace(".", "")
+# abc</code></pre></section>
+</article>
+<article class="entry" id="lower" data-keys="lower 소문자">
+<header class="entry-head"><h3><code>lower</code></h3><p class="kind"><span class="ko">메서드</span><span class="en">method</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">lower는 영문 대문자를 소문자로 바꾼 새 문자열을 반환한다. 원본은 유지된다.</p><p class="en">lower returns a new string in which ASCII uppercase letters have been turned into lowercase. The original is unchanged.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>s.lower()</code></p><p class="ko">비교 전에 양쪽을 같은 형태로 맞출 때 쓴다. 결과를 이름에 담지 않으면 다음 줄의 s는 이전 그대로다.</p><p class="en">Use it to put both sides of a comparison into the same case. Unless the result is assigned to a name, s on the next line is still the old string.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>"Python".lower()    # python</code></pre></section>
+</article>
+<div class="table-wrap sheet"><table class="spec sheet"><caption><span class="ko">문자열 정리</span><span class="en">String summary</span></caption><thead><tr><th><span class="ko">표기</span><span class="en">Form</span></th><th><span class="ko">하는 일</span><span class="en">What it does</span></th><th><span class="ko">원본</span><span class="en">Original</span></th><th><span class="ko">반환</span><span class="en">Returns</span></th></tr></thead><tbody><tr><td><code>s[i]</code></td><td><span class="ko">한 문자</span><span class="en">One character</span></td><td><span class="ko">유지</span><span class="en">unchanged</span></td><td><span class="ko">문자</span><span class="en">character</span></td></tr><tr><td><code>s[a:b]</code></td><td><span class="ko">끝은 빠지는 구간</span><span class="en">A span, stop excluded</span></td><td><span class="ko">유지</span><span class="en">unchanged</span></td><td><span class="ko">새 str</span><span class="en">new str</span></td></tr><tr><td><code>s.split(sep)</code></td><td><span class="ko">잘라 리스트로</span><span class="en">Split into a list</span></td><td><span class="ko">유지</span><span class="en">unchanged</span></td><td><span class="ko">list</span><span class="en">list</span></td></tr><tr><td><code>sep.join(xs)</code></td><td><span class="ko">구분자로 연결</span><span class="en">Join with a separator</span></td><td><span class="ko">유지</span><span class="en">unchanged</span></td><td><span class="ko">새 str</span><span class="en">new str</span></td></tr><tr><td><code>s.replace(a, b)</code></td><td><span class="ko">바꾼 새 문자열</span><span class="en">A replaced copy</span></td><td><span class="ko">유지</span><span class="en">unchanged</span></td><td><span class="ko">새 str</span><span class="en">new str</span></td></tr><tr><td><code>s.lower()</code></td><td><span class="ko">소문자로</span><span class="en">Lowercase</span></td><td><span class="ko">유지</span><span class="en">unchanged</span></td><td><span class="ko">새 str</span><span class="en">new str</span></td></tr><tr><td><code>s + t</code></td><td><span class="ko">이어 붙임</span><span class="en">Concatenation</span></td><td><span class="ko">유지</span><span class="en">unchanged</span></td><td><span class="ko">새 str</span><span class="en">new str</span></td></tr></tbody></table></div></section>
+<section class="chapter" id="lists"><header class="chapter-head"><p class="num">08</p><div><h2><span class="ko">리스트</span><span class="en">Lists</span></h2><p class="lead"><span class="ko">리스트(list)는 순서가 있고 칸을 바꿀 수 있는 값이다. 메서드마다 원본을 고치는지, None을 반환하는지가 다르다.</span><span class="en">A list is an ordered mutable value. Each method differs in whether it changes the original and whether it returns None.</span></p></div></header><article class="entry" id="list-make" data-keys="리스트 만들기 []">
+<header class="entry-head"><h3><code>리스트 만들기</code></h3><p class="kind"><span class="ko">자료형</span><span class="en">type</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">대괄호는 리스트를 만드는 표기다. 칸의 순서는 적은 순서로 유지된다. 빈 리스트는 <code>[]</code> 또는 <code>list()</code>다.</p><p class="en">Brackets are the notation for a list. Element order is the order written. An empty list is <code>[]</code> or <code>list()</code>.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>[값, 값]    list()</code></p><p class="ko">칸에는 수, 문자열, 리스트처럼 서로 다른 자료형이 함께 있을 수 있다. 만든 뒤에는 인덱스와 슬라이스가 문자열과 같은 규칙으로 동작한다.</p><p class="en">Elements may mix types, including numbers, strings, and lists. After creation, indexing and slicing follow the same rules as for a string.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>lst = [10, 20, 30]
+empty = []</code></pre></section>
+</article>
+<article class="entry" id="item-set" data-keys="리스트 칸 수정 item assignment">
+<header class="entry-head"><h3><code>칸에 대입</code></h3><p class="kind"><span class="ko">표기</span><span class="en">notation</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">리스트는 가변(mutable)이므로 있는 번호의 칸을 다른 값으로 바꿀 수 있다. 이 대입은 새 리스트를 만들지 않고 그 객체를 고친다.</p><p class="en">A list is mutable, so an existing index may be replaced with another value. This assignment changes that object; it does not build a new list.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>lst[번호] = 값</code></p><p class="ko">번호는 이미 있는 칸이어야 한다. 없는 번호에 대입하면 IndexError다. 뒤를 늘리는 일은 append의 일이다.</p><p class="en">The index must already exist. Assigning to a missing index raises IndexError. Growing the end is the job of append.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>lst = [10, 20, 30]
+lst[1] = 15
+# [10, 15, 30]</code></pre></section>
+</article>
+<article class="entry" id="append" data-keys="append 추가 None">
+<header class="entry-head"><h3><code>append</code></h3><p class="kind"><span class="ko">메서드</span><span class="en">method</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">append는 인자 전체를 마지막 칸 하나로 추가하고 None을 반환한다. 제자리 변경(in-place)이다.</p><p class="en">append adds the entire argument as one new last element and returns None. The change is in-place.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>lst.append(값)</code></p><p class="ko">인자가 리스트여도 한 칸에 그 리스트가 통째로 들어간다. 안을 풀어 넣으려면 extend다.</p><p class="en">Even when the argument is a list, that list occupies a single element. To insert its contents, use extend.</p></section>
+<section class="block"><h4><span class="ko">보충</span><span class="en">Notes</span></h4><p class="ko"><code>lst = lst.append(x)</code>는 추가가 끝난 리스트를 버리고 이름에 None을 넣는다. 호출만 하고 대입하지 않는다.</p><p class="en"><code>lst = lst.append(x)</code> discards the updated list and stores None in the name. Call the method and do not assign its result.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>lst = [1, 2]
+lst.append([3])
+# [1, 2, [3]]
+# append의 반환값은 None</code></pre></section>
+</article>
+<article class="entry" id="extend" data-keys="extend 풀어서 추가">
+<header class="entry-head"><h3><code>extend</code></h3><p class="kind"><span class="ko">메서드</span><span class="en">method</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">extend는 인자의 칸을 풀어 리스트 뒤에 차례로 추가하고 None을 반환한다. 원본 리스트를 고친다.</p><p class="en">extend unpacks the argument and appends each of its elements, then returns None. It modifies the original list.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>lst.extend(묶음)</code></p><p class="ko">인자는 리스트, 튜플, 문자열처럼 반복할 수 있는 값이다. 문자열을 넘기면 문자가 한 칸씩 들어간다.</p><p class="en">The argument is an iterable such as a list, a tuple, or a string. A string contributes one character per element.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>a = [1, 2]
+a.extend([3, 4])
+# [1, 2, 3, 4]</code></pre></section>
+</article>
+<article class="entry" id="concat" data-keys="+ * 연결 반복">
+<header class="entry-head"><h3><code>+ 와 *</code></h3><p class="kind"><span class="ko">연산자</span><span class="en">operator</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko"><code>+</code>와 <code>*</code>는 리스트를 고치지 않고 새 리스트를 반환한다. append, extend와 반환의 성질이 다르다.</p><p class="en"><code>+</code> and <code>*</code> return a new list and do not modify the operands. That is a different contract from append and extend.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>a + b    a * n</code></p><p class="ko"><code>+</code>의 양쪽은 같은 종류의 묶음이어야 한다. <code>*</code>의 횟수는 정수다. 결과를 쓰려면 이름에 대입한다.</p><p class="en">Both sides of <code>+</code> must be sequences of the same kind. The count in <code>*</code> is an integer. Assign the result if it should be kept.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>[1, 2] + [3]     # [1, 2, 3]
+[1, 2] * 2       # [1, 2, 1, 2]</code></pre></section>
+</article>
+<article class="entry" id="insert" data-keys="insert 끼워넣기">
+<header class="entry-head"><h3><code>insert</code></h3><p class="kind"><span class="ko">메서드</span><span class="en">method</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">insert는 지정한 번호에 값을 끼워 넣고, 뒤 칸을 한 자리씩 민다. 반환값은 None이다.</p><p class="en">insert places a value at the given index and shifts the later elements one position to the right. The return value is None.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>lst.insert(번호, 값)</code></p><p class="ko">0은 맨 앞이다. 길이보다 큰 번호는 마지막에 추가하는 것과 같다.</p><p class="en">0 is the front. An index past the length appends at the end.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>lst = [10, 30]
+lst.insert(1, 15)
+# [10, 15, 30]</code></pre></section>
+</article>
+<article class="entry" id="remove" data-keys="remove 값으로 삭제">
+<header class="entry-head"><h3><code>remove</code></h3><p class="kind"><span class="ko">메서드</span><span class="en">method</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">remove는 인자와 같은 값의 첫 칸을 지우고 None을 반환한다. 번호가 아니라 값으로 찾는다.</p><p class="en">remove deletes the first element equal to the argument and returns None. It searches by value, not by index.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>lst.remove(값)</code></p><p class="ko">같은 값이 여러 칸이면 가장 앞의 하나만 지운다. 그 값이 없으면 ValueError다.</p><p class="en">If the value occurs more than once, only the first occurrence is removed. A missing value raises ValueError.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>lst = [10, 20, 20]
+lst.remove(20)
+# [10, 20]</code></pre></section>
+</article>
+<article class="entry" id="pop" data-keys="pop 꺼내서 삭제">
+<header class="entry-head"><h3><code>pop</code></h3><p class="kind"><span class="ko">메서드</span><span class="en">method</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">pop은 지정한 번호의 칸을 리스트에서 빼고, 그 뺀 값을 반환한다. remove와 달리 반환값이 있다.</p><p class="en">pop removes the element at the given index and returns that removed value. Unlike remove, it has a return value.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>lst.pop(번호)</code></p><p class="ko">번호를 생략하면 마지막 칸을 뺀다. 없는 번호는 IndexError다.</p><p class="en">Omitting the index removes the last element. A missing index raises IndexError.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>lst = [10, 20, 30]
+print(lst.pop(0))    # 10
+# lst는 [20, 30]</code></pre></section>
+</article>
+<article class="entry" id="del" data-keys="del 삭제 문">
+<header class="entry-head"><h3><code>del</code></h3><p class="kind"><span class="ko">문</span><span class="en">statement</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">del은 번호의 칸을 지우는 문(statement)이다. 메서드가 아니므로 반환값을 변수에 받을 수 없다.</p><p class="en">del is a statement that deletes the element at an index. It is not a method, so there is no return value to bind.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>del lst[번호]</code></p><p class="ko">지운 값이 필요하면 pop을 쓴다. 값으로 찾고 반환이 필요 없으면 remove를 쓴다.</p><p class="en">Use pop when the removed value is needed. Use remove when the search is by value and the return value is not needed.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>lst = [10, 20, 30]
+del lst[0]
+# [20, 30]</code></pre></section>
+</article>
+<article class="entry" id="count" data-keys="count 개수">
+<header class="entry-head"><h3><code>count</code></h3><p class="kind"><span class="ko">메서드</span><span class="en">method</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">count는 인자와 같은 칸이 몇 개인지 정수로 반환한다. 리스트는 바뀌지 않는다.</p><p class="en">count returns, as an integer, how many elements equal the argument. The list is unchanged.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>lst.count(값)</code></p><p class="ko">없으면 0이다. 오류가 아니다. index와 이 점이 다르다.</p><p class="en">A missing value yields 0, not an error. That is the difference from index.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>[10, 20, 20].count(20)    # 2
+[10].count(99)             # 0</code></pre></section>
+</article>
+<article class="entry" id="index-method" data-keys="index 위치 찾기">
+<header class="entry-head"><h3><code>index</code></h3><p class="kind"><span class="ko">메서드</span><span class="en">method</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">index 메서드는 인자와 같은 첫 칸의 번호를 반환한다. 칸을 꺼내는 표기 <code>lst[i]</code>와 방향이 반대다.</p><p class="en">The index method returns the position of the first element equal to the argument. It runs in the opposite direction from the notation <code>lst[i]</code>.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>lst.index(값)</code></p><p class="ko">없으면 ValueError다. count처럼 0을 반환하지 않는다.</p><p class="en">A missing value raises ValueError. It does not return 0 the way count does.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>[10, 20, 30].index(20)    # 1</code></pre></section>
+</article>
+<article class="entry" id="sorted" data-keys="sorted 정렬 새 리스트">
+<header class="entry-head"><h3><code>sorted</code></h3><p class="kind"><span class="ko">함수</span><span class="en">function</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">sorted는 정렬된 새 리스트를 반환하는 함수다. 인자로 넘긴 리스트의 순서는 그대로다.</p><p class="en">sorted is a function that returns a new list in sorted order. The list passed in keeps its original order.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>sorted(묶음)</code></p><p class="ko">기본은 오름차순이다. 역순의 새 리스트가 필요하면 <code>sorted(lst, reverse=True)</code>다. 이 reverse는 sorted의 매개변수다.</p><p class="en">The default order is ascending. For a new list in reverse order, write <code>sorted(lst, reverse=True)</code>. Here reverse is a parameter of sorted.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>lst = [3, 1, 2]
+print(sorted(lst))    # [1, 2, 3]
+# lst는 여전히 [3, 1, 2]</code></pre></section>
+</article>
+<article class="entry" id="sort" data-keys="sort 제자리 정렬">
+<header class="entry-head"><h3><code>sort</code></h3><p class="kind"><span class="ko">메서드</span><span class="en">method</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">sort는 그 리스트의 순서를 제자리에서 정렬하고 None을 반환한다. sorted와 달리 새 리스트를 만들지 않는다.</p><p class="en">sort orders that list in place and returns None. Unlike sorted, it does not build a new list.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>lst.sort()</code></p><p class="ko">호출 뒤에 리스트 자체를 보면 정렬되어 있다. <code>print(lst.sort())</code>가 찍는 것은 None이다.</p><p class="en">After the call, the list itself is sorted. What <code>print(lst.sort())</code> prints is None.</p></section>
+<section class="block"><h4><span class="ko">보충</span><span class="en">Notes</span></h4><p class="ko"><code>print(lst, reverse=True)</code>는 실습 파일의 오류다. print에는 reverse 매개변수가 없다. 역순 정렬은 <code>lst.sort(reverse=True)</code> 또는 sorted 쪽이다.</p><p class="en"><code>print(lst, reverse=True)</code> is an error in a lab file. print has no reverse parameter. Reverse ordering belongs to <code>lst.sort(reverse=True)</code> or to sorted.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>lst = [3, 1, 2]
+print(lst.sort())
+# None
+# lst는 [1, 2, 3]</code></pre></section>
+</article>
+<article class="entry" id="reverse" data-keys="reverse 뒤집기">
+<header class="entry-head"><h3><code>reverse</code></h3><p class="kind"><span class="ko">메서드</span><span class="en">method</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">reverse는 현재 순서를 거꾸로 뒤집고 None을 반환한다. 크기 순으로 정렬하는 sort와 다르다.</p><p class="en">reverse reverses the current order and returns None. It is not a sort by magnitude.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>lst.reverse()</code></p><p class="ko">원본을 두고 뒤집힌 새 리스트가 필요하면 <code>lst[::-1]</code>을 쓴다. 그 슬라이스는 원본을 고치지 않는다.</p><p class="en">When a new reversed list is required and the original must stay, use <code>lst[::-1]</code>. That slice does not modify the original.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>lst = [1, 2, 3]
+lst.reverse()
+# [3, 2, 1]</code></pre></section>
+</article>
+<article class="entry" id="nested-list" data-keys="중첩 리스트 nested">
+<header class="entry-head"><h3><code>중첩 리스트</code></h3><p class="kind"><span class="ko">자료형</span><span class="en">type</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">리스트의 칸이 다시 리스트일 수 있다. 첫 대괄호는 바깥 칸을, 둘째 대괄호는 그 안쪽 칸을 고른다.</p><p class="en">An element of a list may itself be a list. The first brackets select the outer element, and the second select an element inside it.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>lst[바깥][안쪽]</code></p><p class="ko"><code>lst[1][0]</code>은 1번 칸에 들어 있는 리스트의 0번 값이다. 바깥 번호를 먼저 센다.</p><p class="en"><code>lst[1][0]</code> is element 0 of the list stored at outer index 1. Count the outer index first.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>lst = [[1, 2], [3, 4]]
+lst[1][0]    # 3</code></pre></section>
+</article>
+<article class="entry" id="comp" data-keys="컴프리헨션 comprehension">
+<header class="entry-head"><h3><code>컴프리헨션</code></h3><p class="kind"><span class="ko">표기</span><span class="en">notation</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">리스트 컴프리헨션(comprehension)은 묶음을 돌며 식을 계산해 새 리스트를 만든다. for 문과 달리 식 하나로 결과가 모인다.</p><p class="en">A list comprehension builds a new list by evaluating an expression for each element. Unlike a for statement, the result is collected by the expression itself.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>[식 for 이름 in 묶음]</code></p><p class="ko">뒤에 <code>if 조건</code>을 붙이면 조건이 참인 칸만 남긴다. 모음 제거 실습은 문자가 모음이 아닐 때만 칸에 넣는다.</p><p class="en">An <code>if</code> condition after the for keeps only the elements for which the condition is true. The vowel lab keeps a character only when it is not a vowel.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>words = ["Python", "Lab"]
+[w.lower() for w in words]
+# ['python', 'lab']
 
-        <article class="entry memo" id="memo-slice" data-keys="슬라이스 암기">
-          <div>
-            <h3><code>[시작:끝]</code></h3>
-            <p class="memo-mean">끝은 빠진다. [::-1]은 뒤집기.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>"Python"[1:-1]    # ytho
-"Python"[::-1]    # nohtyP</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-len" data-keys="len 암기">
-          <div>
-            <h3><code>len</code></h3>
-            <p class="memo-mean">칸의 개수. 마지막 번호는 len-1.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>len("Python")    # 6</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-swap" data-keys="첫끝 교환 암기">
-          <div>
-            <h3><code>첫끝 교환</code></h3>
-            <p class="memo-mean">글자는 못 고친다. 조각을 다시 잇는다.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>s = "Python"
-s[-1] + s[1:-1] + s[0]    # nythoP</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-split" data-keys="split 암기">
-          <div>
-            <h3><code>split</code></h3>
-            <p class="memo-mean">비우면 빈칸으로, 인자가 있으면 그 글자로 자른다.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>"a b".split()          # ['a', 'b']
-"a,b".split(",")       # ['a', 'b']</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-join" data-keys="join 암기">
-          <div>
-            <h3><code>join</code></h3>
-            <p class="memo-mean">앞의 글자가 구분자다.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>" ".join(["I", "love"])
-"-".join("HELLO")    # H-E-L-L-O</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-replace" data-keys="replace 암기">
-          <div>
-            <h3><code>replace</code></h3>
-            <p class="memo-mean">바꾼 새 글자를 만든다. 다시 담아야 반영된다.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>s = s.replace(".", "")</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-lower" data-keys="lower 암기">
-          <div>
-            <h3><code>lower</code></h3>
-            <p class="memo-mean">소문자로 바꾼 새 글자.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>"Python".lower()    # python</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-append" data-keys="append 암기">
-          <div>
-            <h3><code>append</code></h3>
-            <p class="memo-mean">하나를 뒤에 붙인다. 결과는 None.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>lst.append("Apple")
-# lst = lst.append(x) 는 금지</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-extend" data-keys="extend 암기">
-          <div>
-            <h3><code>extend</code></h3>
-            <p class="memo-mean">안을 풀어서 붙인다. append는 통째로 한 칸.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>a = [1, 2]
+[c for c in "artificial" if c not in "aeiou"]
+# rtfcl</code></pre></section>
+</article>
+<article class="entry" id="zip" data-keys="zip 짝 묶기">
+<header class="entry-head"><h3><code>zip</code></h3><p class="kind"><span class="ko">함수</span><span class="en">function</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">zip은 여러 묶음의 같은 위치끼리 튜플로 묶어 주는 함수다. 가장 짧은 묶음이 끝나는 자리에서 멈춘다.</p><p class="en">zip is a function that pairs elements at the same position across sequences. It stops when the shortest sequence ends.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>zip(묶음, 묶음)</code></p><p class="ko">for에서 두 이름을 한 번에 받을 수 있다. 학생과 점수를 행으로 만들 때 컴프리헨션과 함께 쓴다.</p><p class="en">A for statement can receive both names at once. The labs use it with a comprehension to build rows of a student and a grade.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>students = ["A", "B"]
+grades = [90, 80, 70]
+[[x, y] for x, y in zip(students, grades)]
+# [['A', 90], ['B', 80]]</code></pre></section>
+</article>
+<article class="entry" id="sum" data-keys="sum 합계">
+<header class="entry-head"><h3><code>sum</code></h3><p class="kind"><span class="ko">함수</span><span class="en">function</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">sum은 수들의 합을 반환하는 함수다. 리스트는 바뀌지 않는다.</p><p class="en">sum is a function that returns the total of a sequence of numbers. The list is unchanged.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>sum(수의묶음)</code></p><p class="ko">세금 실습은 가격 리스트의 합에 세율을 곱한다. 합이 실수여도 출력 전에 int로 소수점 아래를 버릴 수 있다.</p><p class="en">The tax lab multiplies the sum of a price list by the tax rate. Even when the sum is a float, int can drop the fraction before printing.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>prices = [12000, 5500, 3200]
+subtotal = sum(prices)       # 20700
+tax = int(subtotal * 0.1)    # 2070
+total = int(subtotal + tax)  # 22770</code></pre></section>
+</article>
+<div class="table-wrap sheet"><table class="spec sheet"><caption><span class="ko">리스트 정리</span><span class="en">List summary</span></caption><thead><tr><th><span class="ko">표기</span><span class="en">Form</span></th><th><span class="ko">하는 일</span><span class="en">What it does</span></th><th><span class="ko">원본</span><span class="en">Original</span></th><th><span class="ko">반환</span><span class="en">Returns</span></th></tr></thead><tbody><tr><td><code>lst[i] = x</code></td><td><span class="ko">그 칸을 교체</span><span class="en">Replace that element</span></td><td><span class="ko">변경</span><span class="en">modified</span></td><td><span class="ko">없음</span><span class="en">none</span></td></tr><tr><td><code>lst.append(x)</code></td><td><span class="ko">하나를 뒤에 추가</span><span class="en">Add one element at the end</span></td><td><span class="ko">변경</span><span class="en">modified</span></td><td>None</td></tr><tr><td><code>lst.extend(xs)</code></td><td><span class="ko">칸을 풀어 추가</span><span class="en">Add each element</span></td><td><span class="ko">변경</span><span class="en">modified</span></td><td>None</td></tr><tr><td><code>lst.insert(i, x)</code></td><td><span class="ko">그 번호에 삽입</span><span class="en">Insert at an index</span></td><td><span class="ko">변경</span><span class="en">modified</span></td><td>None</td></tr><tr><td><code>lst.remove(x)</code></td><td><span class="ko">같은 값의 첫 칸 삭제</span><span class="en">Delete the first equal value</span></td><td><span class="ko">변경</span><span class="en">modified</span></td><td>None</td></tr><tr><td><code>lst.pop(i)</code></td><td><span class="ko">그 번호를 빼냄</span><span class="en">Remove that index</span></td><td><span class="ko">변경</span><span class="en">modified</span></td><td><span class="ko">뺀 값</span><span class="en">the removed value</span></td></tr><tr><td><code>del lst[i]</code></td><td><span class="ko">그 번호를 삭제</span><span class="en">Delete that index</span></td><td><span class="ko">변경</span><span class="en">modified</span></td><td><span class="ko">없음</span><span class="en">none</span></td></tr><tr><td><code>lst.count(x)</code></td><td><span class="ko">개수</span><span class="en">Count</span></td><td><span class="ko">유지</span><span class="en">unchanged</span></td><td><span class="ko">int, 없으면 0</span><span class="en">int, or 0</span></td></tr><tr><td><code>lst.index(x)</code></td><td><span class="ko">첫 위치</span><span class="en">First position</span></td><td><span class="ko">유지</span><span class="en">unchanged</span></td><td><span class="ko">int, 없으면 오류</span><span class="en">int, or an error</span></td></tr><tr><td><code>lst.sort()</code></td><td><span class="ko">제자리 정렬</span><span class="en">Sort in place</span></td><td><span class="ko">변경</span><span class="en">modified</span></td><td>None</td></tr><tr><td><code>lst.reverse()</code></td><td><span class="ko">현재 순서를 뒤집음</span><span class="en">Reverse the current order</span></td><td><span class="ko">변경</span><span class="en">modified</span></td><td>None</td></tr><tr><td><code>sorted(lst)</code></td><td><span class="ko">정렬된 복사본</span><span class="en">A sorted copy</span></td><td><span class="ko">유지</span><span class="en">unchanged</span></td><td><span class="ko">새 list</span><span class="en">new list</span></td></tr><tr><td><code>a + b</code></td><td><span class="ko">이어 붙인 복사본</span><span class="en">A joined copy</span></td><td><span class="ko">유지</span><span class="en">unchanged</span></td><td><span class="ko">새 list</span><span class="en">new list</span></td></tr></tbody></table></div></section>
+<section class="chapter" id="tuples"><header class="chapter-head"><p class="num">09</p><div><h2><span class="ko">튜플</span><span class="en">Tuples</span></h2><p class="lead"><span class="ko">튜플(tuple)은 순서가 있는 불변 값이다. 조회와 새 튜플을 만드는 연산은 되고, 칸을 고치는 메서드는 없다.</span><span class="en">A tuple is an ordered immutable value. Lookup and operations that build a new tuple are valid. Methods that edit an element are not.</span></p></div></header><article class="entry" id="tuple-make" data-keys="튜플 만들기 ()">
+<header class="entry-head"><h3><code>튜플 만들기</code></h3><p class="kind"><span class="ko">자료형</span><span class="en">type</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">괄호와 쉼표는 튜플을 만드는 표기다. 만든 뒤 인덱스, 슬라이스, len, in, <code>+</code>, <code>*</code>는 리스트와 같은 규칙이다. 다만 결과가 튜플로 돌아온다.</p><p class="en">Parentheses and commas are the notation for a tuple. After creation, indexing, slicing, len, in, <code>+</code>, and <code>*</code> follow the list rules, except that the result is a tuple.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>(값, 값)</code></p><p class="ko">빈 튜플은 <code>()</code> 또는 <code>tuple()</code>이다. 칸을 대입으로 바꾸거나 append를 호출할 수 없다.</p><p class="en">The empty tuple is <code>()</code> or <code>tuple()</code>. Element assignment and append are not available.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>t = (10, 20, 30)
+t[0]      # 10
+t[-1]     # 30</code></pre></section>
+</article>
+<article class="entry" id="tuple-one" data-keys="(10,) 쉼표">
+<header class="entry-head"><h3><code>(10,)</code></h3><p class="kind"><span class="ko">표기</span><span class="en">notation</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">값이 하나인 튜플에는 쉼표가 필요하다. 쉼표가 튜플을 만들고, 괄호는 묶는 기호일 뿐이다.</p><p class="en">A one-element tuple requires a comma. The comma makes the tuple; the parentheses only group.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>(값,)</code></p><p class="ko"><code>(10)</code>은 정수 10이다. <code>(10,)</code>만 길이가 1인 튜플이다.</p><p class="en"><code>(10)</code> is the integer 10. Only <code>(10,)</code> is a tuple of length 1.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>t = (10,)
+n = (10)
+# t는 튜플, n은 정수</code></pre></section>
+</article>
+<article class="entry" id="tuple-edit" data-keys="튜플을 리스트로">
+<header class="entry-head"><h3><code>고치려면 리스트로</code></h3><p class="kind"><span class="ko">함수</span><span class="en">function</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">튜플의 칸을 고쳐야 하면 list로 가변 리스트를 만든 뒤 수정하고, 필요하면 tuple로 다시 고정한다.</p><p class="en">When an element must change, build a mutable list with list, edit that, and freeze it again with tuple if a tuple is required.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>list(튜플)</code></p><p class="ko">count와 index는 튜플에서도 리스트와 같이 동작한다. 없으면 count는 0, index는 ValueError다.</p><p class="en">count and index work on a tuple as they do on a list. A missing value makes count return 0 and index raise ValueError.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>t = (1, 2, 3)
+lst = list(t)
+lst[0] = 9
+t = tuple(lst)
+# (9, 2, 3)</code></pre></section>
+</article>
+<article class="entry" id="tuple-nest" data-keys="중첩 튜플 nested">
+<header class="entry-head"><h3><code>중첩 튜플</code></h3><p class="kind"><span class="ko">자료형</span><span class="en">type</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">튜플의 칸이 다시 튜플이나 리스트일 수 있다. 바깥 번호를 먼저 고르고, 그 결과에서 안쪽 번호를 고른다.</p><p class="en">An element of a tuple may itself be a tuple or a list. Select the outer index first, then the inner index of that result.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>t[바깥][안쪽]</code></p><p class="ko">슬라이스 <code>t[:3]</code>, <code>t[-2:]</code>, <code>t[::2]</code>도 새 튜플을 만든다. 끝 번호는 빠지고, 간격 2는 한 칸씩 건너뛴다.</p><p class="en">The slices <code>t[:3]</code>, <code>t[-2:]</code>, and <code>t[::2]</code> also build a new tuple. The stop is excluded, and a step of 2 keeps every other element.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>t = ((1, 2), (3, 4), (5, 6))
+t[1][0]    # 3</code></pre></section>
+</article>
+<div class="table-wrap sheet"><table class="spec sheet"><caption><span class="ko">튜플 정리</span><span class="en">Tuple summary</span></caption><thead><tr><th><span class="ko">표기</span><span class="en">Form</span></th><th><span class="ko">하는 일</span><span class="en">What it does</span></th><th><span class="ko">원본</span><span class="en">Original</span></th><th><span class="ko">반환</span><span class="en">Returns</span></th></tr></thead><tbody><tr><td><code>t[i]</code></td><td><span class="ko">한 칸 조회</span><span class="en">Read one element</span></td><td><span class="ko">유지</span><span class="en">unchanged</span></td><td><span class="ko">그 칸</span><span class="en">that element</span></td></tr><tr><td><code>t[a:b]</code></td><td><span class="ko">구간의 새 튜플</span><span class="en">A new tuple for the span</span></td><td><span class="ko">유지</span><span class="en">unchanged</span></td><td><span class="ko">tuple</span><span class="en">tuple</span></td></tr><tr><td><code>t + u</code></td><td><span class="ko">이어 붙임</span><span class="en">Concatenation</span></td><td><span class="ko">유지</span><span class="en">unchanged</span></td><td><span class="ko">새 tuple</span><span class="en">new tuple</span></td></tr><tr><td><code>t * n</code></td><td><span class="ko">정수 횟수만큼 반복</span><span class="en">Repeat an integer number of times</span></td><td><span class="ko">유지</span><span class="en">unchanged</span></td><td><span class="ko">새 tuple</span><span class="en">new tuple</span></td></tr><tr><td><code>t.count(x)</code></td><td><span class="ko">개수. 없으면 0</span><span class="en">Count, or 0</span></td><td><span class="ko">유지</span><span class="en">unchanged</span></td><td>int</td></tr><tr><td><code>t.index(x)</code></td><td><span class="ko">첫 위치. 없으면 오류</span><span class="en">First position, or an error</span></td><td><span class="ko">유지</span><span class="en">unchanged</span></td><td>int</td></tr><tr><td><code>t[i] = x</code></td><td><span class="ko">성립하지 않음</span><span class="en">Not valid</span></td><td><span class="ko">유지</span><span class="en">unchanged</span></td><td><span class="ko">TypeError</span><span class="en">TypeError</span></td></tr><tr><td><code>(10,)</code></td><td><span class="ko">길이 1인 튜플</span><span class="en">A tuple of length 1</span></td><td><span class="ko">—</span><span class="en">—</span></td><td><span class="ko">tuple</span><span class="en">tuple</span></td></tr><tr><td><code>(10)</code></td><td><span class="ko">괄호만 있는 정수</span><span class="en">An integer in parentheses</span></td><td><span class="ko">—</span><span class="en">—</span></td><td>int</td></tr></tbody></table></div></section>
+<section class="chapter" id="dicts"><header class="chapter-head"><p class="num">10</p><div><h2><span class="ko">딕셔너리</span><span class="en">Dictionaries</span></h2><p class="lead"><span class="ko">딕셔너리(dictionary)는 키(key)로 값(value)을 찾는다. in과 조회는 키만 보고, 키의 순서는 넣은 순서를 유지한다.</span><span class="en">A dictionary finds a value by its key. Membership and lookup inspect keys only, and key order is insertion order.</span></p></div></header><article class="entry" id="dict-make" data-keys="딕셔너리 만들기 {}">
+<header class="entry-head"><h3><code>딕셔너리 만들기</code></h3><p class="kind"><span class="ko">자료형</span><span class="en">type</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">중괄호 안의 <code>키: 값</code>이 딕셔너리다. 키는 그 자리에서 고유해야 한다. 같은 키를 다시 쓰면 나중 값이 남는다.</p><p class="en">A <code>key: value</code> pair inside braces is a dictionary. A key must be unique in that literal. Writing the same key again keeps the later value.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>{키: 값}</code></p><p class="ko"><code>{}</code>와 <code>dict()</code>는 빈 딕셔너리다. 빈 리스트 <code>[]</code>, 빈 튜플 <code>()</code>와 표기가 다르니 빈 값을 서로 바꾸지 않는다.</p><p class="en"><code>{}</code> and <code>dict()</code> are empty dictionaries. The notation differs from the empty list <code>[]</code> and the empty tuple <code>()</code>.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>menu = {"Burger": 5500, "Pizza": 8500}</code></pre></section>
+</article>
+<article class="entry" id="dict-access" data-keys="딕셔너리 조회 대입">
+<header class="entry-head"><h3><code>읽고 고치기</code></h3><p class="kind"><span class="ko">표기</span><span class="en">notation</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">있는 키를 읽으면 그 값을 반환한다. 있는 키에 대입하면 값만 바뀌고, 없는 키에 대입하면 그 키가 새로 생긴다.</p><p class="en">Reading an existing key returns its value. Assigning to an existing key replaces the value. Assigning to a missing key creates that key.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>d[키]    d[키] = 값</code></p><p class="ko">없는 키를 대괄호로 읽으면 KeyError다. 실패 없이 읽고 싶으면 get을 쓴다.</p><p class="en">Reading a missing key with brackets raises KeyError. Use get when a missing key should not fail.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>menu = {"Burger": 5500}
+menu["Pizza"] = 8500
+menu["Burger"]    # 5500</code></pre></section>
+</article>
+<article class="entry" id="dict-del" data-keys="딕셔너리 del">
+<header class="entry-head"><h3><code>키 지우기</code></h3><p class="kind"><span class="ko">문</span><span class="en">statement</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">del은 그 키와 값을 딕셔너리에서 지우는 문이다. 지워진 값은 반환되지 않는다.</p><p class="en">del is a statement that removes that key and its value from the dictionary. The removed value is not returned.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>del d[키]</code></p><p class="ko">없는 키를 지우면 KeyError다. 지운 값이 필요하면 pop을 쓴다.</p><p class="en">Deleting a missing key raises KeyError. Use pop when the removed value is needed.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>menu = {"Burger": 5500, "Tteokbokki": 4000}
+del menu["Tteokbokki"]</code></pre></section>
+</article>
+<article class="entry" id="dict-in" data-keys="딕셔너리 in 키">
+<header class="entry-head"><h3><code>키 있는지</code></h3><p class="kind"><span class="ko">연산자</span><span class="en">operator</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">딕셔너리의 <code>in</code>은 키의 존재만 bool로 반환한다. 값 목록은 보지 않는다.</p><p class="en">For a dictionary, <code>in</code> returns a bool for the presence of a key. It does not search the values.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>키 in d</code></p><p class="ko">값이 <code>"Math"</code>여도 키가 아니면 <code>"Math" in d</code>는 False다. 키 <code>"major"</code>만 True다.</p><p class="en">Even when a value is <code>"Math"</code>, <code>"Math" in d</code> is False unless that text is also a key. Only the key <code>"major"</code> is True.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>d = {"major": "Math"}
+"major" in d    # True
+"Math" in d      # False</code></pre></section>
+</article>
+<article class="entry" id="update" data-keys="update 여러 키">
+<header class="entry-head"><h3><code>update</code></h3><p class="kind"><span class="ko">메서드</span><span class="en">method</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">update는 다른 딕셔너리의 키와 값을 반영하고 None을 반환한다. 같은 키는 새 값으로 바뀌고, 없던 키는 추가된다.</p><p class="en">update applies the keys and values of another dictionary and returns None. An existing key is replaced, and a new key is added.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>d.update(다른딕셔너리)</code></p><p class="ko">한 키만 바꿀 때는 <code>d[키] = 값</code>으로 충분하다. 여러 키를 한 번에 반영할 때 update를 쓴다.</p><p class="en">For a single key, <code>d[key] = value</code> is enough. Use update when several keys should be applied at once.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>d = {"a": 1}
+d.update({"a": 2, "b": 3})
+# {'a': 2, 'b': 3}</code></pre></section>
+</article>
+<article class="entry" id="views" data-keys="keys values items">
+<header class="entry-head"><h3><code>keys values items</code></h3><p class="kind"><span class="ko">메서드</span><span class="en">method</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">keys는 키를, values는 값을, items는 <code>(키, 값)</code> 쌍을 순서대로 내놓는다. 딕셔너리 자체는 바뀌지 않는다.</p><p class="en">keys yields the keys, values yields the values, and items yields <code>(key, value)</code> pairs, in order. The dictionary itself is unchanged.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>d.keys()    d.values()    d.items()</code></p><p class="ko">for에 바로 넘길 수 있다. items를 언패킹하면 키와 값을 한 번에 받는다. 리스트로 고정하려면 list를 한 번 더 호출한다.</p><p class="en">They can be passed straight to for. Unpacking items receives the key and the value together. Call list again when a fixed list is required.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>d = {"name": "Ada", "age": "20"}
+list(d.keys())      # ['name', 'age']
+list(d.items())     # [('name', 'Ada'), ('age', '20')]</code></pre></section>
+</article>
+<article class="entry" id="get" data-keys="get 없으면 None">
+<header class="entry-head"><h3><code>get</code></h3><p class="kind"><span class="ko">메서드</span><span class="en">method</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">get은 키가 있으면 그 값을, 없으면 None을 반환한다. 딕셔너리는 바뀌지 않고, KeyError도 나지 않는다.</p><p class="en">get returns the value when the key exists, and None when it does not. The dictionary is unchanged, and KeyError is not raised.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>d.get(키)</code></p><p class="ko">없는 키를 오류로 알고 싶으면 <code>d[키]</code>를 쓴다. 빠져 있어도 다음 문장으로 가야 하면 get을 쓴다.</p><p class="en">Use <code>d[key]</code> when a missing key should be an error. Use get when the program should continue past a missing key.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>d = {"gpa": 4.0}
+d.get("gpa")        # 4.0
+d.get("address")    # None</code></pre></section>
+</article>
+<article class="entry" id="dict-pop" data-keys="딕셔너리 pop">
+<header class="entry-head"><h3><code>pop</code></h3><p class="kind"><span class="ko">메서드</span><span class="en">method</span></p></header>
+<section class="block"><h4><span class="ko">특징</span><span class="en">Behavior</span></h4><p class="ko">딕셔너리의 pop은 그 키를 지우고, 지워진 값을 반환한다. 리스트 pop이 번호를 받는 것과 이름이 같고 인자의 의미가 다르다.</p><p class="en">Dictionary pop removes that key and returns the removed value. It shares a name with list pop, but the argument is a key rather than an index.</p></section>
+<section class="block"><h4><span class="ko">사용</span><span class="en">Usage</span></h4><p class="sig"><code>d.pop(키)</code></p><p class="ko">없는 키는 KeyError다. del은 값을 돌려주지 않고, pop은 돌려준다.</p><p class="en">A missing key raises KeyError. del does not hand back the value; pop does.</p></section>
+<section class="block"><h4><span class="ko">예시</span><span class="en">Example</span></h4><pre><code>d = {"name": "Sungmin", "status": "active"}
+print(d.pop("status"))    # active
+# d는 {'name': 'Sungmin'}</code></pre></section>
+</article>
+<div class="table-wrap sheet"><table class="spec sheet"><caption><span class="ko">딕셔너리 정리</span><span class="en">Dictionary summary</span></caption><thead><tr><th><span class="ko">표기</span><span class="en">Form</span></th><th><span class="ko">하는 일</span><span class="en">What it does</span></th><th><span class="ko">원본</span><span class="en">Original</span></th><th><span class="ko">없을 때</span><span class="en">If missing</span></th></tr></thead><tbody><tr><td><code>d[key]</code></td><td><span class="ko">값을 읽음</span><span class="en">Read the value</span></td><td><span class="ko">유지</span><span class="en">unchanged</span></td><td>KeyError</td></tr><tr><td><code>d[key] = v</code></td><td><span class="ko">있으면 수정, 없으면 추가</span><span class="en">Replace or insert</span></td><td><span class="ko">변경</span><span class="en">modified</span></td><td><span class="ko">추가됨</span><span class="en">the key is added</span></td></tr><tr><td><code>del d[key]</code></td><td><span class="ko">키를 삭제</span><span class="en">Delete the key</span></td><td><span class="ko">변경</span><span class="en">modified</span></td><td>KeyError</td></tr><tr><td><code>key in d</code></td><td><span class="ko">키가 있는지</span><span class="en">Whether the key exists</span></td><td><span class="ko">유지</span><span class="en">unchanged</span></td><td><span class="ko">False</span><span class="en">False</span></td></tr><tr><td><code>d.update(other)</code></td><td><span class="ko">여러 키를 반영</span><span class="en">Apply several keys</span></td><td><span class="ko">변경</span><span class="en">modified</span></td><td><span class="ko">추가됨. 반환은 None</span><span class="en">added; returns None</span></td></tr><tr><td><code>d.get(key)</code></td><td><span class="ko">값을 읽음</span><span class="en">Read the value</span></td><td><span class="ko">유지</span><span class="en">unchanged</span></td><td>None</td></tr><tr><td><code>d.pop(key)</code></td><td><span class="ko">지우고 값을 반환</span><span class="en">Remove and return the value</span></td><td><span class="ko">변경</span><span class="en">modified</span></td><td>KeyError</td></tr><tr><td><code>d.keys()</code></td><td><span class="ko">키의 나열</span><span class="en">The keys</span></td><td><span class="ko">유지</span><span class="en">unchanged</span></td><td><span class="ko">—</span><span class="en">—</span></td></tr><tr><td><code>d.values()</code></td><td><span class="ko">값의 나열</span><span class="en">The values</span></td><td><span class="ko">유지</span><span class="en">unchanged</span></td><td><span class="ko">—</span><span class="en">—</span></td></tr><tr><td><code>d.items()</code></td><td><span class="ko">키와 값의 쌍</span><span class="en">Key-value pairs</span></td><td><span class="ko">유지</span><span class="en">unchanged</span></td><td><span class="ko">—</span><span class="en">—</span></td></tr></tbody></table></div></section>
+<section class="chapter" id="compare"><header class="chapter-head"><p class="num">11</p><div><h2><span class="ko">같이 보는 구분</span><span class="en">Distinctions</span></h2><p class="lead"><span class="ko">이름은 비슷해도 원본을 고치는지, 무엇을 반환하는지, 없을 때 무엇이 되는지가 다르다.</span><span class="en">Similar names still differ in whether they modify the original, what they return, and what happens when the target is missing.</span></p></div></header><div class="table-wrap sheet"><table class="spec sheet"><caption><span class="ko">고치는지와 반환값</span><span class="en">Mutation and return value</span></caption><thead><tr><th><span class="ko">코드</span><span class="en">Code</span></th><th><span class="ko">원본</span><span class="en">Original</span></th><th><span class="ko">반환</span><span class="en">Returns</span></th></tr></thead><tbody><tr><td><code>lst.append(x)</code></td><td><span class="ko">뒤에 한 칸 추가</span><span class="en">One element added at the end</span></td><td>None</td></tr><tr><td><code>lst.extend(xs)</code></td><td><span class="ko">풀어 추가</span><span class="en">Elements added</span></td><td>None</td></tr><tr><td><code>lst.insert(i, x)</code></td><td><span class="ko">그 자리에 삽입</span><span class="en">Inserted at that index</span></td><td>None</td></tr><tr><td><code>lst.remove(x)</code></td><td><span class="ko">같은 값의 첫 칸 삭제</span><span class="en">First equal value deleted</span></td><td>None</td></tr><tr><td><code>lst.pop(i)</code></td><td><span class="ko">그 번호 삭제</span><span class="en">That index deleted</span></td><td><span class="ko">뺀 값</span><span class="en">removed value</span></td></tr><tr><td><code>lst.sort()</code></td><td><span class="ko">제자리 정렬</span><span class="en">Sorted in place</span></td><td>None</td></tr><tr><td><code>lst.reverse()</code></td><td><span class="ko">제자리 역순</span><span class="en">Reversed in place</span></td><td>None</td></tr><tr><td><code>sorted(lst)</code></td><td><span class="ko">유지</span><span class="en">unchanged</span></td><td><span class="ko">새 리스트</span><span class="en">new list</span></td></tr><tr><td><code>a + b</code></td><td><span class="ko">유지</span><span class="en">unchanged</span></td><td><span class="ko">이어 붙인 새 값</span><span class="en">a new joined value</span></td></tr><tr><td><code>s.replace(a, b)</code></td><td><span class="ko">유지</span><span class="en">unchanged</span></td><td><span class="ko">새 문자열</span><span class="en">new string</span></td></tr><tr><td><code>d.update(other)</code></td><td><span class="ko">키를 반영</span><span class="en">Keys applied</span></td><td>None</td></tr><tr><td><code>d.pop(key)</code></td><td><span class="ko">그 키 삭제</span><span class="en">That key deleted</span></td><td><span class="ko">지운 값</span><span class="en">removed value</span></td></tr></tbody></table></div>
+<div class="table-wrap sheet"><table class="spec sheet"><caption><span class="ko">대상이 없을 때</span><span class="en">When the target is missing</span></caption><thead><tr><th><span class="ko">코드</span><span class="en">Code</span></th><th><span class="ko">결과</span><span class="en">Result</span></th></tr></thead><tbody><tr><td><code>lst[i]</code></td><td>IndexError</td></tr><tr><td><code>d[key]</code></td><td>KeyError</td></tr><tr><td><code>d.get(key)</code></td><td>None</td></tr><tr><td><code>lst.remove(x)</code></td><td>ValueError</td></tr><tr><td><code>lst.index(x)</code></td><td>ValueError</td></tr><tr><td><code>lst.count(x)</code></td><td><span class="ko">0. 오류가 아니다</span><span class="en">0. Not an error</span></td></tr><tr><td><code>key in d</code></td><td><span class="ko">키만 본다. 값이면 False일 수 있다</span><span class="en">Keys only. A value may still be False</span></td></tr></tbody></table></div>
+<div class="table-wrap sheet"><table class="spec sheet"><caption><span class="ko">비어 있는 값과 비슷해 보이는 표기</span><span class="en">Empty values and lookalike notation</span></caption><thead><tr><th><span class="ko">표기</span><span class="en">Form</span></th><th><span class="ko">뜻</span><span class="en">Meaning</span></th></tr></thead><tbody><tr><td><code>[]</code></td><td><span class="ko">빈 리스트. list()와 같다</span><span class="en">Empty list. Same as list()</span></td></tr><tr><td><code>()</code></td><td><span class="ko">빈 튜플. tuple()와 같다</span><span class="en">Empty tuple. Same as tuple()</span></td></tr><tr><td><code>(10,)</code></td><td><span class="ko">값이 하나인 튜플</span><span class="en">A one-element tuple</span></td></tr><tr><td><code>(10)</code></td><td><span class="ko">정수 10</span><span class="en">The integer 10</span></td></tr><tr><td><code>{}</code></td><td><span class="ko">빈 딕셔너리. dict()와 같다</span><span class="en">Empty dictionary. Same as dict()</span></td></tr></tbody></table></div>
+<article class="entry" id="questions" data-keys="문제 확인 퀴즈 check"><header class="entry-head"><h3 class="plain"><span class="ko">확인하고 답하기</span><span class="en">Check, then answer</span></h3><p class="kind"><span class="ko">확인</span><span class="en">Check</span></p></header><div class="q-list"><details class="q"><summary>range(1, 4) <span class="ko">에 들어 있는 수는?</span><span class="en">contains which integers?</span></summary><p class="ko">1, 2, 3이다. 끝 값 4는 포함되지 않는다.</p><p class="en">1, 2, and 3. The stop 4 is excluded.</p></details><details class="q"><summary>5 / 2 와 5 // 2 <span class="ko">의 결과는?</span><span class="en">evaluate to?</span></summary><p class="ko"><code>5 / 2</code>는 2.5, <code>5 // 2</code>는 2다. 슬래시 하나는 float다.</p><p class="en"><code>5 / 2</code> is 2.5 and <code>5 // 2</code> is 2. A single slash yields a float.</p></details><details class="q"><summary>input() <span class="ko">으로 3을 읽으면 자료형은?</span><span class="en">reads 3 as which type?</span></summary><p class="ko">문자열 "3"이다. 정수로 쓰려면 int로 감싼다.</p><p class="en">The string "3". Wrap it in int when an integer is required.</p></details><details class="q"><summary>"Python"[1:-1] <span class="ko">의 값은?</span><span class="en">evaluates to?</span></summary><p class="ko">ytho다. 끝 문자 n은 빠진다.</p><p class="en">ytho. The final character n is excluded.</p></details><details class="q"><summary>"-".join("HELLO") <span class="ko">의 값은?</span><span class="en">evaluates to?</span></summary><p class="ko">H-E-L-L-O다. 구분자는 메서드 앞에 둔다.</p><p class="en">H-E-L-L-O. The separator stands before the method.</p></details><details class="q"><summary>append와 extend <span class="ko">의 차이는?</span><span class="en">differ how?</span></summary><p class="ko">append는 인자 전체가 한 칸이고, extend는 안을 푼다. 둘 다 None을 반환한다.</p><p class="en">append stores the whole argument as one element. extend unpacks it. Both return None.</p></details><details class="q"><summary>lst.sort() <span class="ko">를 print하면?</span><span class="en">prints as?</span></summary><p class="ko">None이다. 정렬은 리스트 안에서 이미 끝났다.</p><p class="en">None. The sort has already finished inside the list.</p></details><details class="q"><summary>(10)과 (10,) <span class="ko">의 차이는?</span><span class="en">differ how?</span></summary><p class="ko">(10)은 정수이고 (10,)은 튜플이다.</p><p class="en">(10) is an integer and (10,) is a tuple.</p></details><details class="q"><summary>{} <span class="ko">는 무엇인가?</span><span class="en">is what?</span></summary><p class="ko">빈 딕셔너리다.</p><p class="en">An empty dictionary.</p></details><details class="q"><summary>"Math" in d  (값이 Math일 때) <span class="ko">는?</span><span class="en">is?</span></summary><p class="ko">키가 아니면 False다.</p><p class="en">False, unless that text is a key.</p></details><details class="q"><summary>d.get("address")와 d["address"] <span class="ko">의 차이는?</span><span class="en">differ how?</span></summary><p class="ko">get은 None이고, 대괄호는 KeyError다.</p><p class="en">get returns None, and brackets raise KeyError.</p></details><details class="q"><summary>[1, 2].append([3]) <span class="ko">이후의 리스트는?</span><span class="en">leaves which list?</span></summary><p class="ko">[1, 2, [3]]이다. append의 반환값은 None이다.</p><p class="en">[1, 2, [3]]. The return value of append is None.</p></details></div></article></section>
+<section class="chapter" id="memo"><header class="chapter-head"><p class="num">12</p><div><h2><span class="ko">암기</span><span class="en">Recall</span></h2><p class="lead"><span class="ko">시험 전에 코드만 다시 보는 단어장이다. 가리기를 누른 뒤 칸을 누르면 그 코드만 열린다.</span><span class="en">A deck of code to review before an exam. Hide the code, then open one card at a time.</span></p></div></header><button type="button" id="memo-toggle" aria-pressed="false"><span class="when-open ko">코드 가리기</span><span class="when-open en">Hide code</span><span class="when-shut ko">코드 보기</span><span class="when-shut en">Show code</span></button><article class="entry memo" id="memo-print" data-keys="print"><div><h3><code>print</code></h3><p class="memo-mean"><span class="ko">표준 출력에 기록한다. 반환값은 None.</span><span class="en">Writes to standard output. Returns None.</span></p></div><div class="memo-code"><pre><code>print("b =", 2)
+# b = 2</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-input" data-keys="input"><div><h3><code>input</code></h3><p class="memo-mean"><span class="ko">한 줄을 읽어 문자열로 반환한다.</span><span class="en">Reads one line and returns a string.</span></p></div><div class="memo-code"><pre><code>n = int(input("Enter a number: "))</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-f" data-keys="f-string"><div><h3><code>f-string</code></h3><p class="memo-mean"><span class="ko">중괄호 안의 식을 문자열에 넣는다.</span><span class="en">Inserts the expression inside braces into a string.</span></p></div><div class="memo-code"><pre><code>print(f"n={n}")</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-hash" data-keys="comment 주석"><div><h3><code>#</code></h3><p class="memo-mean"><span class="ko">이 기호부터 줄 끝은 실행하지 않는다.</span><span class="en">From this mark to the end of the line is not executed.</span></p></div><div class="memo-code"><pre><code>print(1)
+# print(2)</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-eq" data-keys="assignment 대입"><div><h3><code>=</code></h3><p class="memo-mean"><span class="ko">오른쪽을 계산해 이름에 연결한다. 비교는 ==.</span><span class="en">Evaluates the right side and binds it. Equality is ==.</span></p></div><div class="memo-code"><pre><code>n = 9
+n = n - 2</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-unpack" data-keys="unpacking 언패킹"><div><h3><code>a, b =</code></h3><p class="memo-mean"><span class="ko">칸 수와 이름 수가 같아야 한다.</span><span class="en">The number of elements must match the number of names.</span></p></div><div class="memo-code"><pre><code>name, age = ["Ada", "20"]</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-int" data-keys="int"><div><h3><code>int()</code></h3><p class="memo-mean"><span class="ko">소수점은 버린다. "9.0"은 바로 변환되지 않는다.</span><span class="en">Drops the fraction. "9.0" does not convert directly.</span></p></div><div class="memo-code"><pre><code>int(9.9)      # 9
+int("9")       # 9</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-float" data-keys="float"><div><h3><code>float()</code></h3><p class="memo-mean"><span class="ko">실수로 변환한다.</span><span class="en">Converts to a float.</span></p></div><div class="memo-code"><pre><code>float(2)      # 2.0</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-str" data-keys="str"><div><h3><code>str()</code></h3><p class="memo-mean"><span class="ko">이어 붙이기 전에 수를 문자열로 만든다.</span><span class="en">Makes a number a string before concatenation.</span></p></div><div class="memo-code"><pre><code>"a = " + str(1)</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-div" data-keys="division 나눗셈"><div><h3><code>/ // %</code></h3><p class="memo-mean"><span class="ko">참나눗셈, 몫, 나머지. / 는 float.</span><span class="en">True division, quotient, remainder. / is a float.</span></p></div><div class="memo-code"><pre><code>5 / 2     # 2.5
+5 // 2    # 2
+5 % 2     # 1</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-pow" data-keys="power 거듭제곱"><div><h3><code>**</code></h3><p class="memo-mean"><span class="ko">거듭제곱. 지수 0.5는 제곱근.</span><span class="en">Exponentiation. An exponent of 0.5 is a square root.</span></p></div><div class="memo-code"><pre><code>9 ** 3      # 729
+9 ** 0.5    # 3.0</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-aug" data-keys="augmented +="><div><h3><code>+=</code></h3><p class="memo-mean"><span class="ko">현재 값으로 계산해 같은 이름에 다시 대입한다.</span><span class="en">Computes from the current value and assigns it back.</span></p></div><div class="memo-code"><pre><code>n = 4
+n *= 2     # 8</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-cmp" data-keys="comparison 비교"><div><h3><code>==</code></h3><p class="memo-mean"><span class="ko">같음을 묻는다. 연쇄 비교는 이웃이 모두 참일 때 참.</span><span class="en">Asks about equality. A chain is true only when every neighbor is.</span></p></div><div class="memo-code"><pre><code>print(2 == 3)       # False
+print(1 &lt; 2 &lt; 3)    # True</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-in" data-keys="in membership"><div><h3><code>in</code></h3><p class="memo-mean"><span class="ko">문자열은 부분, 리스트는 칸, 딕셔너리는 키.</span><span class="en">Substring, element, or key, depending on the type.</span></p></div><div class="memo-code"><pre><code>"Py" in "Python"
+"Math" in {"major": "Math"}   # False</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-while" data-keys="while"><div><h3><code>while</code></h3><p class="memo-mean"><span class="ko">조건이 참인 동안 본문을 반복한다.</span><span class="en">Repeats the body while the condition is true.</span></p></div><div class="memo-code"><pre><code>while len(s) &lt; 2:
+    s = input()</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-for" data-keys="for range"><div><h3><code>for / range</code></h3><p class="memo-mean"><span class="ko">끝 값은 빠진다. 1부터 n까지는 끝이 n + 1.</span><span class="en">The stop is excluded. From 1 through n, the stop is n + 1.</span></p></div><div class="memo-code"><pre><code>for i in range(1, n + 1):
+    print(i)</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-idx" data-keys="index 인덱스"><div><h3><code>[0] [-1]</code></h3><p class="memo-mean"><span class="ko">0이 첫 칸, -1이 마지막 칸.</span><span class="en">0 is the first element and -1 is the last.</span></p></div><div class="memo-code"><pre><code>s = "Python"
+s[0]     # P
+s[-1]    # n</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-slice" data-keys="slice 슬라이스"><div><h3><code>[시작:끝]</code></h3><p class="memo-mean"><span class="ko">끝은 빠진다. [::-1]은 역순.</span><span class="en">The stop is excluded. [::-1] reverses.</span></p></div><div class="memo-code"><pre><code>"Python"[1:-1]    # ytho
+"Python"[::-1]    # nohtyP</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-len" data-keys="len"><div><h3><code>len</code></h3><p class="memo-mean"><span class="ko">칸의 개수. 마지막 번호는 len - 1.</span><span class="en">The number of elements. The last index is len - 1.</span></p></div><div class="memo-code"><pre><code>len("Python")    # 6</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-swap" data-keys="swap 첫끝"><div><h3><code>첫 끝 교환</code></h3><p class="memo-mean"><span class="ko">문자열은 불변이다. 조각을 다시 잇는다.</span><span class="en">A string is immutable. Join the pieces again.</span></p></div><div class="memo-code"><pre><code>s = "Python"
+s[-1] + s[1:-1] + s[0]    # nythoP</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-split" data-keys="split"><div><h3><code>split</code></h3><p class="memo-mean"><span class="ko">인자가 없으면 공백, 있으면 그 구분자로 자른다.</span><span class="en">No argument splits on whitespace. An argument is the separator.</span></p></div><div class="memo-code"><pre><code>"a b".split()
+"a,b".split(",")</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-join" data-keys="join"><div><h3><code>join</code></h3><p class="memo-mean"><span class="ko">앞의 문자열이 구분자다.</span><span class="en">The string in front is the separator.</span></p></div><div class="memo-code"><pre><code>" ".join(["I", "love"])
+"-".join("HELLO")    # H-E-L-L-O</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-replace" data-keys="replace"><div><h3><code>replace</code></h3><p class="memo-mean"><span class="ko">새 문자열을 반환한다. 다시 대입해야 남는다.</span><span class="en">Returns a new string. Assign it back to keep it.</span></p></div><div class="memo-code"><pre><code>s = s.replace(".", "")</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-lower" data-keys="lower"><div><h3><code>lower</code></h3><p class="memo-mean"><span class="ko">소문자로 바꾼 새 문자열.</span><span class="en">A new string in lowercase.</span></p></div><div class="memo-code"><pre><code>"Python".lower()    # python</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-append" data-keys="append"><div><h3><code>append</code></h3><p class="memo-mean"><span class="ko">하나를 뒤에 추가한다. 반환값은 None.</span><span class="en">Adds one element at the end. Returns None.</span></p></div><div class="memo-code"><pre><code>lst.append("Apple")
+# lst = lst.append(x) 는 하지 않는다</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-extend" data-keys="extend"><div><h3><code>extend</code></h3><p class="memo-mean"><span class="ko">안을 풀어 추가한다. append는 통째로 한 칸.</span><span class="en">Unpacks the argument. append stores it as one element.</span></p></div><div class="memo-code"><pre><code>a = [1, 2]
 a.append([3, 4])    # [1, 2, [3, 4]]
 a = [1, 2]
-a.extend([3, 4])    # [1, 2, 3, 4]</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-plus" data-keys="+ * 암기">
-          <div>
-            <h3><code>+ *</code></h3>
-            <p class="memo-mean">새 리스트를 만든다. 원본은 그대로.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>[1, 2] + [3]
-(1, 2) * 3</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-insert" data-keys="insert 암기">
-          <div>
-            <h3><code>insert</code></h3>
-            <p class="memo-mean">그 번호에 끼워 넣는다. 결과는 None.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>lst.insert(1, 15)</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-remove" data-keys="remove pop del 암기">
-          <div>
-            <h3><code>remove / pop / del</code></h3>
-            <p class="memo-mean">remove는 값, pop과 del은 번호. pop만 뺀 값을 돌려준다.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>lst.remove(30)
+a.extend([3, 4])    # [1, 2, 3, 4]</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-plus" data-keys="+ *"><div><h3><code>+ *</code></h3><p class="memo-mean"><span class="ko">새 리스트를 만든다. 원본은 유지된다.</span><span class="en">Builds a new list. The original stays.</span></p></div><div class="memo-code"><pre><code>[1, 2] + [3]
+(1, 2) * 3</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-insert" data-keys="insert"><div><h3><code>insert</code></h3><p class="memo-mean"><span class="ko">그 번호에 끼워 넣는다. 반환값은 None.</span><span class="en">Inserts at that index. Returns None.</span></p></div><div class="memo-code"><pre><code>lst.insert(1, 15)</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-remove" data-keys="remove pop del"><div><h3><code>remove / pop / del</code></h3><p class="memo-mean"><span class="ko">remove는 값, pop과 del은 번호. pop만 값을 반환한다.</span><span class="en">remove takes a value. pop and del take an index. Only pop returns the value.</span></p></div><div class="memo-code"><pre><code>lst.remove(30)
 lst.pop(0)
-del lst[0]</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-sorted" data-keys="sorted sort 암기">
-          <div>
-            <h3><code>sorted / sort</code></h3>
-            <p class="memo-mean">sorted는 새 리스트. sort는 제자리에서 바꾸고 None.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>sorted(lst)
+del lst[0]</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-sorted" data-keys="sorted sort"><div><h3><code>sorted / sort</code></h3><p class="memo-mean"><span class="ko">sorted는 새 리스트. sort는 제자리에서 None.</span><span class="en">sorted returns a new list. sort is in-place and returns None.</span></p></div><div class="memo-code"><pre><code>sorted(lst)
 lst.sort()
-# print(lst, reverse=True) 는 오류</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-reverse" data-keys="reverse 암기">
-          <div>
-            <h3><code>reverse</code></h3>
-            <p class="memo-mean">지금 순서를 거꾸로. 정렬이 아니다. 결과는 None.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>lst.reverse()
-lst[::-1]</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-comp" data-keys="컴프리헨션 암기">
-          <div>
-            <h3><code>[식 for]</code></h3>
-            <p class="memo-mean">돌면서 새 리스트를 만든다.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>[w.lower() for w in words]
-[c for c in s if c not in "aeiou"]</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-zip" data-keys="zip 암기">
-          <div>
-            <h3><code>zip</code></h3>
-            <p class="memo-mean">같은 위치끼리 묶는다. 짧은 쪽에서 멈춘다.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>[[x, y] for x, y in zip(students, grades)]</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-sum" data-keys="sum 암기">
-          <div>
-            <h3><code>sum</code></h3>
-            <p class="memo-mean">숫자의 합.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>sum([12000, 5500, 3200])    # 20700</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-tuple" data-keys="튜플 쉼표 암기">
-          <div>
-            <h3><code>(10,)</code></h3>
-            <p class="memo-mean">값 하나짜리 튜플에는 쉼표. (10)은 정수.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>t = (10,)
-n = (10)</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-dict" data-keys="딕셔너리 암기">
-          <div>
-            <h3><code>d[키]</code></h3>
-            <p class="memo-mean">있으면 고치고, 없으면 새로 만든다. 없는 키를 읽으면 오류.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>menu["Pizza"] = 8500
-menu["Ice Cream"] = 2000
-del menu["Tteokbokki"]</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-get" data-keys="get pop 암기">
-          <div>
-            <h3><code>get / pop</code></h3>
-            <p class="memo-mean">get은 없어도 None. pop은 키를 지우고 값을 돌려준다.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>d.get("address")    # None
-d.pop("status")</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-        <article class="entry memo" id="memo-in-dict" data-keys="딕셔너리 in 암기">
-          <div>
-            <h3><code>in d</code></h3>
-            <p class="memo-mean">키만 본다.</p>
-          </div>
-          <div class="memo-code">
-            <pre><code>"major" in d    # 키면 True
-"Math" in d      # 값이면 False</code></pre>
-            <p class="memo-hint">눌러서 코드 보기</p>
-          </div>
-        </article>
-
-      </section>
-      <footer class="colophon">
-        <p>수록 범위는 실습 day 1–day 4다. 예제 출력은 Python 3에서 확인했다.</p>
-      </footer>
+# print(lst, reverse=True) 는 TypeError</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-reverse" data-keys="reverse"><div><h3><code>reverse</code></h3><p class="memo-mean"><span class="ko">현재 순서를 뒤집는다. 정렬이 아니다. 반환값은 None.</span><span class="en">Reverses the current order. Not a sort. Returns None.</span></p></div><div class="memo-code"><pre><code>lst.reverse()
+lst[::-1]</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-comp" data-keys="comprehension 컴프리헨션"><div><h3><code>[식 for]</code></h3><p class="memo-mean"><span class="ko">돌면서 새 리스트를 만든다.</span><span class="en">Builds a new list as it iterates.</span></p></div><div class="memo-code"><pre><code>[w.lower() for w in words]
+[c for c in s if c not in "aeiou"]</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-zip" data-keys="zip"><div><h3><code>zip</code></h3><p class="memo-mean"><span class="ko">같은 위치끼리 묶는다. 짧은 쪽에서 멈춘다.</span><span class="en">Pairs equal positions. Stops at the shortest.</span></p></div><div class="memo-code"><pre><code>[[x, y] for x, y in zip(students, grades)]</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-sum" data-keys="sum"><div><h3><code>sum</code></h3><p class="memo-mean"><span class="ko">수들의 합.</span><span class="en">The total of the numbers.</span></p></div><div class="memo-code"><pre><code>sum([12000, 5500, 3200])    # 20700</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-tuple" data-keys="tuple (10,)"><div><h3><code>(10,)</code></h3><p class="memo-mean"><span class="ko">값 하나에는 쉼표가 필요하다. (10)은 정수.</span><span class="en">One value needs a comma. (10) is an integer.</span></p></div><div class="memo-code"><pre><code>t = (10,)
+n = (10)</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-dict" data-keys="dictionary 딕셔너리"><div><h3><code>d[키]</code></h3><p class="memo-mean"><span class="ko">있으면 수정하고 없으면 추가한다. 없는 키를 읽으면 KeyError.</span><span class="en">Assigning replaces or inserts. Reading a missing key raises KeyError.</span></p></div><div class="memo-code"><pre><code>menu["Pizza"] = 8500
+del menu["Tteokbokki"]</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-get" data-keys="get pop"><div><h3><code>get / pop</code></h3><p class="memo-mean"><span class="ko">get은 없어도 None. pop은 키를 지우고 값을 반환한다.</span><span class="en">get returns None if missing. pop removes the key and returns the value.</span></p></div><div class="memo-code"><pre><code>d.get("address")    # None
+d.pop("status")</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article>
+<article class="entry memo" id="memo-in-dict" data-keys="in dictionary"><div><h3><code>in d</code></h3><p class="memo-mean"><span class="ko">키만 본다.</span><span class="en">Looks only at keys.</span></p></div><div class="memo-code"><pre><code>"major" in d    # 키이면 True
+"Math" in d      # 값이면 False</code></pre><p class="memo-hint"><span class="ko">눌러서 코드 보기</span><span class="en">Tap to show the code</span></p></div></article></section>
+      <footer class="colophon"><p><span class="ko">수록 범위는 실습 day 1–day 4다. 예제 출력은 Python 3에서 확인했다.</span><span class="en">The scope is labs day 1–day 4. Example output was checked in Python 3.</span></p></footer>
     </main>
   </div>
-  <script src="js/site.js?v=2"></script>
+  <script src="js/site.js?v=3"></script>
 </body>
 </html>

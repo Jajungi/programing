@@ -131,30 +131,28 @@
     };
   });
 
-  function linkLabel(link) {
-    var num = link.querySelector("span").textContent.trim();
-    var name = "";
-    Array.prototype.forEach.call(link.childNodes, function (node) {
-      if (node.nodeType === Node.TEXT_NODE) name += node.textContent;
-    });
-    return num + " " + name.trim();
+  function sideName(link, cls) {
+    var num = link.querySelector(".idx").textContent.trim();
+    var name = link.querySelector("." + cls).textContent.trim();
+    return num + " " + name;
   }
 
   chapters.forEach(function (chapter, index) {
     var nav = document.createElement("nav");
     nav.className = "chapter-pager";
-    nav.setAttribute("aria-label", "장 이동");
     if (index > 0) {
       var prev = document.createElement("a");
       prev.href = "#" + chapters[index - 1].id;
-      prev.textContent = "이전  " + linkLabel(links[index - 1]);
+      prev.innerHTML = '<span class="ko">이전  ' + sideName(links[index - 1], "ko") + "</span>"
+        + '<span class="en">Previous  ' + sideName(links[index - 1], "en") + "</span>";
       nav.appendChild(prev);
     }
     if (index < chapters.length - 1) {
       var next = document.createElement("a");
       next.className = "next";
       next.href = "#" + chapters[index + 1].id;
-      next.textContent = "다음  " + linkLabel(links[index + 1]);
+      next.innerHTML = '<span class="ko">다음  ' + sideName(links[index + 1], "ko") + "</span>"
+        + '<span class="en">Next  ' + sideName(links[index + 1], "en") + "</span>";
       nav.appendChild(next);
     }
     chapter.appendChild(nav);
@@ -166,7 +164,6 @@
     memoToggle.addEventListener("click", function () {
       var covered = memo.classList.toggle("is-covered");
       memoToggle.setAttribute("aria-pressed", covered ? "true" : "false");
-      memoToggle.textContent = covered ? "코드 보기" : "코드 가리기";
       if (!covered) {
         Array.prototype.forEach.call(memo.querySelectorAll(".memo.is-open"), function (card) {
           card.classList.remove("is-open");
@@ -204,8 +201,36 @@
     });
 
     empty.hidden = !(q && shown === 0);
-    count.textContent = q ? shown + "개 항목" : "";
+    var langNow = document.documentElement.lang === "en" ? "en" : "ko";
+    count.textContent = q ? (shown + (langNow === "en" ? " entries" : "개 항목")) : "";
   }
+
+  var langToggle = document.getElementById("lang-toggle");
+
+  function applyLang(next) {
+    document.documentElement.lang = next;
+    search.placeholder = next === "en" ? "function, method, operator" : "함수, 메서드, 연산자";
+    document.title = next === "en"
+      ? "Python reference — day 1–4"
+      : "프로그래밍 참고 — Python day 1–4";
+    if (langToggle) {
+      langToggle.textContent = next === "en" ? "한글" : "EN";
+      langToggle.setAttribute("aria-pressed", next === "en" ? "true" : "false");
+    }
+    sidenav.setAttribute("aria-label", next === "en" ? "Chapters" : "장");
+    try { localStorage.setItem("programming-ref-lang", next); } catch (err) {}
+    if (search.value) applyFilter();
+  }
+
+  if (langToggle) {
+    langToggle.addEventListener("click", function () {
+      applyLang(document.documentElement.lang === "en" ? "ko" : "en");
+    });
+  }
+
+  var storedLang = "ko";
+  try { storedLang = localStorage.getItem("programming-ref-lang") === "en" ? "en" : "ko"; } catch (err) {}
+  applyLang(storedLang);
 
   search.addEventListener("input", applyFilter);
 

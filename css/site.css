@@ -120,8 +120,27 @@ body {
   letter-spacing: 0.01em;
 }
 
-.search {
+.lang-toggle {
+  flex: 0 0 auto;
+  height: 32px;
   margin-left: auto;
+  padding: 0 12px;
+  border: 1px solid var(--ink);
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+}
+
+.lang-toggle[aria-pressed="true"] {
+  background: var(--ink);
+  color: #fff;
+}
+
+.search {
+  margin-left: 10px;
 }
 
 .search input {
@@ -175,7 +194,7 @@ body {
   text-decoration: none;
 }
 
-.sidenav a span {
+.sidenav a .idx {
   color: var(--tertiary);
   font-size: 12px;
   font-variant-numeric: tabular-nums;
@@ -191,8 +210,16 @@ body {
   box-shadow: inset 2px 0 0 var(--ink);
 }
 
-.sidenav a[aria-current="true"] span {
+.sidenav a[aria-current="true"] .idx {
   color: var(--ink);
+}
+
+html[lang="ko"] .en {
+  display: none !important;
+}
+
+html[lang="en"] .ko {
+  display: none !important;
 }
 
 .main {
@@ -376,6 +403,36 @@ table.spec code {
   font-family: var(--mono);
   font-size: 14.5px;
   line-height: 1.6;
+}
+
+.block {
+  margin-top: 22px;
+}
+
+.block h4 {
+  margin: 0 0 8px;
+  color: var(--secondary);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.block p {
+  max-width: var(--measure);
+  margin: 0;
+}
+
+.block p + p,
+.block .sig {
+  margin-top: 10px;
+}
+
+.block ul {
+  margin-top: 0;
+}
+
+.sheet {
+  margin-top: 36px;
 }
 
 .entry h4 {
@@ -753,6 +810,18 @@ details.q p {
   cursor: pointer;
 }
 
+#memo-toggle .when-shut {
+  display: none;
+}
+
+#memo.is-covered #memo-toggle .when-open {
+  display: none !important;
+}
+
+#memo.is-covered #memo-toggle .when-shut {
+  display: inline;
+}
+
 #memo-toggle[aria-pressed="true"] {
   background: var(--ink);
   color: #fff;
@@ -777,19 +846,23 @@ details.q p {
   }
 
   .site-header .inner {
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     height: auto;
-    gap: 12px;
+    gap: 8px 12px;
     padding: 10px 16px;
   }
 
   .brand {
-    flex: 0 0 auto;
+    flex: 1 1 auto;
+  }
+
+  .lang-toggle {
+    margin-left: 8px;
   }
 
   .search {
-    flex: 1 1 auto;
-    width: auto;
+    flex: 1 1 100%;
+    width: 100%;
     min-width: 0;
     margin-left: 0;
   }
@@ -846,6 +919,10 @@ details.q p {
 
   table.spec {
     min-width: 0;
+  }
+
+  table.spec.sheet {
+    min-width: 640px;
   }
 
   table.spec td:first-child {
