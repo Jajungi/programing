@@ -657,28 +657,12 @@ details.q p {
   letter-spacing: -0.02em;
 }
 
-.chapter-pager {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  margin-top: 36px;
-  padding-top: 16px;
-  border-top: 1px solid var(--line);
-}
-
-.chapter-pager a {
-  color: var(--ink);
-  font-size: 14px;
-  text-decoration: none;
-}
-
-.chapter-pager a:hover {
-  color: var(--link);
-}
-
-.chapter-pager .next {
-  margin-left: auto;
-  text-align: right;
+.chapter-end {
+  margin: 36px 0 4px;
+  padding-top: 12px;
+  border-top: 1px solid #ececee;
+  color: #c8c8cc;
+  font-size: 12px;
 }
 
 .trace-board {
@@ -1011,8 +995,7 @@ details.q p {
   .count,
   .progress,
   .mark,
-  .trace-controls,
-  .chapter-pager {
+  .trace-controls {
     display: none !important;
   }
 

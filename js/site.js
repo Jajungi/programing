@@ -131,31 +131,11 @@
     };
   });
 
-  function sideName(link, cls) {
-    var num = link.querySelector(".idx").textContent.trim();
-    var name = link.querySelector("." + cls).textContent.trim();
-    return num + " " + name;
-  }
-
-  chapters.forEach(function (chapter, index) {
-    var nav = document.createElement("nav");
-    nav.className = "chapter-pager";
-    if (index > 0) {
-      var prev = document.createElement("a");
-      prev.href = "#" + chapters[index - 1].id;
-      prev.innerHTML = '<span class="ko">이전  ' + sideName(links[index - 1], "ko") + "</span>"
-        + '<span class="en">Previous  ' + sideName(links[index - 1], "en") + "</span>";
-      nav.appendChild(prev);
-    }
-    if (index < chapters.length - 1) {
-      var next = document.createElement("a");
-      next.className = "next";
-      next.href = "#" + chapters[index + 1].id;
-      next.innerHTML = '<span class="ko">다음  ' + sideName(links[index + 1], "ko") + "</span>"
-        + '<span class="en">Next  ' + sideName(links[index + 1], "en") + "</span>";
-      nav.appendChild(next);
-    }
-    chapter.appendChild(nav);
+  chapters.forEach(function (chapter) {
+    var end = document.createElement("p");
+    end.className = "chapter-end";
+    end.innerHTML = '<span class="ko">단원 끝</span><span class="en">End of chapter</span>';
+    chapter.appendChild(end);
   });
 
   var memo = document.getElementById("memo");
