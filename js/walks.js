@@ -307,6 +307,118 @@
     }
   };
 
+  var TERMS = {
+    io: [
+      [],
+      ["b = 2.0"],
+      ["b = 2.0", ">Enter a number: 4"],
+      ["b = 2.0", ">Enter a number: 4"],
+      ["b = 2.0", ">Enter a number: 4", "n=4"],
+      ["b = 2.0", ">Enter a number: 4", "n=4"]
+    ],
+    values: [
+      ["=n = 9"],
+      ["=n = 7"],
+      ["=a = 2", "=b = 2"],
+      ["=name = Ada", "=age = \"20\""],
+      ["=name = Ada", "=age = \"20\"", "<class 'int'>"]
+    ],
+    convert: [
+      ["9"],
+      ["9", "9"],
+      ["9", "9", "2.0"],
+      ["9", "9", "2.0", "a = 1"],
+      ["9", "9", "2.0", "a = 1", "=chars = ['a', 'b']"],
+      ["9", "9", "2.0", "a = 1", "=chars = ['a', 'b']", "=pair = (1, 2)"],
+      ["9", "9", "2.0", "a = 1", "=chars = ['a', 'b']", "=pair = (1, 2)", "=menu = {'Burger': 5500}"]
+    ],
+    ops: [
+      ["=x = 9.0"],
+      ["4.5"],
+      ["4.5", "4.0"],
+      ["4.5", "4.0", "1.0"],
+      ["4.5", "4.0", "1.0", "729.0"],
+      ["4.5", "4.0", "1.0", "729.0", "=n = 8"],
+      ["4.5", "4.0", "1.0", "729.0", "=n = 8", "True"],
+      ["4.5", "4.0", "1.0", "729.0", "=n = 8", "True", "True"],
+      ["4.5", "4.0", "1.0", "729.0", "=n = 8", "True", "True", "False"],
+      ["4.5", "4.0", "1.0", "729.0", "=n = 8", "True", "True", "False", "18.0"],
+      ["4.5", "4.0", "1.0", "729.0", "=n = 8", "True", "True", "False", "18.0", "False"],
+      ["4.5", "4.0", "1.0", "729.0", "=n = 8", "True", "True", "False", "18.0", "False", "True"]
+    ],
+    loops: [
+      ["=s = Hi"],
+      ["H", "i"],
+      ["H", "i", "1", "2", "3"],
+      ["H", "i", "1", "2", "3", "=k = 0"],
+      ["H", "i", "1", "2", "3", "=k = 1"],
+      ["H", "i", "1", "2", "3", "=k = 1", "2 1", "2 2", "3 1", "3 2"]
+    ],
+    indexing: [
+      ["=word = Python"],
+      ["P"],
+      ["P", "n"],
+      ["P", "n", "=nums = [10, 20, 30, 40]"],
+      ["P", "n", "40"],
+      ["P", "n", "40", "ytho"],
+      ["P", "n", "40", "ytho", "nohtyP"],
+      ["P", "n", "40", "ytho", "nohtyP", "6"]
+    ],
+    strings: [
+      ["=s[-1] = n"],
+      ["=s[1:-1] = ytho"],
+      ["=s = nythoP"],
+      ["=parts = ['a', 'b']"],
+      ["=joined = H-E-L-L-O"],
+      ["=clean = abc"],
+      ["=low = python"]
+    ],
+    lists: [
+      ["=lst = [10, 15, 30]"],
+      ["=lst = [10, 15, 30, [3]]"],
+      ["=a = [1, 2, 3, 4]"],
+      ["=b = [1, 2, 3]"],
+      ["=box = [10, 15, 20, 20]"],
+      ["=box = [10, 15, 20]"],
+      ["=x = 10", "=box = [15, 20]"],
+      ["=box = [20]"],
+      ["2", "1"],
+      ["2", "1", "[1, 2, 3]", "=nums = [1, 2, 3]"],
+      ["2", "1", "[1, 2, 3]", "=nums = [3, 2, 1]"],
+      ["2", "1", "[1, 2, 3]", "=grid[1] = [3, 4]"],
+      ["2", "1", "[1, 2, 3]", "3"],
+      ["2", "1", "[1, 2, 3]", "3", "20700"],
+      ["2", "1", "[1, 2, 3]", "3", "20700", "[1, 2, 1, 2]"],
+      ["2", "1", "[1, 2, 3]", "3", "20700", "[1, 2, 1, 2]", "=lowers = ['python', 'lab']"],
+      ["2", "1", "[1, 2, 3]", "3", "20700", "[1, 2, 1, 2]", "=kept = ['r', 't', 'f', 'c', 'l']"],
+      ["2", "1", "[1, 2, 3]", "3", "20700", "[1, 2, 1, 2]", "=rows = [['A', 90], ['B', 80]]"]
+    ],
+    tuples: [
+      ["10"],
+      ["10", "=one = (10,)", "=plain = 10"],
+      ["10", "=edited = [9, 20, 30]", "=t2 = (9, 20, 30)"],
+      ["10", "3"],
+      ["10", "3", "(10, 20)"],
+      ["10", "3", "(10, 20)", "1"],
+      ["10", "3", "(10, 20)", "1", "=longer = (10, 20, 30, 40)"]
+    ],
+    dicts: [
+      ["=menu = {'Burger': 5500, 'Pizza': 8500}"],
+      ["5500"],
+      ["5500", "=menu = {'Pizza': 8500}"],
+      ["5500", "True", "False"],
+      ["5500", "True", "False", "=d = {'major': 'Math', 'a': 2}"],
+      ["5500", "True", "False", "None"],
+      ["5500", "True", "False", "None", "active"],
+      ["5500", "True", "False", "None", "active", "['name', 'age']"],
+      ["5500", "True", "False", "None", "active", "['name', 'age']", "['Ada', '20']"],
+      ["5500", "True", "False", "None", "active", "['name', 'age']", "['Ada', '20']", "[('name', 'Ada'), ('age', '20')]"]
+    ]
+  };
+  Object.keys(TERMS).forEach(function (key) {
+    WALKS[key].terms = TERMS[key];
+  });
+
   var titles = {
     io: ["통합 코드", "Combined code"],
     values: ["통합 코드", "Combined code"],
@@ -411,6 +523,31 @@
     root.querySelector(".walk-count").textContent = (index + 1) + " / " + walk.steps.length;
     root.querySelector(".prev").disabled = index === 0;
     root.querySelector(".next").disabled = index === walk.steps.length - 1;
+    var termBody = root.querySelector(".walk-term-body");
+    termBody.textContent = "";
+    var rows = (walk.terms && walk.terms[index]) || [];
+    if (!rows.length) {
+      var empty = document.createElement("p");
+      empty.className = "term-empty";
+      empty.textContent = lang() === "en" ? "no output" : "출력 없음";
+      termBody.appendChild(empty);
+    } else {
+      rows.forEach(function (row) {
+        var line = document.createElement("div");
+        var text = row;
+        var kind = "out";
+        if (row.charAt(0) === ">") {
+          kind = "in";
+          text = row.slice(1);
+        } else if (row.charAt(0) === "=") {
+          kind = "echo";
+          text = row.slice(1);
+        }
+        line.className = "term-line term-" + kind;
+        line.textContent = text;
+        termBody.appendChild(line);
+      });
+    }
   }
 
   function build(mount, key) {
@@ -462,6 +599,35 @@
     var next = document.createElement("button");
     next.type = "button";
     next.className = "next";
+    var termToggle = document.createElement("button");
+    termToggle.type = "button";
+    termToggle.className = "term-toggle";
+    termToggle.setAttribute("aria-expanded", "false");
+    var term = document.createElement("aside");
+    term.className = "walk-term";
+    var termBar = document.createElement("div");
+    termBar.className = "term-bar";
+    var termLabel = document.createElement("span");
+    termLabel.className = "term-label";
+    var termClose = document.createElement("button");
+    termClose.type = "button";
+    termClose.className = "term-close";
+    var termBody = document.createElement("div");
+    termBody.className = "walk-term-body";
+    termBar.appendChild(termLabel);
+    termBar.appendChild(termClose);
+    term.appendChild(termBar);
+    term.appendChild(termBody);
+    function setTerm(open) {
+      root.classList.toggle("is-term", open);
+      termToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+    termToggle.addEventListener("click", function () {
+      setTerm(!root.classList.contains("is-term"));
+    });
+    termClose.addEventListener("click", function () {
+      setTerm(false);
+    });
     prev.addEventListener("click", function () {
       if (current > 0) {
         current -= 1;
@@ -477,10 +643,12 @@
     nav.appendChild(prev);
     nav.appendChild(count);
     nav.appendChild(next);
+    nav.appendChild(termToggle);
     var stage = document.createElement("div");
     stage.className = "walk-stage";
     stage.appendChild(pre);
     stage.appendChild(nav);
+    stage.appendChild(term);
     body.appendChild(stage);
     body.appendChild(laneBox);
     body.appendChild(stepTitle);
@@ -502,6 +670,9 @@
       next.textContent = "▼";
       prev.setAttribute("aria-label", ko ? "이전" : "Previous");
       next.setAttribute("aria-label", ko ? "다음" : "Next");
+      termToggle.textContent = ko ? "결과" : "Out";
+      termLabel.textContent = ko ? "출력" : "Output";
+      termClose.textContent = ko ? "닫기" : "Close";
       paint(root, walk, current);
     }
     relabel();
