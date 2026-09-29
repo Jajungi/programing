@@ -1038,22 +1038,40 @@ details.q p {
 }
 
 .walk {
-  margin-top: 28px;
-  padding-top: 28px;
-  border-top: 1px solid var(--ink);
+  margin-top: 8px;
+  border-top: 1px solid var(--line);
 }
 
-.walk h3 {
-  margin: 0 0 8px;
-  font-size: 20px;
+.walk-toggle {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 14px 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  font-size: 16px;
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
+  text-align: left;
+  cursor: pointer;
 }
 
-.walk-lead {
-  max-width: var(--measure);
-  margin: 0 0 16px;
+.walk-toggle::after {
+  content: "+";
+  margin-left: auto;
   color: var(--secondary);
+  font-weight: 400;
+}
+
+.walk.is-open .walk-toggle::after {
+  content: "–";
+}
+
+.walk-body {
+  padding-bottom: 8px;
 }
 
 .walk-code {
@@ -1066,25 +1084,26 @@ details.q p {
 }
 
 .walk-code .line.is-line {
-  box-shadow: inset 3px 0 0 #ffe566;
+  box-shadow: inset 3px 0 0 #d7b23a;
 }
 
 .walk-code .is-name,
 .walk-code .is-idx,
 .walk-code .is-out {
-  color: #1d1d1f;
+  color: inherit;
+  background-clip: padding-box;
 }
 
 .walk-code .is-name {
-  background: #9cdcfe;
+  background-color: #1d4f86;
 }
 
 .walk-code .is-idx {
-  background: #ffe566;
+  background-color: #7a5a12;
 }
 
 .walk-code .is-out {
-  background: #b6f0c2;
+  background-color: #1c5c38;
 }
 
 .lane {
@@ -1148,37 +1167,17 @@ details.q p {
   font-size: 14px;
 }
 
-.walk-list {
+.step-title {
   margin: 16px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.walk-list li + li {
-  margin-top: 8px;
-}
-
-.walk-list button {
-  display: block;
-  width: 100%;
-  padding: 8px 0;
-  border: 0;
-  background: none;
-  color: var(--secondary);
-  font: inherit;
   font-size: 15px;
-  text-align: left;
-  cursor: pointer;
-}
-
-.walk-list li.is-on button {
-  color: var(--ink);
   font-weight: 600;
 }
 
-.walk-list .detail {
+.step-note {
   max-width: var(--measure);
-  margin: 0 0 8px;
+  margin: 6px 0 0;
+  font-size: 15.5px;
+  line-height: 1.7;
 }
 
 .walk-nav {

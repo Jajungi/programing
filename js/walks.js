@@ -308,16 +308,16 @@
   };
 
   var titles = {
-    io: ["이 단원을 한 번에", "This chapter in one run"],
-    values: ["이 단원을 한 번에", "This chapter in one run"],
-    convert: ["이 단원을 한 번에", "This chapter in one run"],
-    ops: ["이 단원을 한 번에", "This chapter in one run"],
-    loops: ["이 단원을 한 번에", "This chapter in one run"],
-    indexing: ["이 단원을 한 번에", "This chapter in one run"],
-    strings: ["이 단원을 한 번에", "This chapter in one run"],
-    lists: ["이 단원을 한 번에", "This chapter in one run"],
-    tuples: ["이 단원을 한 번에", "This chapter in one run"],
-    dicts: ["이 단원을 한 번에", "This chapter in one run"]
+    io: ["통합 코드", "Combined code"],
+    values: ["통합 코드", "Combined code"],
+    convert: ["통합 코드", "Combined code"],
+    ops: ["통합 코드", "Combined code"],
+    loops: ["통합 코드", "Combined code"],
+    indexing: ["통합 코드", "Combined code"],
+    strings: ["통합 코드", "Combined code"],
+    lists: ["통합 코드", "Combined code"],
+    tuples: ["통합 코드", "Combined code"],
+    dicts: ["통합 코드", "Combined code"]
   };
 
   function lang() {
@@ -330,7 +330,7 @@
 
   function paint(root, walk, index) {
     var item = walk.steps[index];
-    Array.prototype.forEach.call(root.querySelectorAll(".mark"), function (mark) {
+    Array.prototype.forEach.call(root.querySelectorAll(".hl"), function (mark) {
       mark.classList.remove("is-name", "is-idx", "is-out");
     });
     Array.prototype.forEach.call(root.querySelectorAll(".line"), function (line) {
@@ -338,7 +338,7 @@
     });
     function markIds(ids, cls) {
       (ids || []).forEach(function (id) {
-        var node = root.querySelector('.mark[data-id="' + id + '"]');
+        var node = root.querySelector('.hl[data-id="' + id + '"]');
         if (node) node.classList.add(cls);
       });
     }
@@ -376,20 +376,10 @@
         });
         box.appendChild(rowEl);
       });
-      var cap = document.createElement("p");
-      cap.className = "lane-cap";
-      cap.textContent = textOf(item.lane, "captionKo", "captionEn");
-      box.appendChild(cap);
       laneBox.appendChild(box);
     }
-    Array.prototype.forEach.call(root.querySelectorAll(".walk-list li"), function (li, liIndex) {
-      var on = liIndex === index;
-      li.classList.toggle("is-on", on);
-      var detail = li.querySelector(".detail");
-      detail.hidden = !on;
-      detail.textContent = textOf(walk.steps[liIndex], "ko", "en");
-      li.querySelector("button").textContent = (liIndex + 1) + ". " + textOf(walk.steps[liIndex], "titleKo", "titleEn");
-    });
+    root.querySelector(".step-title").textContent = textOf(item, "titleKo", "titleEn");
+    root.querySelector(".step-note").textContent = textOf(item, "ko", "en");
     root.querySelector(".walk-count").textContent = (index + 1) + " / " + walk.steps.length;
     root.querySelector(".prev").disabled = index === 0;
     root.querySelector(".next").disabled = index === walk.steps.length - 1;
@@ -401,9 +391,13 @@
     var current = 0;
     var root = document.createElement("section");
     root.className = "walk";
-    var heading = document.createElement("h3");
-    var lead = document.createElement("p");
-    lead.className = "walk-lead";
+    var toggle = document.createElement("button");
+    toggle.type = "button";
+    toggle.className = "walk-toggle";
+    toggle.setAttribute("aria-expanded", "false");
+    var body = document.createElement("div");
+    body.className = "walk-body";
+    body.hidden = true;
     var pre = document.createElement("pre");
     pre.className = "walk-code";
     var code = document.createElement("code");
@@ -416,7 +410,7 @@
         span.textContent = token.t;
         if (token.k) span.className = "tok-" + token.k;
         if (token.id) {
-          span.className = (span.className ? span.className + " " : "") + "mark";
+          span.className = (span.className ? span.className + " " : "") + "hl";
           span.setAttribute("data-id", token.id);
         }
         lineEl.appendChild(span);
@@ -426,22 +420,10 @@
     pre.appendChild(code);
     var laneBox = document.createElement("div");
     laneBox.className = "lane-box";
-    var list = document.createElement("ol");
-    list.className = "walk-list";
-    walk.steps.forEach(function (item, stepIndex) {
-      var li = document.createElement("li");
-      var button = document.createElement("button");
-      button.type = "button";
-      var detail = document.createElement("p");
-      detail.className = "detail";
-      button.addEventListener("click", function () {
-        current = stepIndex;
-        paint(root, walk, current);
-      });
-      li.appendChild(button);
-      li.appendChild(detail);
-      list.appendChild(li);
-    });
+    var stepTitle = document.createElement("p");
+    stepTitle.className = "step-title";
+    var stepNote = document.createElement("p");
+    stepNote.className = "step-note";
     var nav = document.createElement("div");
     nav.className = "walk-nav";
     var prev = document.createElement("button");
@@ -467,20 +449,24 @@
     nav.appendChild(prev);
     nav.appendChild(count);
     nav.appendChild(next);
-    root.appendChild(heading);
-    root.appendChild(lead);
-    root.appendChild(pre);
-    root.appendChild(laneBox);
-    root.appendChild(list);
-    root.appendChild(nav);
+    body.appendChild(pre);
+    body.appendChild(laneBox);
+    body.appendChild(stepTitle);
+    body.appendChild(stepNote);
+    body.appendChild(nav);
+    toggle.addEventListener("click", function () {
+      var open = body.hidden;
+      body.hidden = !open;
+      root.classList.toggle("is-open", open);
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    root.appendChild(toggle);
+    root.appendChild(body);
     mount.appendChild(root);
 
     function relabel() {
       var ko = lang() !== "en";
-      heading.textContent = ko ? titles[key][0] : titles[key][1];
-      lead.textContent = ko
-        ? "노란 줄이 지금 실행하는 줄이다. 파랑은 찾는 이름, 노랑은 번호나 키, 초록은 그 결과다."
-        : "The yellow bar is the line running now. Blue is the name being found, yellow is an index or a key, and green is the result.";
+      toggle.textContent = ko ? titles[key][0] : titles[key][1];
       prev.textContent = ko ? "이전" : "Previous";
       next.textContent = ko ? "다음" : "Next";
       paint(root, walk, current);
