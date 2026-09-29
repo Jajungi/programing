@@ -1061,6 +1061,7 @@ details.q p {
   display: flex;
   align-items: flex-start;
   gap: 8px;
+  position: relative;
 }
 
 .walk-code {
@@ -1286,13 +1287,17 @@ details.q p {
     font-size: 11px;
   }
 
+  .walk-stage {
+    overflow: hidden;
+  }
+
   .walk-term {
-    position: fixed;
-    z-index: 40;
-    top: calc(var(--header-h) + var(--nav-h));
+    position: absolute;
+    z-index: 2;
+    top: 0;
     right: 0;
     bottom: 0;
-    width: min(300px, 86vw);
+    width: min(220px, 72%);
     max-height: none;
     border-left: 1px solid #3a3a3c;
     transform: translateX(100%);
