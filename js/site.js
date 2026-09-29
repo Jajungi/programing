@@ -269,14 +269,19 @@
 
   function syncHeader() {
     var header = document.querySelector(".site-header");
+    var nav = document.getElementById("sidenav");
+    var narrow = window.matchMedia("(max-width: 860px)").matches;
     document.documentElement.style.setProperty("--header-h", header.offsetHeight + "px");
+    document.documentElement.style.setProperty("--nav-h", narrow ? nav.offsetHeight + "px" : "0px");
   }
 
   window.addEventListener("resize", syncHeader);
   syncHeader();
 
   function updateCurrent() {
-    var marker = 110;
+    var marker = (document.querySelector(".site-header").offsetHeight || 0)
+      + (window.matchMedia("(max-width: 860px)").matches ? document.getElementById("sidenav").offsetHeight : 0)
+      + 12;
     var current = null;
     chapters.forEach(function (chapter) {
       if (chapter.hidden) return;
