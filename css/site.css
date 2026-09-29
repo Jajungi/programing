@@ -1036,3 +1036,184 @@ details.q p {
     text-decoration: none;
   }
 }
+
+.walk {
+  margin-top: 28px;
+  padding-top: 28px;
+  border-top: 1px solid var(--ink);
+}
+
+.walk h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.walk-lead {
+  max-width: var(--measure);
+  margin: 0 0 16px;
+  color: var(--secondary);
+}
+
+.walk-code {
+  margin: 0;
+}
+
+.walk-code .line {
+  display: block;
+  padding-left: 10px;
+}
+
+.walk-code .line.is-line {
+  box-shadow: inset 3px 0 0 #ffe566;
+}
+
+.walk-code .is-name,
+.walk-code .is-idx,
+.walk-code .is-out {
+  color: #1d1d1f;
+}
+
+.walk-code .is-name {
+  background: #9cdcfe;
+}
+
+.walk-code .is-idx {
+  background: #ffe566;
+}
+
+.walk-code .is-out {
+  background: #b6f0c2;
+}
+
+.lane {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: var(--sunken);
+}
+
+.lane-name {
+  margin: 0 0 8px;
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+.lane-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.cell {
+  min-width: 52px;
+  padding: 6px 8px 8px;
+  border: 1px solid var(--line);
+  background: #fff;
+  text-align: center;
+}
+
+.cell .cell-i {
+  display: block;
+  color: var(--secondary);
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.cell .cell-v {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--mono);
+  font-size: 15px;
+}
+
+.cell.is-in {
+  border-color: #1d1d1f;
+  background: #fff4c2;
+}
+
+.cell.is-hot {
+  border-color: #1d1d1f;
+  background: #ffe566;
+}
+
+.cell.is-out {
+  color: var(--tertiary);
+  background: transparent;
+}
+
+.lane-cap {
+  margin: 8px 0 0;
+  font-size: 14px;
+}
+
+.walk-list {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.walk-list li + li {
+  margin-top: 8px;
+}
+
+.walk-list button {
+  display: block;
+  width: 100%;
+  padding: 8px 0;
+  border: 0;
+  background: none;
+  color: var(--secondary);
+  font: inherit;
+  font-size: 15px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.walk-list li.is-on button {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.walk-list .detail {
+  max-width: var(--measure);
+  margin: 0 0 8px;
+}
+
+.walk-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.walk-nav button {
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--ink);
+  background: #fff;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.walk-nav button:disabled {
+  border-color: var(--line);
+  color: var(--tertiary);
+}
+
+.sum-head {
+  margin: 36px 0 12px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.entry.sum {
+  padding-top: 8px;
+}
+
+.entry.sum h3 {
+  font-family: var(--font);
+  font-size: 18px;
+}
