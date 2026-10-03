@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 180" role="img" aria-label="Stronger base · larger Kb">
+  <rect width="420" height="180" fill="#fafafa"/>
+  <text x="210" y="22" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="13" fill="#111">Stronger base · larger Kb</text>
+  <text x="210" y="80" text-anchor="middle" font-size="15">stronger base → larger Kb → smaller pKb</text>
+  <text x="210" y="120" text-anchor="middle" font-size="13" fill="#555">pKb = −log Kb</text>
+</svg>

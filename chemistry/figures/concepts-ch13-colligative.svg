@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 220" role="img" aria-label="Colligative properties overview">
+  <rect width="480" height="220" fill="#fafafa"/>
+  <text x="240" y="22" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="13" fill="#111">Colligative properties overview</text>
+  <rect x="30" y="50" width="200" height="70" rx="8" fill="#fff" stroke="#111"/><text x="130" y="90" text-anchor="middle" font-size="12">ΔTb · ΔTf · Π</text>
+  <rect x="250" y="50" width="200" height="70" rx="8" fill="#fff" stroke="#111"/><text x="350" y="90" text-anchor="middle" font-size="12">depend on particles i·m</text>
+  <text x="240" y="160" text-anchor="middle" font-size="12" fill="#555">not on chemical identity of solute</text>
+</svg>

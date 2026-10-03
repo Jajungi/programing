@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 240" role="img" aria-label="Ranking rates by Ea">
+  <rect width="480" height="240" fill="#fafafa"/>
+  <text x="240" y="22" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="13" fill="#111">Ranking rates by Ea</text>
+  <line x1="60" y1="200" x2="420" y2="200" stroke="#111"/>
+  <path d="M80 160 C130 160 150 50 200 50 C250 50 270 150 320 150" fill="none" stroke="#e85d4c" stroke-width="2.5"/>
+  <path d="M80 160 C140 160 170 100 230 100 C290 100 310 150 370 150" fill="none" stroke="#0d6e6e" stroke-width="2.5"/>
+  <text x="200" y="40" text-anchor="middle" font-size="11" fill="#e85d4c">high Ea · slower</text>
+  <text x="300" y="90" text-anchor="middle" font-size="11" fill="#0d6e6e">low Ea · faster</text>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 180" role="img" aria-label="Parts per million (ppm)">
+  <rect width="420" height="180" fill="#fafafa"/>
+  <text x="210" y="22" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="13" fill="#111">Parts per million (ppm)</text>
+  <text x="210" y="80" text-anchor="middle" font-size="16">1 ppm ≈ 1 mg solute / 1 kg solution</text>
+  <text x="210" y="120" text-anchor="middle" font-size="13" fill="#555">trace concentration scale</text>
+  <rect x="60" y="140" width="300" height="14" rx="7" fill="#e5e5e5"/>
+  <rect x="60" y="140" width="8" height="14" rx="4" fill="#0d6e6e"/>
+</svg>

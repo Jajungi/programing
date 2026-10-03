@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 180" role="img" aria-label="Meaning of K magnitude">
+  <rect width="480" height="180" fill="#fafafa"/>
+  <text x="240" y="22" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="13" fill="#111">Meaning of K magnitude</text>
+  <text x="100" y="90" text-anchor="middle" font-size="13">K ≪ 1</text>
+  <text x="100" y="115" text-anchor="middle" font-size="11" fill="#555">mostly reactants</text>
+  <text x="240" y="90" text-anchor="middle" font-size="13">K ≈ 1</text>
+  <text x="240" y="115" text-anchor="middle" font-size="11" fill="#555">comparable</text>
+  <text x="380" y="90" text-anchor="middle" font-size="13">K ≫ 1</text>
+  <text x="380" y="115" text-anchor="middle" font-size="11" fill="#555">mostly products</text>
+  <line x1="60" y1="145" x2="420" y2="145" stroke="#111"/>
+  <circle cx="100" cy="145" r="6" fill="#e85d4c"/><circle cx="240" cy="145" r="6" fill="#888"/><circle cx="380" cy="145" r="6" fill="#0d6e6e"/>
+</svg>

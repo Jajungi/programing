@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 240" role="img" aria-label="Second-order half-life">
+  <rect width="480" height="240" fill="#fafafa"/>
+  <text x="240" y="22" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="13" fill="#111">Second-order half-life</text>
+  <line x1="50" y1="200" x2="430" y2="200" stroke="#111"/>
+  <line x1="50" y1="200" x2="50" y2="40" stroke="#111"/>
+  <path d="M60 50 Q140 60 200 100 T360 170" fill="none" stroke="#0d6e6e" stroke-width="3"/>
+  <line x1="60" y1="50" x2="60" y2="200" stroke="#ccc" stroke-dasharray="3 3"/>
+  <line x1="150" y1="85" x2="150" y2="200" stroke="#c45c26" stroke-dasharray="3 3"/>
+  <text x="150" y="220" text-anchor="middle" font-size="11" fill="#c45c26">t1/2</text>
+  <text x="40" y="55" font-size="11" fill="#555">[A]</text>
+  <text x="420" y="215" font-size="11" fill="#555">t</text>
+  <text x="260" y="60" font-size="12">t1/2 = 1/(k[A]0) · 2nd order</text>
+</svg>

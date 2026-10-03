@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 220" role="img" aria-label="Catalyst vs intermediate">
+  <rect width="520" height="220" fill="#fafafa"/>
+  <text x="260" y="22" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="13" fill="#111">Catalyst vs intermediate</text>
+  <text x="80" y="90" text-anchor="middle" font-size="13">reactants</text>
+  <path d="M120 85 h60" stroke="#111" stroke-width="2"/><polygon points="180,85 168,80 168,90" fill="#111"/>
+  <rect x="190" y="65" width="90" height="40" rx="6" fill="#fde8d8" stroke="#111"/><text x="235" y="90" text-anchor="middle" font-size="12">intermediate</text>
+  <path d="M280 85 h60" stroke="#111" stroke-width="2"/><polygon points="340,85 328,80 328,90" fill="#111"/>
+  <text x="390" y="90" text-anchor="middle" font-size="13">products</text>
+  <rect x="190" y="140" width="140" height="36" rx="6" fill="#dceef8" stroke="#0d6e6e"/>
+  <text x="260" y="163" text-anchor="middle" font-size="12" fill="#0d6e6e">catalyst · regenerated</text>
+  <path d="M260 140 V105" stroke="#0d6e6e" stroke-dasharray="3 3"/>
+</svg>

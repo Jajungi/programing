@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 220" role="img" aria-label="Dielectric between plates">
+  <rect width="420" height="220" fill="#fafafa"/>
+  <text x="210" y="22" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="13" fill="#111">Dielectric between plates</text>
+  <rect x="120" y="50" width="12" height="140" fill="#111"/>
+  <rect x="250" y="50" width="12" height="140" fill="#111"/>
+  <rect x="140" y="70" width="102" height="100" fill="#dceef8" stroke="#0d6e6e"/>
+  <text x="191" y="125" text-anchor="middle" font-size="12">κ</text>
+  <text x="210" y="210" text-anchor="middle" font-size="13">C = κ ε0 A / d</text>
+</svg>

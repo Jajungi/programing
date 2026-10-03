@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 230" role="img" aria-label="Diagnosing order from plots">
+  <rect width="560" height="230" fill="#fafafa"/>
+  <text x="280" y="22" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="13" fill="#111">Diagnosing order from plots</text>
+  <g transform="translate(30,40)">
+    <rect width="150" height="150" fill="#fff" stroke="#e5e5e5"/>
+    <text x="75" y="18" text-anchor="middle" font-size="11">[A] vs t · curved</text>
+    <path d="M25 40 Q70 50 120 120" fill="none" stroke="#999" stroke-width="2"/>
+  </g>
+  <g transform="translate(205,40)">
+    <rect width="150" height="150" fill="#fff" stroke="#e5e5e5"/>
+    <text x="75" y="18" text-anchor="middle" font-size="11">ln[A] vs t</text>
+    <path d="M25 40 Q80 70 120 110" fill="none" stroke="#999" stroke-width="2"/>
+  </g>
+  <g transform="translate(380,40)">
+    <rect width="150" height="150" fill="#fff" stroke="#e5e5e5"/>
+    <text x="75" y="18" text-anchor="middle" font-size="11">1/[A] vs t · linear</text>
+    <line x1="30" y1="120" x2="120" y2="40" stroke="#0d6e6e" stroke-width="2.5"/>
+  </g>
+</svg>

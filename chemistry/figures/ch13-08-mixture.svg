@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 220" role="img" aria-label="Ethanol + water mixture">
+  <rect width="420" height="220" fill="#fafafa"/>
+  <text x="210" y="22" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="13" fill="#111">Ethanol + water mixture</text>
+  <circle cx="140" cy="110" r="50" fill="#fde8d8" stroke="#111"/><text x="140" y="115" text-anchor="middle" font-size="12">EtOH</text>
+  <circle cx="260" cy="110" r="60" fill="#dceef8" stroke="#111"/><text x="260" y="115" text-anchor="middle" font-size="12">H2O</text>
+  <text x="210" y="195" text-anchor="middle" font-size="12">χ · mass % · molality from amounts</text>
+</svg>

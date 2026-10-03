@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 240" role="img" aria-label="Potential above a rod midpoint">
+  <rect width="420" height="240" fill="#fafafa"/>
+  <text x="210" y="22" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="13" fill="#111">Potential above a rod midpoint</text>
+  <line x1="80" y1="180" x2="340" y2="180" stroke="#111" stroke-width="5"/>
+  <circle cx="210" cy="70" r="6" fill="#0d6e6e"/><text x="225" y="75" font-size="12">P</text>
+  <line x1="210" y1="180" x2="210" y2="76" stroke="#888" stroke-dasharray="3 3"/>
+  <text x="225" y="130" font-size="12">h</text>
+  <text x="210" y="210" text-anchor="middle" font-size="12">rod length ℓ · charge Q</text>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 240" role="img" aria-label="Infinite sheet · Gaussian pillbox">
+  <rect width="420" height="240" fill="#fafafa"/>
+  <text x="210" y="22" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="13" fill="#111">Infinite sheet · Gaussian pillbox</text>
+  <rect x="60" y="120" width="300" height="10" fill="#e85d4c"/>
+  <rect x="170" y="70" width="80" height="110" fill="none" stroke="#0d6e6e" stroke-width="2" stroke-dasharray="4 3"/>
+  <path d="M210 70 V40" stroke="#0d6e6e" stroke-width="2"/><polygon points="210,40 205,52 215,52" fill="#0d6e6e"/>
+  <path d="M210 180 V210" stroke="#0d6e6e" stroke-width="2"/><polygon points="210,210 205,198 215,198" fill="#0d6e6e"/>
+  <text x="210" y="230" text-anchor="middle" font-size="12">E = σ/(2ε0) each side</text>
+</svg>

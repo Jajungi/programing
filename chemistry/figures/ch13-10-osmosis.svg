@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 240" role="img" aria-label="Osmotic pressure">
+  <rect width="460" height="240" fill="#fafafa"/>
+  <text x="230" y="22" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="13" fill="#111">Osmotic pressure</text>
+  <rect x="80" y="50" width="70" height="150" fill="#dceef8" stroke="#111"/>
+  <rect x="210" y="50" width="70" height="150" fill="#fff" stroke="#111"/>
+  <rect x="150" y="50" width="60" height="150" fill="#eee" stroke="#111"/>
+  <text x="115" y="130" text-anchor="middle" font-size="11">solution</text>
+  <text x="245" y="130" text-anchor="middle" font-size="11">solvent</text>
+  <text x="180" y="130" text-anchor="middle" font-size="10" fill="#555">membrane</text>
+  <path d="M300 90 h80" stroke="#0d6e6e" stroke-width="2"/>
+  <polygon points="380,90 368,85 368,95" fill="#0d6e6e"/>
+  <text x="340" y="80" text-anchor="middle" font-size="12" fill="#0d6e6e">Π = iMRT</text>
+  <text x="230" y="225" text-anchor="middle" font-size="11" fill="#555">solvent flows until ΔP = Π</text>
+</svg>

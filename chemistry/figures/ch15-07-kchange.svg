@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 200" role="img" aria-label="What changes K?">
+  <rect width="420" height="200" fill="#fafafa"/>
+  <text x="210" y="22" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="13" fill="#111">What changes K?</text>
+  <rect x="40" y="55" width="150" height="110" rx="10" fill="#fde8d8" stroke="#111"/>
+  <text x="115" y="100" text-anchor="middle" font-size="13">temperature</text>
+  <text x="115" y="125" text-anchor="middle" font-size="12" fill="#c45c26">changes K</text>
+  <rect x="230" y="55" width="150" height="110" rx="10" fill="#dceef8" stroke="#111"/>
+  <text x="305" y="95" text-anchor="middle" font-size="12">conc / P / catalyst</text>
+  <text x="305" y="120" text-anchor="middle" font-size="12" fill="#0d6e6e">shift position</text>
+  <text x="305" y="140" text-anchor="middle" font-size="12" fill="#0d6e6e">not K (at fixed T)</text>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 200" role="img" aria-label="Le Chatelier stress → shift">
+  <rect width="480" height="200" fill="#fafafa"/>
+  <text x="240" y="22" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="13" fill="#111">Le Chatelier stress → shift</text>
+  <text x="240" y="80" text-anchor="middle" font-size="14">add reactant · remove product · change T/P</text>
+  <path d="M100 120 h280" stroke="#0d6e6e" stroke-width="2"/><polygon points="380,120 368,115 368,125" fill="#0d6e6e"/>
+  <text x="240" y="160" text-anchor="middle" font-size="12" fill="#555">system shifts to partially counteract the stress</text>
+</svg>

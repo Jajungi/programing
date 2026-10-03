@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 260" role="img" aria-label="Disk · potential on axis">
+  <rect width="420" height="260" fill="#fafafa"/>
+  <text x="210" y="22" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="13" fill="#111">Disk · potential on axis</text>
+  <ellipse cx="180" cy="150" rx="100" ry="28" fill="#dceef8" stroke="#111" stroke-width="2"/>
+  <line x1="180" y1="150" x2="320" y2="150" stroke="#0d6e6e"/>
+  <circle cx="320" cy="150" r="5" fill="#0d6e6e"/><text x="320" y="140" text-anchor="middle" font-size="12">x</text>
+  <text x="180" y="200" text-anchor="middle" font-size="12">σ = C r</text>
+  <text x="210" y="235" text-anchor="middle" font-size="12" fill="#555">integrate ring elements</text>
+</svg>

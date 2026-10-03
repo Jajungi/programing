@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 220" role="img" aria-label="E = −∇V">
+  <rect width="420" height="220" fill="#fafafa"/>
+  <text x="210" y="22" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="13" fill="#111">E = −∇V</text>
+  <text x="210" y="90" text-anchor="middle" font-size="18">E_x = −∂V/∂x</text>
+  <text x="210" y="125" text-anchor="middle" font-size="18">E_y = −∂V/∂y</text>
+  <text x="210" y="160" text-anchor="middle" font-size="18">E_z = −∂V/∂z</text>
+  <text x="210" y="195" text-anchor="middle" font-size="12" fill="#555">differentiate the given V(x,y,z)</text>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 200" role="img" aria-label="Salt hydrolysis outcomes">
+  <rect width="480" height="200" fill="#fafafa"/>
+  <text x="240" y="22" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="13" fill="#111">Salt hydrolysis outcomes</text>
+  <rect x="30" y="55" width="130" height="100" rx="8" fill="#fde8d8" stroke="#111"/><text x="95" y="100" text-anchor="middle" font-size="13">acidic</text><text x="95" y="125" text-anchor="middle" font-size="11" fill="#555">NH4Cl · FeCl3</text>
+  <rect x="175" y="55" width="130" height="100" rx="8" fill="#eee" stroke="#111"/><text x="240" y="100" text-anchor="middle" font-size="13">neutral</text><text x="240" y="125" text-anchor="middle" font-size="11" fill="#555">NaCl · KNO3</text>
+  <rect x="320" y="55" width="130" height="100" rx="8" fill="#dceef8" stroke="#111"/><text x="385" y="100" text-anchor="middle" font-size="13">basic</text><text x="385" y="125" text-anchor="middle" font-size="11" fill="#555">Na2CO3 · NaAc</text>
+</svg>

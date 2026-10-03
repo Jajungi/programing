@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 200" role="img" aria-label="Weak acid + conjugate base">
+  <rect width="460" height="200" fill="#fafafa"/>
+  <text x="230" y="22" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="13" fill="#111">Weak acid + conjugate base</text>
+  <rect x="60" y="60" width="140" height="90" rx="8" fill="#fde8d8" stroke="#111"/><text x="130" y="110" text-anchor="middle" font-size="13">HA</text>
+  <text x="230" y="110" text-anchor="middle" font-size="20">+</text>
+  <rect x="260" y="60" width="140" height="90" rx="8" fill="#dceef8" stroke="#111"/><text x="330" y="110" text-anchor="middle" font-size="13">A−</text>
+  <text x="230" y="180" text-anchor="middle" font-size="12" fill="#555">buffer resists pH change</text>
+</svg>

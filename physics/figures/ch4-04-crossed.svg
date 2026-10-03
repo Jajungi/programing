@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 260" role="img" aria-label="Crossed charged rods">
+  <rect width="420" height="260" fill="#fafafa"/>
+  <text x="210" y="22" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="13" fill="#111">Crossed charged rods</text>
+  <line x1="80" y1="160" x2="300" y2="160" stroke="#e85d4c" stroke-width="4"/>
+  <line x1="190" y1="60" x2="190" y2="240" stroke="#3a7bd5" stroke-width="4"/>
+  <circle cx="190" cy="40" r="5" fill="#0d6e6e"/><text x="210" y="45" font-size="12" fill="#0d6e6e">P · z</text>
+  <line x1="190" y1="160" x2="190" y2="40" stroke="#888" stroke-dasharray="3 3"/>
+  <text x="210" y="250" text-anchor="middle" font-size="12">each rod charge +Q</text>
+</svg>

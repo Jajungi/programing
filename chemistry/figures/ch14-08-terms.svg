@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" role="img" aria-label="Key kinetics terms">
+  <rect width="500" height="200" fill="#fafafa"/>
+  <text x="250" y="22" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="13" fill="#111">Key kinetics terms</text>
+  <rect x="30" y="50" width="130" height="50" rx="8" fill="#fff" stroke="#111"/><text x="95" y="80" text-anchor="middle" font-size="12">rate law</text>
+  <rect x="185" y="50" width="130" height="50" rx="8" fill="#fff" stroke="#111"/><text x="250" y="80" text-anchor="middle" font-size="12">order</text>
+  <rect x="340" y="50" width="130" height="50" rx="8" fill="#fff" stroke="#111"/><text x="405" y="80" text-anchor="middle" font-size="12">k</text>
+  <rect x="30" y="120" width="130" height="50" rx="8" fill="#fff" stroke="#111"/><text x="95" y="150" text-anchor="middle" font-size="12">half-life</text>
+  <rect x="185" y="120" width="130" height="50" rx="8" fill="#fff" stroke="#111"/><text x="250" y="150" text-anchor="middle" font-size="12">Ea</text>
+  <rect x="340" y="120" width="130" height="50" rx="8" fill="#fff" stroke="#111"/><text x="405" y="150" text-anchor="middle" font-size="12">mechanism</text>
+</svg>

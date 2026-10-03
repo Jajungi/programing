@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 220" role="img" aria-label="Gauss's law idea">
+  <rect width="420" height="220" fill="#fafafa"/>
+  <text x="210" y="22" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="13" fill="#111">Gauss's law idea</text>
+  <ellipse cx="210" cy="120" rx="90" ry="55" fill="none" stroke="#0d6e6e" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="210" y="125" text-anchor="middle" font-size="13">Q_enc</text>
+  <text x="210" y="195" text-anchor="middle" font-size="13">∮ E·dA = Q_enc / ε0</text>
+</svg>

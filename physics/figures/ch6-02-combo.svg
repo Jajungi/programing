@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 240" role="img" aria-label="Series and parallel capacitors">
+  <rect width="480" height="240" fill="#fafafa"/>
+  <text x="240" y="22" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="13" fill="#111">Series and parallel capacitors</text>
+  <text x="120" y="50" text-anchor="middle" font-size="12">series</text>
+  <rect x="90" y="70" width="8" height="40" fill="#111"/><rect x="130" y="70" width="8" height="40" fill="#111"/>
+  <line x1="70" y1="90" x2="90" y2="90" stroke="#111"/><line x1="138" y1="90" x2="170" y2="90" stroke="#111"/>
+  <text x="120" y="140" text-anchor="middle" font-size="11">1/C = 1/C1+1/C2</text>
+  <text x="340" y="50" text-anchor="middle" font-size="12">parallel</text>
+  <rect x="300" y="70" width="8" height="40" fill="#111"/><rect x="360" y="70" width="8" height="40" fill="#111"/>
+  <path d="M280 90 H300 M308 90 H340 M340 70 V110 M368 90 H400" stroke="#111" fill="none"/>
+  <text x="340" y="140" text-anchor="middle" font-size="11">C = C1+C2</text>
+</svg>

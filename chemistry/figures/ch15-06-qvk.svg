@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 200" role="img" aria-label="Q versus K">
+  <rect width="480" height="200" fill="#fafafa"/>
+  <text x="240" y="22" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="13" fill="#111">Q versus K</text>
+  <line x1="60" y1="110" x2="420" y2="110" stroke="#111" stroke-width="2"/>
+  <circle cx="240" cy="110" r="8" fill="#0d6e6e"/>
+  <text x="240" y="90" text-anchor="middle" font-size="13" fill="#0d6e6e">K</text>
+  <text x="120" y="150" text-anchor="middle" font-size="12">Q &lt; K → forward</text>
+  <text x="360" y="150" text-anchor="middle" font-size="12">Q &gt; K → reverse</text>
+  <text x="240" y="180" text-anchor="middle" font-size="12" fill="#555">Q = K · at equilibrium</text>
+</svg>

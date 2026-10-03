@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 220" role="img" aria-label="Two cups of water · separated charges">
+  <rect width="420" height="220" fill="#fafafa"/>
+  <text x="210" y="22" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="13" fill="#111">Two cups of water · separated charges</text>
+  <rect x="70" y="70" width="90" height="100" rx="6" fill="#dceef8" stroke="#111"/><text x="115" y="125" text-anchor="middle" font-size="11">cup A</text><text x="115" y="145" text-anchor="middle" font-size="10" fill="#555">all e−</text>
+  <rect x="260" y="70" width="90" height="100" rx="6" fill="#fde8d8" stroke="#111"/><text x="305" y="125" text-anchor="middle" font-size="11">cup B</text><text x="305" y="145" text-anchor="middle" font-size="10" fill="#555">all p+</text>
+  <line x1="160" y1="120" x2="260" y2="120" stroke="#0d6e6e" stroke-width="2"/>
+  <text x="210" y="110" text-anchor="middle" font-size="11" fill="#0d6e6e">10 m</text>
+  <text x="210" y="200" text-anchor="middle" font-size="12">estimate F between charge piles</text>
+</svg>

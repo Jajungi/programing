@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 220" role="img" aria-label="Energy of a charged conducting sphere">
+  <rect width="420" height="220" fill="#fafafa"/>
+  <text x="210" y="22" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="13" fill="#111">Energy of a charged conducting sphere</text>
+  <circle cx="160" cy="120" r="55" fill="#fde8d8" stroke="#111" stroke-width="2"/>
+  <text x="160" y="125" text-anchor="middle" font-size="12">Q · R</text>
+  <text x="300" y="110" font-size="14">U = k Q² /(2R)</text>
+  <text x="300" y="140" font-size="12" fill="#555">= Q² /(8πε0 R)</text>
+</svg>
