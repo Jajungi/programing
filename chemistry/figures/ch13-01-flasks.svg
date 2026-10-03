@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 280" role="img" aria-label="Two volumetric flasks at different temperatures">
+  <rect width="520" height="280" fill="#fafafa"/>
+  <text x="260" y="28" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="15" fill="#111">Identical volumetric flasks · same solution</text>
+  <g transform="translate(70,50)">
+    <text x="90" y="18" text-anchor="middle" font-size="13" fill="#555">T1 (cooler)</text>
+    <path d="M70 40 h40 v36 l30 110 a40 40 0 1 1 -100 0 l30 -110 z" fill="#dceef8" stroke="#111" stroke-width="2"/>
+    <rect x="78" y="30" width="24" height="18" rx="3" fill="#fff" stroke="#111" stroke-width="2"/>
+    <line x1="40" y1="95" x2="140" y2="95" stroke="#0b6e99" stroke-width="2" stroke-dasharray="4 3"/>
+    <text x="90" y="210" text-anchor="middle" font-size="12" fill="#333">mark · volume V1</text>
+  </g>
+  <g transform="translate(280,50)">
+    <text x="90" y="18" text-anchor="middle" font-size="13" fill="#555">T2 (warmer)</text>
+    <path d="M70 40 h40 v36 l30 110 a40 40 0 1 1 -100 0 l30 -110 z" fill="#fde8d8" stroke="#111" stroke-width="2"/>
+    <rect x="78" y="30" width="24" height="18" rx="3" fill="#fff" stroke="#111" stroke-width="2"/>
+    <line x1="40" y1="88" x2="140" y2="88" stroke="#c45c26" stroke-width="2" stroke-dasharray="4 3"/>
+    <text x="90" y="210" text-anchor="middle" font-size="12" fill="#333">same mark · volume expands</text>
+  </g>
+</svg>

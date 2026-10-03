@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 360" role="img" aria-label="Four charges in the xy plane">
+  <rect width="420" height="360" fill="#fafafa"/>
+  <text x="210" y="24" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="14" fill="#111">Four fixed charges · find net force on q4</text>
+  <g transform="translate(60,40)">
+    <line x1="0" y1="250" x2="300" y2="250" stroke="#111" stroke-width="1.5"/>
+    <line x1="150" y1="300" x2="150" y2="20" stroke="#111" stroke-width="1.5"/>
+    <text x="305" y="255" font-size="12">x</text>
+    <text x="158" y="18" font-size="12">y</text>
+    <circle cx="150" cy="250" r="10" fill="#e85d4c"/><text x="150" y="254" text-anchor="middle" font-size="10" fill="#fff">4</text>
+    <text x="165" y="270" font-size="11">q4 (+)</text>
+    <circle cx="250" cy="250" r="10" fill="#e85d4c"/><text x="250" y="254" text-anchor="middle" font-size="10" fill="#fff">3</text>
+    <text x="230" y="235" font-size="11">q3 · d3</text>
+    <circle cx="150" cy="150" r="10" fill="#e85d4c"/><text x="150" y="154" text-anchor="middle" font-size="10" fill="#fff">2</text>
+    <text x="165" y="145" font-size="11">q2 · d2</text>
+    <circle cx="70" cy="300" r="10" fill="#3a7bd5"/><text x="70" y="304" text-anchor="middle" font-size="10" fill="#fff">1</text>
+    <line x1="150" y1="250" x2="70" y2="300" stroke="#888" stroke-dasharray="4 3"/>
+    <text x="55" y="325" font-size="11">q1 (-) · d1, theta1</text>
+  </g>
+</svg>

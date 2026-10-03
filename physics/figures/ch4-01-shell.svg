@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" role="img" aria-label="Charged sphere inside concentric conducting shell">
+  <rect width="420" height="300" fill="#fafafa"/>
+  <text x="210" y="24" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="14" fill="#111">Sphere + concentric conducting shell</text>
+  <circle cx="210" cy="160" r="95" fill="none" stroke="#111" stroke-width="10"/>
+  <circle cx="210" cy="160" r="70" fill="none" stroke="#bbb" stroke-width="1.5"/>
+  <circle cx="210" cy="160" r="40" fill="#fde8d8" stroke="#e85d4c" stroke-width="2"/>
+  <text x="210" y="165" text-anchor="middle" font-size="12">+Q</text>
+  <text x="255" y="155" font-size="11">a</text>
+  <text x="285" y="120" font-size="11">b</text>
+  <text x="310" y="100" font-size="11">c</text>
+  <text x="210" y="275" text-anchor="middle" font-size="12" fill="#555">shell total charge -Q</text>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 260" role="img" aria-label="Two parallel plates with opposite charge">
+  <rect width="420" height="260" fill="#fafafa"/>
+  <text x="210" y="24" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="14" fill="#111">Parallel plates · +σ and -σ</text>
+  <rect x="80" y="60" width="12" height="160" fill="#e85d4c"/><text x="86" y="50" text-anchor="middle" font-size="12">+σ</text>
+  <rect x="320" y="60" width="12" height="160" fill="#3a7bd5"/><text x="326" y="50" text-anchor="middle" font-size="12">-σ</text>
+  <g stroke="#e67e22" stroke-width="2">
+    <line x1="110" y1="90" x2="300" y2="90"/><polygon points="300,90 288,85 288,95" fill="#e67e22"/>
+    <line x1="110" y1="130" x2="300" y2="130"/><polygon points="300,130 288,125 288,135" fill="#e67e22"/>
+    <line x1="110" y1="170" x2="300" y2="170"/><polygon points="300,170 288,165 288,175" fill="#e67e22"/>
+  </g>
+  <text x="210" y="210" text-anchor="middle" font-size="12" fill="#555">between: E = σ/ε0 · outside ≈ 0</text>
+</svg>

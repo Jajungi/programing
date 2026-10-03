@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 280" role="img" aria-label="Uniformly charged solid sphere">
+  <rect width="420" height="280" fill="#fafafa"/>
+  <text x="210" y="24" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="14" fill="#111">Uniform solid sphere · density ρ</text>
+  <circle cx="180" cy="150" r="70" fill="#dceef8" stroke="#111" stroke-width="2"/>
+  <circle cx="180" cy="150" r="40" fill="none" stroke="#0d6e6e" stroke-dasharray="4 3"/>
+  <line x1="180" y1="150" x2="250" y2="150" stroke="#111"/>
+  <text x="215" y="142" font-size="11">R</text>
+  <line x1="180" y1="150" x2="210" y2="120" stroke="#0d6e6e"/>
+  <text x="200" y="118" font-size="11" fill="#0d6e6e">r&lt;R</text>
+  <circle cx="320" cy="150" r="4" fill="#111"/>
+  <text x="320" y="140" text-anchor="middle" font-size="11">r&gt;R</text>
+  <text x="210" y="250" text-anchor="middle" font-size="12" fill="#555">E ∝ r inside · E ∝ 1/r² outside</text>
+</svg>

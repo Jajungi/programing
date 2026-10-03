@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 240" role="img" aria-label="Electric field lines of a positive point charge">
+  <rect width="480" height="240" fill="#fafafa"/>
+  <text x="240" y="24" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="14" fill="#111">Field lines from a + point charge</text>
+  <circle cx="240" cy="125" r="14" fill="#e85d4c"/>
+  <text x="240" y="130" text-anchor="middle" font-size="12" fill="#fff">+</text>
+  <g stroke="#0d6e6e" stroke-width="1.5" fill="none">
+    <line x1="254" y1="125" x2="380" y2="125"/><polygon points="380,125 368,120 368,130" fill="#0d6e6e"/>
+    <line x1="226" y1="125" x2="100" y2="125"/><polygon points="100,125 112,120 112,130" fill="#0d6e6e"/>
+    <line x1="240" y1="111" x2="240" y2="45"/><polygon points="240,45 235,57 245,57" fill="#0d6e6e"/>
+    <line x1="240" y1="139" x2="240" y2="205"/><polygon points="240,205 235,193 245,193" fill="#0d6e6e"/>
+    <line x1="250" y1="115" x2="330" y2="55"/><polygon points="330,55 316,58 322,68" fill="#0d6e6e"/>
+    <line x1="230" y1="115" x2="150" y2="55"/><polygon points="150,55 164,58 158,68" fill="#0d6e6e"/>
+    <line x1="250" y1="135" x2="330" y2="195"/><polygon points="330,195 322,182 316,192" fill="#0d6e6e"/>
+    <line x1="230" y1="135" x2="150" y2="195"/><polygon points="150,195 158,182 164,192" fill="#0d6e6e"/>
+  </g>
+</svg>

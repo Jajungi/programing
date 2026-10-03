@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 280" role="img" aria-label="Two-step reaction energy profile A to B to C">
+  <rect width="560" height="280" fill="#fafafa"/>
+  <text x="280" y="26" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="14" fill="#111">Reaction profile · A → B → C</text>
+  <line x1="50" y1="230" x2="520" y2="230" stroke="#111"/>
+  <line x1="50" y1="230" x2="50" y2="40" stroke="#111"/>
+  <text x="36" y="40" font-size="11" fill="#555">E</text>
+  <text x="520" y="248" text-anchor="end" font-size="11" fill="#555">reaction coordinate</text>
+  <path d="M70 170 C120 170, 140 70, 180 70 C220 70, 230 145, 270 145 C320 145, 340 95, 390 95 C440 95, 460 190, 500 190" fill="none" stroke="#0d6e6e" stroke-width="3"/>
+  <circle cx="70" cy="170" r="4" fill="#111"/><text x="70" y="190" text-anchor="middle" font-size="12">A</text>
+  <circle cx="270" cy="145" r="4" fill="#111"/><text x="270" y="165" text-anchor="middle" font-size="12">B</text>
+  <circle cx="500" cy="190" r="4" fill="#111"/><text x="500" y="210" text-anchor="middle" font-size="12">C</text>
+  <text x="180" y="58" text-anchor="middle" font-size="11" fill="#555">TS1</text>
+  <text x="390" y="82" text-anchor="middle" font-size="11" fill="#555">TS2</text>
+</svg>

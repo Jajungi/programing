@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" role="img" aria-label="Activation energy on a reaction profile">
+  <rect width="520" height="240" fill="#fafafa"/>
+  <text x="260" y="24" text-anchor="middle" font-family="Figtree,Segoe UI,sans-serif" font-size="14" fill="#111">Activation energy Ea</text>
+  <line x1="40" y1="200" x2="480" y2="200" stroke="#111"/>
+  <line x1="40" y1="200" x2="40" y2="35" stroke="#111"/>
+  <path d="M70 150 C140 150, 170 55, 250 55 C330 55, 360 165, 450 165" fill="none" stroke="#0d6e6e" stroke-width="3"/>
+  <line x1="70" y1="150" x2="250" y2="150" stroke="#999" stroke-dasharray="3 3"/>
+  <line x1="250" y1="55" x2="250" y2="150" stroke="#c45c26" stroke-width="2"/>
+  <text x="262" y="110" font-size="12" fill="#c45c26">Ea</text>
+  <text x="70" y="170" font-size="12">reactants</text>
+  <text x="430" y="185" font-size="12">products</text>
+</svg>
